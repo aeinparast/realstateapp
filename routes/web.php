@@ -12,4 +12,12 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+Route::view('asset', 'asset')
+    ->middleware(['auth'])
+    ->name('asset');
+
+Route::view('create-asset', 'asset-create')
+    ->middleware(['auth'])
+    ->name('asset-create');
+
+require __DIR__ . '/auth.php';
