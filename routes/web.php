@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\AssetCreate;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -17,6 +18,11 @@ Route::view('asset', 'asset')
     ->name('asset');
 
 Route::view('create-asset', 'asset-create')
+    ->middleware(['auth'])
+    ->name('asset-create');
+
+
+Route::get('test', AssetCreate::class)
     ->middleware(['auth'])
     ->name('asset-create');
 
