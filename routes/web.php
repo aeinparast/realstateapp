@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\S3Controller;
 use App\Livewire\AssetCreate;
 use Illuminate\Support\Facades\Route;
 
@@ -17,13 +18,12 @@ Route::view('asset', 'asset')
     ->middleware(['auth'])
     ->name('asset');
 
-Route::view('create-asset', 'asset-create')
+
+Route::get('create-asset', AssetCreate::class)
     ->middleware(['auth'])
     ->name('asset-create');
 
 
-Route::get('test', AssetCreate::class)
-    ->middleware(['auth'])
-    ->name('asset-create');
+
 
 require __DIR__ . '/auth.php';
