@@ -13,6 +13,7 @@
             </div>
         </div>
         <div class="mt-2 overflow-hidden bg-white shadow dark:bg-gray-800 sm:rounded-lg">
+
             <div class="grid grid-cols-1 gap-6 p-6 text-gray-900 md:grid-cols-2 dark:text-gray-100">
                 <form class="w-full" wire:submit='save'>
 
@@ -193,12 +194,18 @@
                     @if ($photos)
                     <!-- Photo Items -->
                     <div
-                        class="flex items-center flex-1 w-full gap-2 px-2 overflow-x-auto border border-gray-300 border-dashed rounded-md outline-none h-28 max-h-28">
+                        class="flex items-center flex-1 w-full gap-2 px-2 overflow-x-auto border-2 border-gray-300 border-dashed rounded-md outline-none h-36 max-h-36">
                         <!-- Photo Item -->
 
                         @foreach ($photos as $key=> $photo)
-                        <div class="relative flex-shrink-0 w-24 h-24 border border-gray-400 border-dashed rounded"
-                            wire:key='{{$key}}'>
+                        <div class="relative flex-shrink-0 w-28 h-28   border-dashed rounded  bg-no-repeat bg-contain bg-center 
+                        @if ($key===0)
+                        border-green-400 border-4
+                        @else
+                        border-gray-400 border-2
+                        @endif
+                        " wire:key='{{$key}}' wire:click='setAsPrimary({{$key}})'
+                            style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$photo}}')">
                             <!-- Photo Item DELETE -->
                             <div wire:click='deleteImage({{$key}})' wire:confirm='Are You sure?'
                                 class="absolute flex items-center justify-center p-1 text-white transition-colors bg-red-600 border-2 border-red-600 border-dashed rounded-full cursor-pointer h-7 w-7 hover:bg-white hover:text-red-600 top-1 right-1">
@@ -211,7 +218,6 @@
                                 </svg>
                             </div>
                             <!-- Photo Item IMAGE! -->
-                            <img src="https://mahdavi.storage.iran.liara.space/{{$photo}}" class="rounded" alt="">
                         </div>
                         @endforeach
                     </div>
@@ -221,7 +227,41 @@
 
 
                 </form>
+                <div class="w-full p-20">
+                    <section id="main-carousel" class="splide rounded" aria-label="My Awesome Gallery">
+                        <div class="splide__track">
+                            <ul class="splide__list">
+                                <li class="splide__slide">
+                                    <img src="/img/test.jpg" class="rounded" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/img/test2.jpg" class="rounded" alt="">
+                                </li>
+                                <li class="splide__slide">
+                                    <img src="/img/test3.jpg" class="rounded" alt="">
+                                </li>
+
+                            </ul>
+                        </div>
+                    </section>
+
+
+                    <ul id="thumbnails" class="thumbnails">
+                        <li class="thumbnail">
+                            <img src="/img/test.jpg" class="rounded-md" alt="">
+                        </li>
+                        <li class="thumbnail">
+                            <img src="/img/test2.jpg" class="rounded-md" alt="">
+                        </li>
+                        <li class="thumbnail">
+                            <img src="/img/test3.jpg" class="rounded-md" alt="">
+                        </li>
+
+                    </ul>
+                </div>
+
             </div>
         </div>
     </div>
+
 </div>

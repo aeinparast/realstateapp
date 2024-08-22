@@ -46,7 +46,7 @@ class AssetCreate extends Component
 
     public function uploadImage(): void
     {
-        $upload = $this->file->store('photos');
+        $upload = $this->file->store('photos', 'liara');
         array_push($this->photos, $upload);
         $this->file = null;
     }
@@ -59,6 +59,17 @@ class AssetCreate extends Component
     public function deleteFile(): void
     {
         $this->file = null;
+    }
+
+    public function setAsPrimary($key): void
+    {
+        if ($key === 0) {
+            return;
+        }
+        $one = $this->photos[0];
+        $two = $this->photos[$key];
+        $this->photos[0] = $two;
+        $this->photos[$key] = $one;
     }
 
 
