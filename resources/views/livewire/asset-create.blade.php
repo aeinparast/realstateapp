@@ -68,7 +68,8 @@
                                 <textarea wire:model='notes'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none h-36 focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-password" type="text"> </textarea>
-                                <p class="text-xs italic text-gray-600">For reminder or for your teammates!</p>
+                                <p class="text-xs italic text-gray-600">For reminder or for your teammates. (Private!)
+                                </p>
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-2 -mx-3 ">
@@ -198,6 +199,7 @@
                         <!-- Photo Item -->
 
                         @foreach ($photos as $key=> $photo)
+
                         <div class="relative flex-shrink-0 w-28 h-28   border-dashed rounded  bg-no-repeat bg-contain bg-center 
                         @if ($key===0)
                         border-green-400 border-4
@@ -205,7 +207,7 @@
                         border-gray-400 border-2
                         @endif
                         " wire:key='{{$key}}' wire:click='setAsPrimary({{$key}})'
-                            style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$photo}}')">
+                            style="background-image: url('{{$photo}}')">
                             <!-- Photo Item DELETE -->
                             <div wire:click='deleteImage({{$key}})' wire:confirm='Are You sure?'
                                 class="absolute flex items-center justify-center p-1 text-white transition-colors bg-red-600 border-2 border-red-600 border-dashed rounded-full cursor-pointer h-7 w-7 hover:bg-white hover:text-red-600 top-1 right-1">
@@ -227,41 +229,88 @@
 
 
                 </form>
-                <div class="w-full p-20">
-                    <section id="main-carousel" class="splide rounded" aria-label="My Awesome Gallery">
-                        <div class="splide__track">
-                            <ul class="splide__list">
-                                <li class="splide__slide">
-                                    <img src="/img/test.jpg" class="rounded" alt="">
-                                </li>
-                                <li class="splide__slide">
-                                    <img src="/img/test2.jpg" class="rounded" alt="">
-                                </li>
-                                <li class="splide__slide">
-                                    <img src="/img/test3.jpg" class="rounded" alt="">
-                                </li>
 
-                            </ul>
-                        </div>
-                    </section>
+                <section>
+                    <div class="w-full">
+                        <section id="main-carousel" class="splide rounded" aria-label="My Awesome Gallery">
+                            <div class="splide__track">
+                                <ul class="splide__list min-h-64">
+                                    <li class="splide__slide">
+                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                            style="background-image: url('/img/test.jpg')">
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                            style="background-image: url('/img/test2.jpg')">
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide">
+                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                            style="background-image: url('/img/test3.jpg')">
+                                        </div>
+                                    </li>
+                                    <li class="splide__slide rounded-md">
+                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat rounded-md"
+                                            style="background-image: url('/img/test4.jpg')">
+                                        </div>
+                                        <img src="/img/test4.jpg" class="rounded-md" id="img-container" alt="">
+                                    </li>
+
+                                </ul>
+                            </div>
+                        </section>
 
 
-                    <ul id="thumbnails" class="thumbnails">
-                        <li class="thumbnail">
-                            <img src="/img/test.jpg" class="rounded-md" alt="">
-                        </li>
-                        <li class="thumbnail">
-                            <img src="/img/test2.jpg" class="rounded-md" alt="">
-                        </li>
-                        <li class="thumbnail">
-                            <img src="/img/test3.jpg" class="rounded-md" alt="">
-                        </li>
-
-                    </ul>
-                </div>
-
+                        <ul id="thumbnails" class="thumbnails">
+                            <li class="thumbnail">
+                                <img src="/img/test.jpg" class="rounded-md" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="/img/test2.jpg" class="rounded-md" alt="">
+                            </li>
+                            <li class="thumbnail">
+                                <img src="/img/test3.jpg" class="rounded-md" alt="">
+                            </li>
+                            <li class="thumbnail flex justify-center items-center">
+                                <img src="/img/test4.jpg" class="rounded-md" alt="">
+                            </li>
+                        </ul>
+                    </div>
+                </section>
             </div>
         </div>
     </div>
+    <x-modal name="confirm-image-deletion" :show="$errors->isNotEmpty()" focusable>
+        <form wire:submit="deleteUser" class="p-6">
 
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                {{ __('Are you sure you want to delete your account?') }}
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please
+                enter your password to confirm you would like to permanently delete your account.') }}
+            </p>
+
+            <div class="mt-6">
+                <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
+
+                <x-text-input wire:model="password" id="password" name="password" type="password"
+                    class="mt-1 block w-3/4" placeholder="{{ __('Password') }}" />
+
+                <x-input-error :messages="$errors->get('password')" class="mt-2" />
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    {{ __('Cancel') }}
+                </x-secondary-button>
+
+                <x-danger-button class="ms-3">
+                    {{ __('Delete Account') }}
+                </x-danger-button>
+            </div>
+        </form>
+    </x-modal>
 </div>

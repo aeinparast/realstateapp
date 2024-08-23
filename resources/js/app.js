@@ -4,6 +4,7 @@ import '@splidejs/splide/css';
 
 import Splide from '@splidejs/splide';
 
+
 // new Splide('.splide', {
 //   type: 'fade',
 //   rewind: true,
@@ -48,3 +49,5 @@ splide.on('mounted move', function () {
 
 
 splide.mount();
+
+

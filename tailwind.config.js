@@ -12,8 +12,11 @@ export default {
     theme: {
         extend: {
             fontFamily: {
-                sans: ['Figtree', ...defaultTheme.fontFamily.sans],
+                sans: ['IRANSansX'],
             },
+            colors: {
+                'mahdavi': '#d2ab65'
+            }
         },
     },
 
