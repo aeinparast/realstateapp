@@ -1,11 +1,11 @@
-<form action="" class="hidden p-4 pb-0 bg-center bg-no-repeat bg-cover border-2 rounded-lg ec-clip sm:flex md:pb-2">
+<form action="" class="hidden p-4  pb-0 bg-center bg-no-repeat bg-cover border-2 rounded-lg ec-clip sm:flex md:pb-2">
     <div class="w-[35%] "></div>
     <div class="w-[65%] flex gap-3 flex-col">
         <!-- Search Item -->
         <div class="items-center gap-4 ">
 
             <p for="cars" class="">نوع ملک</p>
-            <div class="flex items-center gap-6">
+            <div class="flex items-center gap-4 xl:gap-6">
                 <button wire:click.prevent='PropertyChange(0)' class="
                 border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
                 @if ($propertyType===0)
@@ -80,7 +80,7 @@
         </div>
         <div class="flex gap-4 ">
             <button wire:click.prevent=''
-                class="flex items-center gap-2 px-4 py-1 font-bold transition-colors border-2 rounded text-mahdavi border-mahdavi hover:cursor-pointer hover:bg-mahdavi hover:text-white">
+                class="flex items-center gap-2 px-4 py-1 font-bold transition-all border-2 rounded hover:opacity-80 text-mahdavi border-mahdavi hover:cursor-pointer hover:bg-mahdavi hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path

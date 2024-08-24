@@ -19,12 +19,12 @@
     <div class="lg:container md:mx-auto">
         <header class="">
             <nav class="flex items-center justify-between w-full h-12 px-1 rounded sm:px-8">
-                <div class="flex items-center sm:gap-2 md:gap-4 lg:gap-6 xl:gap-12">
-                    <div
+                <div class="flex items-center sm:gap-2 md:gap-2 lg:gap-6 xl:gap-12">
+                    <a href="/"
                         class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-mahdavi hover:border-b-mahdavi">
-                        هلدینگ سرمایه‌گذاری مهدوی</div>
+                        هلدینگ سرمایه‌گذاری مهدوی</a>
 
-                    <ul class="items-center hidden px-4 lg:gap-12 md:gap-4 md:flex ">
+                    <ul class="items-center hidden px-4 lg:gap-6 xl:gap-12 md:gap-2 md:flex  md:px-2">
                         <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
                         @if (request()->routeIs('home'))
                             border-b-mahdavi text-mahdavi font-normal
@@ -41,12 +41,12 @@
                         <li class="text-sm font-light">درباره ما</li>
                     </ul>
                 </div>
-                <div class="relative flex items-center gap-1 sm:gap-4">
+                <div class="relative flex items-center gap-1 sm:gap-2 lg:gap-4">
 
                     <a href="" class="navigation__btn navigation__btn--primary group">مشاوره
                         خرید
                         <span
-                            class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping right-2 top-2 group-hover:bg-mahdavi"></span>
+                            class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping sm:right-2 sm:top-2 right-1 top-1 group-hover:bg-mahdavi"></span>
 
                     </a>
                     <a href="" class="navigation__btn navigation__btn--secondery">مشاوره
@@ -55,20 +55,28 @@
             </nav>
         </header>
         <main class="">
-            <section
-                class="relative grid min-h-screen grid-cols-1 px-8 m-2 rounded-lg lg:grid-cols-2 hero py-14 bg-mahdavi"
+            <section class=" grid min-h-screen grid-cols-1 px-8 m-2 rounded-lg lg:grid-cols-2 hero py-14 bg-mahdavi"
                 id="hero">
-                <div class="text-center md:text-right">
-                    <h1 class="text-6xl font-bold text-white lg:text-9xl lg:font-black" style="line-height: 1.3">ورود به
+                <div class="text-center lg:text-right">
+                    <h1 class="text-6xl text-center lg:text-right font-bold text-white lg:text-9xl lg:font-black"
+                        style="line-height: 1.3">ورود به
                         قلب بازار
                         ملک!</h1>
 
                 </div>
-                <div class="rounded-lg sm:p-6 h-[90%] grid grid-cols-1 gap-4 p-2">
+                <div class="col-span-full sm:hidden flex justify-center items-center">
+                    <a href="#main" class=" text-white bottom-10 left-1/2 animate-bounce  "><svg
+                            xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
+                            class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                        </svg></a>
+                </div>
+                <div class="rounded-lg sm:p-6 h-[90%] grid grid-cols-1 gap-4 p-2 ">
                     <div
-                        class="grid grid-cols-2 gap-4 font-black text-white sm:grid-cols-4 md:grid-cols-2 lg:grid-cols-4">
+                        class="grid grid-cols-2 gap-4 font-black  text-white sm:grid-cols-4  lg:grid-cols-2 xl:grid-cols-4">
                         <div
-                            class="grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
+                            class="grid  content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
                             <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor"
                                 class="mx-auto bi bi-houses" viewBox="0 0 16 16">
                                 <path
@@ -108,25 +116,29 @@
 
                     </div>
 
-                    <div class="">
-                        <livewire:hero-search />
-                    </div>
+
+                    <livewire:hero-search />
+
 
                 </div>
+                <div class="col-span-full hidden sm:flex justify-center items-center">
+                    <a href="#main" class=" text-white bottom-10 left-1/2 animate-bounce  "><svg
+                            xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
+                            class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
+                        </svg></a>
+                </div>
 
-                <a href="#main" class="absolute text-white bottom-10 left-1/2 animate-bounce"><svg
-                        xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="currentColor"
-                        class="bi bi-arrow-down-circle" viewBox="0 0 16 16">
-                        <path fill-rule="evenodd"
-                            d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
-                    </svg></a>
             </section>
             <section id="main"></section>
+            <section id="blog"></section>
         </main>
         <footer class="flex flex-col items-center p-12 sm:flex-row min-h-40">
-            <img class="w-32" src="/img/logo.webp" alt="Mahdavi holding Logo">
+            <a href="/"><img class="w-32" src="/img/logo.webp" alt="Mahdavi holding Logo"></a>
+
             <div class="flex flex-wrap justify-center gap-4 text-gray-600 sm:justify-normal">
-                <div class="">صفحه اصلی</div>
+                <div class="hover:text-gray-800 transition-colors"><a href="/">صفحه اصلی</a></div>
                 <div class="">آگهی‌ها</div>
                 <div class="">فروش ملک</div>
                 <div class="">اصول کاری</div>

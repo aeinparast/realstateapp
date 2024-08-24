@@ -12,56 +12,56 @@
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 200;
-  src: url('/fonts/woff2/IRANSansX-UltraLight.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-UltraLight.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 300;
-  src: url('/fonts/woff2/IRANSansX-Light.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Light.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 500;
-  src: url('/fonts/woff2/IRANSansX-Medium.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Medium.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 600;
-  src: url('/fonts/woff2/IRANSansX-Demibold.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Demibold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 800;
-  src: url('/fonts/woff2/IRANSansX-Extrabold.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Extrabold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 900;
-  src: url('/fonts/woff2/IRANSansX-Black.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Black.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: bold;
-  src: url('/fonts/woff2/IRANSansX-Bold.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Bold.woff2') format('woff2');
 }
 
 @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: normal;
-  src: url('/fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
+  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
 }
 
 
@@ -95,7 +95,7 @@
 
 
 .navigation__btn {
-  @apply px-1 text-xs text-center transition-colors border-2 rounded sm:px-4 sm:py-1 sm:text-sm hover:bg-transparent border-mahdavi;
+  @apply px-1 py-1 text-xs text-center transition-colors border-2 rounded sm:px-4 sm:py-1 sm:text-sm hover:bg-transparent border-mahdavi;
 }
 
 .navigation__btn--primary {
