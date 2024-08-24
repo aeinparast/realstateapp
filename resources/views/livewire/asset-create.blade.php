@@ -207,7 +207,7 @@
                         border-gray-400 border-2
                         @endif
                         " wire:key='{{$key}}' wire:click='setAsPrimary({{$key}})'
-                            style="background-image: url('{{$photo}}')">
+                            style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$photo}}')">
                             <!-- Photo Item DELETE -->
                             <div wire:click='deleteImage({{$key}})' wire:confirm='Are You sure?'
                                 class="absolute flex items-center justify-center p-1 text-white transition-colors bg-red-600 border-2 border-red-600 border-dashed rounded-full cursor-pointer h-7 w-7 hover:bg-white hover:text-red-600 top-1 right-1">
