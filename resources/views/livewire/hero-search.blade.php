@@ -1,8 +1,8 @@
-<form action="" class="border-2 rounded-lg p-4 pb-0 ec-clip bg-cover bg-center bg-no-repeat flex">
-    <div class="w-[35%]"></div>
+<form action="" class="hidden p-4 pb-0 bg-center bg-no-repeat bg-cover border-2 rounded-lg ec-clip sm:flex md:pb-2">
+    <div class="w-[35%] "></div>
     <div class="w-[65%] flex gap-3 flex-col">
         <!-- Search Item -->
-        <div class=" items-center gap-4">
+        <div class="items-center gap-4 ">
 
             <p for="cars" class="">نوع ملک</p>
             <div class="flex items-center gap-6">
@@ -41,7 +41,7 @@
             </div>
         </div>
         <!-- Search Item -->
-        <div class=" items-center gap-4">
+        <div class="items-center gap-4 ">
             <p for="cars" class="">نوع معامله</p>
             <div class="flex items-center gap-4">
                 <button wire:click.prevent='DealChange(0)' class="
@@ -78,9 +78,9 @@
                 ">پروژه</button>
             </div>
         </div>
-        <div class=" flex gap-4">
+        <div class="flex gap-4 ">
             <button wire:click.prevent=''
-                class="font-bold text-mahdavi flex items-center gap-2 border-2 border-mahdavi px-4 py-1 rounded hover:cursor-pointer hover:bg-mahdavi hover:text-white transition-colors">
+                class="flex items-center gap-2 px-4 py-1 font-bold transition-colors border-2 rounded text-mahdavi border-mahdavi hover:cursor-pointer hover:bg-mahdavi hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path
@@ -90,7 +90,7 @@
             </button>
             <div class="flex">
                 <button type="submit"
-                    class="bg-mahdavi border-2 border-mahdavi px-4 py-1 rounded text-white font-bold hover:bg-white hover:text-mahdavi transition-colors">جستوجو</button>
+                    class="px-4 py-1 font-bold text-white transition-colors border-2 rounded bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi">جستوجو</button>
             </div>
         </div>
 

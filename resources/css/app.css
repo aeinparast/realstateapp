@@ -92,3 +92,16 @@
 .thumbnail.is-active {
   opacity: 1;
 }
+
+
+.navigation__btn {
+  @apply px-1 text-xs text-center transition-colors border-2 rounded sm:px-4 sm:py-1 sm:text-sm hover:bg-transparent border-mahdavi;
+}
+
+.navigation__btn--primary {
+  @apply text-white bg-mahdavi hover:text-mahdavi;
+}
+
+.navigation__btn--secondery {
+  @apply transition-colors hover:bg-transparent text-mahdavi hover:border-dashed;
+}

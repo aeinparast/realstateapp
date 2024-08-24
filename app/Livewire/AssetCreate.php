@@ -46,7 +46,7 @@ class AssetCreate extends Component
 
     public function uploadImage(): void
     {
-        $upload = $this->file->store('photos', 'public');
+        $upload = $this->file->store('photos', 'liara');
         // dd($upload);
         array_push($this->photos, $upload);
         $this->file = null;
