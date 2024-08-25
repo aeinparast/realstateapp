@@ -65,6 +65,14 @@
 }
 
 
+body {
+  -moz-font-feature-settings: "ss02";
+  -webkit-font-feature-settings: "ss02";
+  font-feature-settings: "ss02";
+}
+
+
+
 .thumbnails {
   display: flex;
   margin: 1rem auto 0;

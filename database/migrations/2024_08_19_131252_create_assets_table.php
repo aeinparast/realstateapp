@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->nullable();
             $table->string('title')->nullable();
+            $table->integer('price_private')->default(0);
+            $table->integer('price_public')->default(0);
             $table->string('seller_name')->nullable();
             $table->string('seller_phone')->nullable()->default(null);
             $table->string('seller_mobile')->nullable();

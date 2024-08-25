@@ -131,7 +131,9 @@
                 </div>
 
             </section>
-            <section id="main"></section>
+            <section id="main" class="">
+                <livewire:post-search />
+            </section>
             <section id="blog"></section>
         </main>
         <footer class="flex flex-col items-center p-12 sm:flex-row min-h-40">

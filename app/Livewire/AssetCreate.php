@@ -18,6 +18,8 @@ class AssetCreate extends Component
     public $file;
 
     public $title;
+    public int $price_private = 0;
+    public int $price_public = 0;
     public $notes;
     public $seller_name;
     public $seller_mobile;
@@ -31,6 +33,8 @@ class AssetCreate extends Component
         $validator = $this->validate([
             'title' => 'required|min:3',
             'seller_name' => 'required|min:3',
+            'price_private' => 'numeric',
+            'price_public' => 'required|numeric|min:0',
             'seller_mobile' => 'required|digits:11|digits:11|starts_with:0',
             'seller_phone' => 'digits:11|digits:11|starts_with:0',
             'city' => 'required',
@@ -46,7 +50,7 @@ class AssetCreate extends Component
 
     public function uploadImage(): void
     {
-        $upload = $this->file->store('photos', 'local');
+        $upload = $this->file->store('photos', 'liara');
         // dd($upload);
         array_push($this->photos, $upload);
         $this->file = null;
@@ -72,6 +76,8 @@ class AssetCreate extends Component
         $this->photos[0] = $two;
         $this->photos[$key] = $one;
     }
+
+    public function publicPriceChanged() {}
 
 
     public function render()

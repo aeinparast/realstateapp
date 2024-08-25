@@ -1,17 +1,13 @@
 <x-slot name="header">
-    <h2 class="text-xl font-semibold leading-tight text-gray-800 dark:text-gray-200">
-        <a href="{{route('asset')}}" wire:navigate class="transition-colors hover:text-gray-400">Assets</a> >
-        {{ __('Create Asset') }}
+    <h2 class="text-xl font-medium  text-gray-800 dark:text-gray-200 font-sans">
+        <a href="{{route('asset')}}" wire:navigate class="transition-colors hover:text-gray-400">فایل‌ها</a> >
+        ساخت فایل
     </h2>
 </x-slot>
 
 <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-        <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-            <div class="p-6 text-gray-900 dark:text-gray-100">
-                {{ __("Create an asset") }}
-            </div>
-        </div>
+
         <div class="mt-2 overflow-hidden bg-white shadow dark:bg-gray-800 sm:rounded-lg">
 
             <div class="grid grid-cols-1 gap-6 p-6 text-gray-900 md:grid-cols-2 dark:text-gray-100">
@@ -22,28 +18,51 @@
                             <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-first-name">
-                                    Asset Name
+                                    نام فایل
                                 </label>
                                 <input wire:model='title'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-red-500 rounded appearance-none focus:outline-none focus:bg-white"
                                     id="grid-first-name" type="text">
-                                <p class="text-xs italic text-red-500">Please fill out this field.</p>
+                                <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p>
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-last-name">
-                                    Seller Name
+                                    نام فروشنده
                                 </label>
                                 <input wire:model='seller_name'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="text">
+                            </div>
+                            <div class="w-full px-3 md:w-1/2">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="grid-last-name">
+                                    قیمت عمومی
+                                </label>
+                                <input wire:model='price_public' wire:change='publicPriceChanged' wire:keyup='$refresh'
+                                    class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-last-name" type="number">
+                                <p class="text-xs italic ">معادل {{ number_format($price_public, 0, ".","،") }} تومانءء
+                                </p>
+
+                            </div>
+                            <div class="w-full px-3 md:w-1/2">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="grid-last-name">
+                                    قیمت پنهان
+                                </label>
+                                <input wire:model='price_private' wire:change='publicPriceChanged' wire:keyup='$refresh'
+                                    class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="grid-last-name" type="number">
+                                <p class="text-xs italic ">معادل {{ number_format($price_private, 0, ".","،") }} تومانءء
+
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-6 -mx-3 ">
                             <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-first-name">
-                                    Seller Phone
+                                    شماره ثابت فروشنده
                                 </label>
                                 <input wire:model='seller_phone'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
@@ -52,7 +71,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-last-name">
-                                    Seller Mobile
+                                    شماره همراه فروشنده
                                 </label>
                                 <input wire:model='seller_mobile'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
@@ -63,12 +82,14 @@
                             <div class="w-full px-3">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-password">
-                                    Notes
+                                    توضیحات
                                 </label>
                                 <textarea wire:model='notes'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none h-36 focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-password" type="text"> </textarea>
-                                <p class="text-xs italic text-gray-600">For reminder or for your teammates. (Private!)
+                                <p class="text-xs text-gray-600">برای <b>**بولد**</b> کردن در میان دو ستاره قرار
+                                    دهید و برای
+                                    <i>--ایتالیک--</i> در میان دو خط تیره
                                 </p>
                             </div>
                         </div>
@@ -76,26 +97,26 @@
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-city">
-                                    City
+                                    شهر
                                 </label>
                                 <input wire:model='city'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-city" type="text" placeholder="Tonekabon">
+                                    id="grid-city" type="text" placeholder="تنکابن">
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-state">
-                                    Asset Type
+                                    نوع ملک
                                 </label>
                                 <div class="relative">
                                     <select
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-state">
-                                        <option>Land</option>
-                                        <option>Home</option>
-                                        <option>Villa home</option>
-                                        <option>Apartmant</option>
-                                        <option>Shop</option>
+                                        <option>زمین</option>
+                                        <option>خانه</option>
+                                        <option>ویلا</option>
+                                        <option>آپارتمان</option>
+                                        <option>تجاری</option>
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -107,17 +128,17 @@
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-state">
-                                    Deal Type
+                                    نوع معامله
                                 </label>
                                 <div class="relative">
                                     <select
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-state">
-                                        <option>Sell</option>
-                                        <option>Sell-Presell</option>
-                                        <option>Rent</option>
-                                        <option>Nightly rent</option>
-                                        <option>Yearly rent</option>
+                                        <option>فروش</option>
+                                        <option>پیش‌فروش</option>
+                                        <option>اجاره</option>
+                                        <option>رهن</option>
+                                        <option>اجاره شبانه</option>
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -151,11 +172,11 @@
                                     stroke-width="2"
                                     d="M13 13h3a3 3 0 0 0 0-6h-.025A5.56 5.56 0 0 0 16 6.5 5.5 5.5 0 0 0 5.207 5.021C5.137 5.017 5.071 5 5 5a4 4 0 0 0 0 8h2.167M10 15V6m0 0L8 8m2-2 2 2" />
                             </svg>
-                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">Click
-                                    to
-                                    upload</span> or drag and drop</p>
-                            <p class="text-xs text-gray-500 dark:text-gray-400">WEBP, PNG, JPG (MAX. 2MB)</p>
-                            <div wire:loading wire:target="file">Uploading...</div>
+                            <p class="mb-2 text-sm text-gray-500 dark:text-gray-400"><span class="font-semibold">برای
+                                    آپلود کلیک کنید</span> یا فایل را در اینجا بکشید</p>
+                            <p class="text-xs text-gray-500 dark:text-gray-400">WEBP, PNG, JPG (بیشترین حجم: ۲ مگابایت)
+                            </p>
+                            <div wire:loading wire:target="file">درحال آپلود...</div>
                         </div>
                         <input wire:model='file' id="dropzone-file" type="file" class="hidden" />
                     </label>
@@ -167,7 +188,7 @@
                                 alt="temporary image for preview">
                         </div>
                         <div class="flex flex-col items-center justify-center w-1/2 gap-4 p-4">
-                            <p class="text-center">Please Confirm the Image</p>
+                            <p class="text-center">لطفا عکس رو تایید کنید.</p>
                             <button type="submit"
                                 class="flex items-center justify-center w-full h-12 gap-4 px-4 py-2 text-white bg-blue-500 rounded">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor"
@@ -177,7 +198,7 @@
                                     <path
                                         d="M4.406 3.342A5.53 5.53 0 0 1 8 2c2.69 0 4.923 2 5.166 4.579C14.758 6.804 16 8.137 16 9.773 16 11.569 14.502 13 12.687 13H3.781C1.708 13 0 11.366 0 9.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383m.653.757c-.757.653-1.153 1.44-1.153 2.056v.448l-.445.049C2.064 6.805 1 7.952 1 9.318 1 10.785 2.23 12 3.781 12h8.906C13.98 12 15 10.988 15 9.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 4.825 10.328 3 8 3a4.53 4.53 0 0 0-2.941 1.1z" />
                                 </svg>
-                                <div>Upload</div>
+                                <div>آپلود</div>
                             </button>
                             <button type="button" wire:click='deleteFile' wire:confirm='Are You sure?'
                                 class="flex items-center justify-center w-full h-12 gap-4 px-4 py-2 text-white bg-red-500 rounded">
@@ -186,7 +207,7 @@
                                     <path
                                         d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
                                 </svg>
-                                <div>Cancel</div>
+                                <div>حذف</div>
                             </button>
 
                         </div>
@@ -231,30 +252,29 @@
                 </form>
 
                 <section>
-                    <div class="w-full">
+                    <div class="w-full" dir="ltr">
                         <section id="main-carousel" class="splide rounded" aria-label="My Awesome Gallery">
                             <div class="splide__track">
-                                <ul class="splide__list min-h-64">
+                                <ul class="splide__list h-64">
                                     <li class="splide__slide">
-                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full h-64 bg-contain bg-center bg-no-repeat"
                                             style="background-image: url('/img/test.jpg')">
                                         </div>
                                     </li>
                                     <li class="splide__slide">
-                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat"
                                             style="background-image: url('/img/test2.jpg')">
                                         </div>
                                     </li>
                                     <li class="splide__slide">
-                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat"
                                             style="background-image: url('/img/test3.jpg')">
                                         </div>
                                     </li>
                                     <li class="splide__slide rounded-md">
-                                        <div class="w-full h-full bg-contain bg-center bg-no-repeat rounded-md"
+                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat rounded-md"
                                             style="background-image: url('/img/test4.jpg')">
                                         </div>
-                                        <img src="/img/test4.jpg" class="rounded-md" id="img-container" alt="">
                                     </li>
 
                                 </ul>

@@ -31,28 +31,28 @@ new class extends Component
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
-                        {{ __('Dashboard') }}
+                        داشبورد
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('asset')"
                         :active="request()->routeIs('asset')||request()->routeIs('asset-create')" wire:navigate>
-                        {{ __('Assets') }}
+                        فایل‌ها
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" wire:navigate>
-                        {{ __('Posts') }}
+                        پست‌ها
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" wire:navigate>
-                        {{ __('Blog') }}
+                        وبلاگ
                     </x-nav-link>
                 </div>
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" wire:navigate>
-                        {{ __('Mails') }}
+                        نامه‌ها
                     </x-nav-link>
                 </div>
             </div>
@@ -79,13 +79,13 @@ new class extends Component
 
                     <x-slot name="content">
                         <x-dropdown-link :href="route('profile')" wire:navigate>
-                            {{ __('Profile') }}
+                            پروفایل
                         </x-dropdown-link>
 
                         <!-- Authentication -->
                         <button wire:click="logout" class="w-full text-start">
                             <x-dropdown-link>
-                                {{ __('Log Out') }}
+                                خروج
                             </x-dropdown-link>
                         </button>
                     </x-slot>
