@@ -1,5 +1,5 @@
 <x-slot name="header">
-    <h2 class="text-xl font-medium  text-gray-800 dark:text-gray-200 font-sans">
+    <h2 class="font-sans text-xl font-medium text-gray-800 dark:text-gray-200">
         <a href="{{route('asset')}}" wire:navigate class="transition-colors hover:text-gray-400">فایل‌ها</a> >
         ساخت فایل
     </h2>
@@ -39,7 +39,7 @@
                                     for="grid-last-name">
                                     قیمت عمومی
                                 </label>
-                                <input wire:model='price_public' wire:change='publicPriceChanged' wire:keyup='$refresh'
+                                <input wire:model='price_public' wire:change='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_public, 0, ".","،") }} تومانءء
@@ -51,7 +51,7 @@
                                     for="grid-last-name">
                                     قیمت پنهان
                                 </label>
-                                <input wire:model='price_private' wire:change='publicPriceChanged' wire:keyup='$refresh'
+                                <input wire:model='price_private' wire:change='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_private, 0, ".","،") }} تومانءء
@@ -253,26 +253,26 @@
 
                 <section>
                     <div class="w-full" dir="ltr">
-                        <section id="main-carousel" class="splide rounded" aria-label="My Awesome Gallery">
+                        <section id="main-carousel" class="rounded splide" aria-label="My Awesome Gallery">
                             <div class="splide__track">
-                                <ul class="splide__list h-64">
+                                <ul class="h-64 splide__list">
                                     <li class="splide__slide">
-                                        <div class="w-full h-64 bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
                                             style="background-image: url('/img/test.jpg')">
                                         </div>
                                     </li>
                                     <li class="splide__slide">
-                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
                                             style="background-image: url('/img/test2.jpg')">
                                         </div>
                                     </li>
                                     <li class="splide__slide">
-                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat"
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
                                             style="background-image: url('/img/test3.jpg')">
                                         </div>
                                     </li>
-                                    <li class="splide__slide rounded-md">
-                                        <div class="w-full  h-64 bg-contain bg-center bg-no-repeat rounded-md"
+                                    <li class="rounded-md splide__slide">
+                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain rounded-md"
                                             style="background-image: url('/img/test4.jpg')">
                                         </div>
                                     </li>
@@ -292,7 +292,7 @@
                             <li class="thumbnail">
                                 <img src="/img/test3.jpg" class="rounded-md" alt="">
                             </li>
-                            <li class="thumbnail flex justify-center items-center">
+                            <li class="flex items-center justify-center thumbnail">
                                 <img src="/img/test4.jpg" class="rounded-md" alt="">
                             </li>
                         </ul>
@@ -317,12 +317,12 @@
                 <x-input-label for="password" value="{{ __('Password') }}" class="sr-only" />
 
                 <x-text-input wire:model="password" id="password" name="password" type="password"
-                    class="mt-1 block w-3/4" placeholder="{{ __('Password') }}" />
+                    class="block w-3/4 mt-1" placeholder="{{ __('Password') }}" />
 
                 <x-input-error :messages="$errors->get('password')" class="mt-2" />
             </div>
 
-            <div class="mt-6 flex justify-end">
+            <div class="flex justify-end mt-6">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     {{ __('Cancel') }}
                 </x-secondary-button>
