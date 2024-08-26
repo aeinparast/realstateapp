@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\S3Controller;
 use App\Livewire\AssetCreate;
+use App\Livewire\PublicAsset;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
@@ -23,6 +24,8 @@ Route::get('create-asset', AssetCreate::class)
     ->middleware(['auth'])
     ->name('asset-create');
 
+Route::get('view', PublicAsset::class)
+    ->name('asset-view');
 
 
 

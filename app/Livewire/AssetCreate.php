@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use NumberFormatter;
 
 class AssetCreate extends Component
 {
@@ -77,7 +78,7 @@ class AssetCreate extends Component
         $this->photos[$key] = $one;
     }
 
-    public function publicPriceChanged() {}
+
 
 
     public function render()

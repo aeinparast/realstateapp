@@ -3,6 +3,7 @@ import './bootstrap';
 import '@splidejs/splide/css';
 
 import Splide from '@splidejs/splide';
+import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
 
 
 // new Splide('.splide', {
@@ -12,6 +13,7 @@ import Splide from '@splidejs/splide';
 
 
 var splide = new Splide('#main-carousel', {
+
   pagination: false,
 });
 

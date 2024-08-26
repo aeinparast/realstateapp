@@ -35,6 +35,7 @@
                                     id="grid-last-name" type="text">
                             </div>
                             <div class="w-full px-3 md:w-1/2">
+                                </p>
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="grid-last-name">
                                     قیمت عمومی
@@ -44,7 +45,8 @@
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_public, 0, ".","،") }} تومانءء
                                 </p>
-
+                                <p class="text-xs italic text-red-400">از کیبورد اینگلیسی استفاده کنید.
+                                </p>
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
@@ -55,7 +57,9 @@
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_private, 0, ".","،") }} تومانءء
-
+                                </p>
+                                <p class="text-xs italic text-red-400">از کیبورد اینگلیسی استفاده کنید.
+                                </p>
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-6 -mx-3 ">
@@ -228,7 +232,7 @@
                         border-gray-400 border-2
                         @endif
                         " wire:key='{{$key}}' wire:click='setAsPrimary({{$key}})'
-                            style="background-image: url('{{$photo}}')">
+                            style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$photo}}')">
                             <!-- Photo Item DELETE -->
                             <div wire:click='deleteImage({{$key}})' wire:confirm='Are You sure?'
                                 class="absolute flex items-center justify-center p-1 text-white transition-colors bg-red-600 border-2 border-red-600 border-dashed rounded-full cursor-pointer h-7 w-7 hover:bg-white hover:text-red-600 top-1 right-1">
@@ -295,6 +299,7 @@
                             <li class="flex items-center justify-center thumbnail">
                                 <img src="/img/test4.jpg" class="rounded-md" alt="">
                             </li>
+
                         </ul>
                     </div>
                 </section>

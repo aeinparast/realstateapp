@@ -5,19 +5,21 @@ namespace App\Livewire;
 use App\Models\Asset;
 use App\Models\Upload;
 use Livewire\Component;
+use Livewire\WithoutUrlPagination;
+use Livewire\WithPagination;
 
 use function Pest\Laravel\post;
 
 class PostSearch extends Component
 {
-    public $assets;
-    public function __construct()
-    {
-        $this->assets = Asset::all();
-    }
+    use WithPagination, WithoutUrlPagination;
+
+    public function __construct() {}
     public function render()
     {
 
-        return view('livewire.post-search',);
+        return view('livewire.post-search', [
+            'assets' => Asset::paginate(12),
+        ]);
     }
 }
