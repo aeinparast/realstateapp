@@ -1,5 +1,5 @@
 <div class="grid grid-cols-1 gap-4 px-4 mt-8 lg:grid-cols-4" id="post-search">
-    <div class="relative top-0 right-0 flex flex-col col-span-1 gap-2 p-2 border-2 rounded  border-mahdavi">
+    <div class="relative top-0 right-0 flex flex-col col-span-1 gap-2 p-2 border-2 rounded border-mahdavi">
         <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
             <div class="flex mb-4">
                 <div class="w-full px-3 md:w-1/2">
@@ -81,9 +81,8 @@
         @foreach ($assets as $asset)
         <div
             class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi hover:scale-105">
-            <div class="w-full bg-center bg-no-repeat bg-contain rounded-t h-72"
-                style="background-image: url('https://mahdavi.storage.iran.liara.space/{{ explode('*',$asset['img'])[0] }}')"
-                alt="Sunset in the mountains"></div>
+            <img src="https://mahdavi.storage.iran.liara.space/{{ explode('*',$asset['img'])[0] }}" alt=""
+                class="w-full rounded-t h-72">
             <div class="px-6 py-4">
                 <div class="mb-2 text-xl font-bold text-cyan-800">{{ $asset['title'] }}</div>
                 <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -96,7 +95,8 @@
                         number_format($asset['price_public'], 0,
                         ".","،") }}
                         تومانءء</ی>
-                        <a class="px-2 py-1 text-white border-2 rounded-md bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi"
+                        <a target="_blank"
+                            class="px-2 py-1 text-white border-2 rounded-md bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi"
                             href="{{route('asset-view')}}?id={{$asset['id']}}">مشاهده</a>
                     </div>
 
