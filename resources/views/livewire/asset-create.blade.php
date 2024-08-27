@@ -40,7 +40,7 @@
                                     for="grid-last-name">
                                     قیمت عمومی
                                 </label>
-                                <input wire:model='price_public' wire:change='$refresh'
+                                <input wire:model='price_public' wire:change='$refresh' wire:keyup='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_public, 0, ".","،") }} تومانءء
@@ -53,7 +53,7 @@
                                     for="grid-last-name">
                                     قیمت پنهان
                                 </label>
-                                <input wire:model='price_private' wire:change='$refresh'
+                                <input wire:model='price_private' wire:change='$refresh' wire:keyup='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="grid-last-name" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_private, 0, ".","،") }} تومانءء
@@ -255,54 +255,7 @@
 
                 </form>
 
-                <section>
-                    <div class="w-full" dir="ltr">
-                        <section id="main-carousel" class="rounded splide" aria-label="My Awesome Gallery">
-                            <div class="splide__track">
-                                <ul class="h-64 splide__list">
-                                    <li class="splide__slide">
-                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
-                                            style="background-image: url('/img/test.jpg')">
-                                        </div>
-                                    </li>
-                                    <li class="splide__slide">
-                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
-                                            style="background-image: url('/img/test2.jpg')">
-                                        </div>
-                                    </li>
-                                    <li class="splide__slide">
-                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain"
-                                            style="background-image: url('/img/test3.jpg')">
-                                        </div>
-                                    </li>
-                                    <li class="rounded-md splide__slide">
-                                        <div class="w-full h-64 bg-center bg-no-repeat bg-contain rounded-md"
-                                            style="background-image: url('/img/test4.jpg')">
-                                        </div>
-                                    </li>
 
-                                </ul>
-                            </div>
-                        </section>
-
-
-                        <ul id="thumbnails" class="thumbnails">
-                            <li class="thumbnail">
-                                <img src="/img/test.jpg" class="rounded-md" alt="">
-                            </li>
-                            <li class="thumbnail">
-                                <img src="/img/test2.jpg" class="rounded-md" alt="">
-                            </li>
-                            <li class="thumbnail">
-                                <img src="/img/test3.jpg" class="rounded-md" alt="">
-                            </li>
-                            <li class="flex items-center justify-center thumbnail">
-                                <img src="/img/test4.jpg" class="rounded-md" alt="">
-                            </li>
-
-                        </ul>
-                    </div>
-                </section>
             </div>
         </div>
     </div>

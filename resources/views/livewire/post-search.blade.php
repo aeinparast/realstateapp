@@ -82,7 +82,7 @@
         <div
             class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi hover:scale-105">
             <img src="https://mahdavi.storage.iran.liara.space/{{ explode('*',$asset['img'])[0] }}" alt=""
-                class="w-full rounded-t h-72">
+                class="w-full rounded-t h-72 object-contain">
             <div class="px-6 py-4">
                 <div class="mb-2 text-xl font-bold text-cyan-800">{{ $asset['title'] }}</div>
                 <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"

@@ -46,6 +46,7 @@ class AssetCreate extends Component
         $user_id = Auth::user()->id;
         $validator['user_id'] = $user_id;
         Asset::create($validator);
+        $this->redirect('/asset');
     }
 
 

@@ -23,7 +23,7 @@
 
             <ul id="thumbnails" class="grid grid-cols-5 gap-2 mt-2">
                 @foreach (explode("*", $asset['img']) as $img)
-                <li class="bg-no-repeat bg-contain thumbnail max-h-16 max-w-16 min-h-16 min-w-16"
+                <li class="bg-no-repeat bg-contain bg-center thumbnail max-h-16 max-w-16 min-h-16 min-w-16"
                     style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$img}}')">
                 </li>
                 @endforeach
@@ -31,4 +31,5 @@
             </ul>
         </div>
     </div>
+
 </div>

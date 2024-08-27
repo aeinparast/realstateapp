@@ -7,7 +7,7 @@
 
   <div class="py-12">
     <div class="mx-auto max-w-7xl sm:px-6 lg:px-8">
-      <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+      <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg mb-4">
         <div class="flex items-center justify-between p-6 text-gray-900 dark:text-gray-100">
           <div>
             لیست فایل‌هایی که به آن دسترسی دارید.
@@ -17,6 +17,14 @@
             فایل جدید</a>
         </div>
       </div>
+      <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
+        <div class="flex items-center justify-between p-6 text-gray-900 dark:text-gray-100">
+          <livewire:asset-dashboard-list>
+        </div>
+      </div>
+      <ul>
+
+      </ul>
     </div>
   </div>
 </x-app-layout>
