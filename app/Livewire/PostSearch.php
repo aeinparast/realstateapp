@@ -8,8 +8,6 @@ use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
 
-use function Pest\Laravel\post;
-
 class PostSearch extends Component
 {
     use WithPagination, WithoutUrlPagination;

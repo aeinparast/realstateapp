@@ -4,17 +4,19 @@ namespace App\Livewire;
 
 use App\Models\Asset;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class AssetDashboardList extends Component
 {
-    public $assets;
+    use WithPagination;
 
-    public function mount()
-    {
-        $this->assets = Asset::all();
-    }
+
+
     public function render()
     {
-        return view('livewire.asset-dashboard-list');
+        return view('livewire.asset-dashboard-list', [
+            'star' => '*',
+            'assets' => Asset::paginate(15),
+        ]);
     }
 }
