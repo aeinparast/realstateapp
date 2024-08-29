@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('city')->nullable()->default('');
             $table->text('notes')->nullable()->default('');
             $table->integer('type')->nullable()->default(0);
+            $table->integer('deal')->nullable()->default(0);
             $table->boolean('available')->nullable()->default(true);
             $table->integer('land_area')->nullable()->default(0);
             $table->integer('area')->nullable()->default(0);

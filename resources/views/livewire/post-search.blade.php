@@ -21,55 +21,49 @@
             </div>
             <p class="mb-2 text-lg font-bold text-gray-600">نوع ملک</p>
             <div class="flex flex-col gap-2 pr-4 mb-6">
-                <div class="items-center" wire:click='setType(1)'>
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox" class="font-medium text-gray-600 ms-2 dark:text-gray-300">زمین</label>
+                <div class="items-center">
+                    <input id="land" type="radio" name="assetType" value="0" wire:model="assetType"
+                        wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="land" class="font-medium text-gray-600 ms-2 dark:text-gray-300">زمین</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox" class="font-medium text-gray-600 ms-2 dark:text-gray-300">خانه</label>
+                    <input id="home" type="radio" name="assetType" value="1" wire:model="assetType"
+                        wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="home" class="font-medium text-gray-600 ms-2 dark:text-gray-300">خانه</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox" class="font-medium text-gray-600 ms-2 dark:text-gray-300">ویلا</label>
+                    <input id="villa" type="radio" name="assetType" value="2" wire:model="assetType"
+                        wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="villa" class="font-medium text-gray-600 ms-2 dark:text-gray-300">ویلا</label>
                 </div>
                 <div class="flex items-center">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox"
-                        class="font-medium text-gray-600 ms-2 dark:text-gray-300">تجاری</label>
+                    <input id="biz" type="radio" name="assetType" value="3" wire:model="assetType"
+                        wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="biz" class="font-medium text-gray-600 ms-2 dark:text-gray-300">تجاری</label>
                 </div>
 
             </div>
             <p class="mb-2 text-lg font-bold text-gray-600">نوع معامله</p>
             <div class="flex flex-col gap-2 pr-4">
-
                 <div class="flex items-center mb-1">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox"
-                        class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
+                    <input id="sell" type="radio" name="dealType" value="0" wire:model="dealType"
+                        class="public-search__btn-radio">
+                    <label for="sell" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
                 </div>
                 <div class="flex items-center mb-1">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox"
-                        class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
+                    <input id="year" type="radio" name="dealType" value="1" wire:model="dealType"
+                        class="public-search__btn-radio">
+                    <label for="year" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
                 </div>
                 <div class="flex items-center mb-1">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox"
-                        class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
+                    <input id="rent" type="radio" name="dealType" value="2" wire:model="dealType"
+                        class="public-search__btn-radio ">
+                    <label for="rent" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
                 </div>
                 <div class="flex items-center mb-1">
-                    <input id="default-checkbox" type="checkbox" value=""
-                        class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
-                    <label for="default-checkbox"
-                        class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
+                    <input id="project" type="radio" name="dealType" value="3" wire:model="dealType"
+                        class="public-search__btn-radio">
+                    <label for="project" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
                         مشارکت</label>
                 </div>
             </div>

@@ -86,14 +86,12 @@
                                     شهر
                                 </label>
                                 <div class="relative">
-                                    <select
+                                    <select wire:model='city'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-state">
-                                        <option>تنکابن</option>
-                                        <option>تنکابن−دوهزار</option>
-                                        <option>تنکابن−قلعه گردن</option>
-                                        <option>تنکابن−شیرود</option>
-                                        <option>رامسر</option>
+                                        <option value="0">تنکابن</option>
+                                        <option value="1">رامسر</option>
+                                        <option value="2">متل‌قو</option>
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -106,14 +104,13 @@
                                     نوع ملک
                                 </label>
                                 <div class="relative">
-                                    <select
+                                    <select wire:model='assetType' wire:change='$refresh'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-state">
-                                        <option>زمین</option>
-                                        <option>خانه</option>
-                                        <option>ویلا</option>
-                                        <option>آپارتمان</option>
-                                        <option>تجاری</option>
+                                        <option value="0">زمین</option>
+                                        <option value="1">خانه</option>
+                                        <option value="2">ویلا</option>
+                                        <option value="3">تجاری</option>
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -127,14 +124,16 @@
                                     نوع معامله
                                 </label>
                                 <div class="relative">
-                                    <select
+                                    <select wire:model='dealType'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="grid-state">
-                                        <option>فروش</option>
-                                        <option>پیش‌فروش</option>
-                                        <option>اجاره</option>
-                                        <option>رهن</option>
-                                        <option>اجاره شبانه</option>
+                                        <option value="1">فروش</option>
+                                        @if ($assetType!=0)
+                                        <option value="2">پیش‌فروش</option>
+                                        @endif
+                                        <option value="3">اجاره</option>
+                                        <option value="4">رهن</option>
+
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">

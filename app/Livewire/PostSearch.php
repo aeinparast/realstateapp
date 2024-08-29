@@ -14,15 +14,27 @@ class PostSearch extends Component
     use WithPagination, WithoutUrlPagination;
 
     public $assetType = '';  // You can keep this public for binding.
+    public $dealType = '';
     public $minPrice = '0';
     public $maxPrice = '9999999999';
 
-    public function setType($val)
+
+
+
+
+    public function checkType()
     {
+        $val = $this->assetType;
         if (!is_numeric($val) || $val < 0 || $val > 4) {
             $this->assetType = '';
-        } else {
-            $this->assetType = $val;
+        }
+    }
+
+    public function checkDeal()
+    {
+        $val = $this->dealType;
+        if (!is_numeric($val) || $val < 0 || $val > 4) {
+            $this->dealType = '';
         }
     }
 
@@ -34,9 +46,15 @@ class PostSearch extends Component
 
     public function render()
     {
+        $this->checkType();
+        $this->checkDeal();
         $query = Asset::query();
 
         if ($this->assetType !== '') {
+            $query->where('type',  (int)$this->assetType);
+        }
+
+        if ($this->dealType !== '') {
             $query->where('type',  $this->assetType);
         }
 

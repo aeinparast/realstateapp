@@ -127,3 +127,8 @@ body {
   scrollbar-width: none;
   /* Firefox */
 }
+
+
+.public-search__btn-radio {
+  @apply w-4 h-4 bg-gray-100 border-gray-300 rounded-full text-mahdavi focus:ring-mahdavi focus:ring-2;
+}

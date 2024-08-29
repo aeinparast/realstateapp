@@ -19,6 +19,8 @@ class AssetCreate extends Component
     public $file;
 
     public $title;
+    public $assetType = 0;
+    public $dealType = 0;
     public int $price_private = 0;
     public int $price_public = 0;
     public $notes;
@@ -31,6 +33,7 @@ class AssetCreate extends Component
 
     public function save(): void
     {
+        dd($this->assetType);
         $validator = $this->validate([
             'title' => 'required|min:3',
             'seller_name' => 'required|min:3',
@@ -38,7 +41,7 @@ class AssetCreate extends Component
             'price_public' => 'required|numeric|min:0',
             'seller_mobile' => 'required|digits:11|digits:11|starts_with:0',
             'seller_phone' => 'digits:11|digits:11|starts_with:0',
-            'city' => 'required',
+            'assetType' => 'required|numeric|between:0,3',
             'notes' => 'required',
         ]);
         $img = implode('*', $this->photos);
