@@ -63,13 +63,12 @@
 
       <div class="flex flex-wrap justify-center gap-4 text-gray-600 sm:justify-normal">
         <div class="hover:text-gray-800 transition-colors"><a href="/">صفحه اصلی</a></div>
-        <div class="">آگهی‌ها</div>
+        <div class="">خرید ملک</div>
         <div class="">فروش ملک</div>
-        <div class="">اصول کاری</div>
         <div class="">مشاوران</div>
         <div class="">همکاری با ما</div>
         <div class="">درباره ما</div>
-        <div class="">راه‌های تماس</div>
+        <div class="">تماس با ما</div>
       </div>
     </footer>
     <section>

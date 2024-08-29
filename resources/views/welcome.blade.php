@@ -76,5 +76,7 @@
     <section id="main" class="">
         <livewire:post-search />
     </section>
-    <section id="blog"></section>
+    <section id="blog">
+        <livewire:hot-blog />
+    </section>
 </x-public-layout>
