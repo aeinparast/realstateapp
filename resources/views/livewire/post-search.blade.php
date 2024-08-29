@@ -7,7 +7,7 @@
                         for="grid-last-name">
                         قیمت از: </label>
                     <input wire:model='minPrice' wire:change='setPrice'
-                        class="block w-full py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
                         id="grid-last-name" type="number" placeholder="کف قیمت">
                 </div>
                 <div class="w-full px-3 md:w-1/2">
@@ -15,7 +15,7 @@
                         for="grid-last-name">
                         تا: </label>
                     <input wire:model='maxPrice' wire:change='setPrice'
-                        class="block w-full py-3 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 leading-tight pl-0 text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
                         id="grid-last-name" type="number" placeholder="سقف قیمت">
                 </div>
             </div>
@@ -23,7 +23,8 @@
             <div class="flex flex-col gap-2 pr-4 mb-6">
                 <div class="items-center">
                     <input id="land" type="radio" name="assetType" value="0" wire:model="assetType"
-                        wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
+                        wire:change='$refresh' wire:change='$refresh' wire:change='$refresh'
+                        class="public-search__btn-radio">
                     <label for="land" class="font-medium text-gray-600 ms-2 dark:text-gray-300">زمین</label>
                 </div>
                 <div class="flex items-center">
@@ -41,7 +42,6 @@
                         wire:change='$refresh' wire:change='$refresh' class="public-search__btn-radio">
                     <label for="biz" class="font-medium text-gray-600 ms-2 dark:text-gray-300">تجاری</label>
                 </div>
-
             </div>
             <p class="mb-2 text-lg font-bold text-gray-600">نوع معامله</p>
             <div class="flex flex-col gap-2 pr-4">
@@ -60,12 +60,15 @@
                         class="public-search__btn-radio ">
                     <label for="rent" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
                 </div>
+                @if ($assetType!=0)
                 <div class="flex items-center mb-1">
                     <input id="project" type="radio" name="dealType" value="3" wire:model="dealType"
                         class="public-search__btn-radio">
                     <label for="project" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
                         مشارکت</label>
                 </div>
+                @endif
+
             </div>
 
         </div>

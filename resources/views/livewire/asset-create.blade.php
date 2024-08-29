@@ -17,53 +17,53 @@
                         <div class="flex flex-wrap mb-6 -mx-3">
                             <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-first-name">
+                                    for="name">
                                     نام فایل
                                 </label>
                                 <input wire:model='title'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="grid-first-name" type="text">
+                                    id="name" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-last-name">
+                                    for="seller_name">
                                     نام فروشنده
                                 </label>
                                 <input wire:model='seller_name'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" type="text">
+                                    id="seller_name" type="text">
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-6 -mx-3 ">
                             <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-first-name">
+                                    for="seller_phone">
                                     شماره ثابت فروشنده
                                 </label>
                                 <input wire:model='seller_phone'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="grid-first-name" type="text" placeholder="01154000000">
+                                    id="seller_phone" type="text" placeholder="01154000000">
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-last-name">
+                                    for="seller_mobile">
                                     شماره همراه فروشنده
                                 </label>
                                 <input wire:model='seller_mobile'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" type="text" placeholder="0911000000">
+                                    id="seller_mobile" type="text" placeholder="0911000000">
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-6 -mx-3 ">
                             <div class="w-full px-3">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-password">
+                                    for="notes">
                                     توضیحات
                                 </label>
                                 <textarea wire:model='notes'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none h-36 focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-password" type="text"> </textarea>
+                                    id="notes" type="text"> </textarea>
                                 <p class="text-xs text-gray-600">برای <b>**بولد**</b> کردن در میان دو ستاره قرار
                                     دهید و برای
                                     <i>--ایتالیک--</i> در میان دو خط تیره
@@ -82,13 +82,13 @@
                             </div> --}}
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-state">
+                                    for="city">
                                     شهر
                                 </label>
                                 <div class="relative">
                                     <select wire:model='city'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
+                                        id="city">
                                         <option value="0">تنکابن</option>
                                         <option value="1">رامسر</option>
                                         <option value="2">متل‌قو</option>
@@ -100,13 +100,13 @@
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-state">
+                                    for="assetType">
                                     نوع ملک
                                 </label>
                                 <div class="relative">
                                     <select wire:model='assetType' wire:change='$refresh'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
+                                        id="assetType">
                                         <option value="0">زمین</option>
                                         <option value="1">خانه</option>
                                         <option value="2">ویلا</option>
@@ -120,19 +120,19 @@
 
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-state">
+                                    for="dealType">
                                     نوع معامله
                                 </label>
                                 <div class="relative">
-                                    <select wire:model='dealType'
+                                    <select wire:model='dealType' wire:change='$refresh'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="grid-state">
-                                        <option value="1">فروش</option>
+                                        id="dealType">
+                                        <option value="0">فروش</option>
                                         @if ($assetType!=0)
-                                        <option value="2">پیش‌فروش</option>
+                                        <option value="1">پروژه</option>
                                         @endif
-                                        <option value="3">اجاره</option>
-                                        <option value="4">رهن</option>
+                                        <option value="2">اجاره</option>
+                                        <option value="3">رهن</option>
 
                                     </select>
                                     <div
@@ -147,12 +147,12 @@
                             <div class="w-full px-3 md:w-1/2">
                                 </p>
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-last-name">
+                                    for="price_public">
                                     قیمت عمومی
                                 </label>
                                 <input wire:model='price_public' wire:change='$refresh' wire:keyup='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" type="number">
+                                    id="price_public" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_public, 0, ".","،") }} تومانءء
                                 </p>
                                 <p class="text-xs italic text-red-400">از کیبورد اینگلیسی استفاده کنید.
@@ -160,17 +160,167 @@
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="grid-last-name">
+                                    for="price_private">
                                     قیمت پنهان
                                 </label>
                                 <input wire:model='price_private' wire:change='$refresh' wire:keyup='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="grid-last-name" type="number">
+                                    id="price_private" type="number">
                                 <p class="text-xs italic ">معادل {{ number_format($price_private, 0, ".","،") }} تومانءء
                                 </p>
                                 <p class="text-xs italic text-red-400">از کیبورد اینگلیسی استفاده کنید.
                                 </p>
                             </div>
+
+                            <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0 
+                            @if ($dealType==0)
+                                hidden
+                            @endif">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="prepayment">
+                                    پیش پرداخت
+                                </label>
+                                <input
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="prepayment" type="number">
+
+                            </div>
+                            <div class="w-full px-3 md:w-1/2
+                             @if ($dealType==0)
+                                hidden
+                            @endif">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="rent">
+                                    اجاره </label>
+                                <input
+                                    class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="rent" type="number">
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="area">
+                                    مساحت
+                                </label>
+                                <input wire:model='area'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="area" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 md:w-1/2">
+                                <label class="block mb-2 text-xs font-bold tracking-wide  uppercase 
+                                @if ($assetType==0)
+                                    text-gray-500
+                                @endif" for="space">
+                                    زیربنا </label>
+                                <input wire:model='space'
+                                    class="
+                                    @if ($assetType==0)
+                                    cursor-not-allowed
+                                @endif
+                                    block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                    id="space" type="text" @if ($assetType==0) disabled @endif>
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="buildingType">
+                                    نوع ساختمان </label>
+                                <div class="relative">
+                                    <select
+                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="buildingType">
+                                        @if ($assetType==2)
+                                        <option value="0">ویلای جنگلی</option>
+                                        <option value="1">ویلای ساحلی</option>
+                                        <option value="2">ویلای محلی</option>
+                                        @endif
+                                        @if ($assetType==1)
+                                        <option value="3">پنت هاوس</option>
+                                        <option value="4">آپارتمان</option>
+                                        <option value="5">خانه همکف</option>
+                                        <option value="6">سوئیت</option>
+                                        <option value="7">ملک کلنگی</option>
+                                        @endif
+                                        @if ($assetType==3)
+                                        <option value="8">مغازه</option>
+                                        <option value="9">دفتر</option>
+                                        <option value="10">پارکینگ</option>
+                                        <option value="11">انبار</option>
+                                        @endif
+                                        @if ($assetType==0)
+                                        <option value="8">باغ</option>
+                                        <option value="8">شالیزار</option>
+                                        <option value="8">دشت</option>
+                                        @endif
+
+                                    </select>
+                                    <div
+                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="floor">
+                                    طبقه
+                                </label>
+                                <input wire:model='floor'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="floor" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="direction">
+                                    جهت ساختمان </label>
+                                <div class="relative">
+                                    <select
+                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="direction">
+                                        <option value="1">شمال</option>
+                                        <option value="2">شرق</option>
+                                        <option value="3">جنوب</option>
+                                        <option value="4">غرب</option>
+                                    </select>
+                                    <div
+                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="bed">
+                                    تعداد اتاق خواب
+                                </label>
+                                <input wire:model='title'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="bed" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="wc">
+                                    تعداد سرویس بهداشتی
+                                </label>
+                                <input wire:model='title'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="wc" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="cook">
+                                    تعداد آشپزخانه
+                                </label>
+                                <input wire:model='title'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="cook" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+
                         </div>
                         @error('title') {{ $message }} <br> @enderror
                         @error('notes') {{ $message }} <br> @enderror
@@ -180,7 +330,8 @@
                         @error('city') {{ $message }} <br> @enderror
                         @error('*') {{ $message }} <br> @enderror
 
-                        <button type="submit" class="px-4 py-2 text-white bg-blue-500 rounded">ثبت</button>
+                        <button type="submit"
+                            class="px-4 py-2 text-white bg-blue-500 rounded hover:bg-blue-400 transition-colors">ثبت</button>
                     </div>
 
 
