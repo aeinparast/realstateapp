@@ -14,24 +14,32 @@ return new class extends Migration
     {
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
-            $table->foreignIdFor(User::class)->nullable();
-            $table->string('title')->nullable();
-            $table->integer('price_private')->default(0);
-            $table->integer('price_public')->default(0);
-            $table->string('seller_name')->nullable();
-            $table->string('seller_phone')->nullable()->default(null);
-            $table->string('seller_mobile')->nullable();
-            $table->string('city')->nullable()->default('');
-            $table->text('notes')->nullable()->default('');
-            $table->integer('type')->nullable()->default(0);
-            $table->integer('deal')->nullable()->default(0);
-            $table->boolean('available')->nullable()->default(true);
-            $table->integer('land_area')->nullable()->default(0);
-            $table->integer('area')->nullable()->default(0);
-            $table->integer('floors')->nullable()->default(0);
-            $table->integer('floor')->nullable()->default(0);
-            $table->string('img');
-            $table->timestamps();
+            $table->foreignIdFor(User::class);
+            $table->string('title'); // String for the title
+            $table->unsignedTinyInteger('assetType')->default(0)->index(); // Integer with default value 0
+            $table->unsignedTinyInteger('dealType')->default(0)->index();  // Integer with default value 0
+            $table->unsignedBigInteger('price_private')->default(0); // Integer for price_private with default value
+            $table->unsignedBigInteger('price_public')->default(0)->index();  // Integer for price_public with default value
+            $table->text('notes')->nullable();  // Text field for notes, nullable
+            $table->string('seller_name');  // String for seller_name
+            $table->string('seller_mobile')->nullable();;  // String for seller_mobile
+            $table->string('seller_phone')->nullable();  // String for seller_phone, nullable
+            $table->string('city');  // String for city
+            $table->json('facilities_list')->nullable();  // JSON for facilities_list, nullable
+            $table->unsignedInteger('area');  // Integer for area
+            $table->unsignedTinyInteger('floor');  // Integer for floor
+            $table->unsignedTinyInteger('direction');  // Integer for direction
+            $table->unsignedTinyInteger('beds');  // Integer for beds
+            $table->unsignedTinyInteger('wc');  // Integer for wc
+            $table->unsignedTinyInteger('cooks');  // Integer for cooks
+            $table->unsignedTinyInteger('cooling');  // Integer for cooling
+            $table->unsignedTinyInteger('heating');  // Integer for heating
+            $table->unsignedTinyInteger('water');  // Integer for water
+            $table->unsignedTinyInteger('elec');  // Integer for electricity
+            $table->unsignedTinyInteger('gas');  // Integer for gas
+            $table->unsignedTinyInteger('landline');  // Integer for landline
+            $table->string('img'); // String for Images
+            $table->timestamps(); // Created at and updated at timestamps
         });
     }
 
