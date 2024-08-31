@@ -24,7 +24,7 @@
             class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-mahdavi hover:border-b-mahdavi">
             هلدینگ سرمایه‌گذاری مهدوی</a>
 
-          <ul class="items-center hidden px-4 lg:gap-6 xl:gap-12 md:gap-2 md:flex  md:px-2">
+          <ul class="items-center hidden px-4 lg:gap-6 xl:gap-12 md:gap-2 md:flex md:px-2">
             <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
                         @if (request()->routeIs('home'))
                             border-b-mahdavi text-mahdavi font-normal
@@ -61,8 +61,8 @@
     <footer class="flex flex-col items-center p-12 sm:flex-row min-h-40">
       <a href="/"><img class="w-32" src="/img/logo.webp" alt="Mahdavi holding Logo"></a>
 
-      <div class="flex flex-wrap justify-center gap-4 text-gray-600 sm:justify-normal">
-        <div class="hover:text-gray-800 transition-colors"><a href="/">صفحه اصلی</a></div>
+      <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600 sm:justify-normal md:text-base">
+        <div class="transition-colors hover:text-gray-800"><a href="/">صفحه اصلی</a></div>
         <div class="">خرید ملک</div>
         <div class="">فروش ملک</div>
         <div class="">مشاوران</div>

@@ -22,23 +22,23 @@ return new class extends Migration
             $table->unsignedBigInteger('price_public')->default(0)->index();  // Integer for price_public with default value
             $table->text('notes')->nullable();  // Text field for notes, nullable
             $table->string('seller_name');  // String for seller_name
-            $table->string('seller_mobile')->nullable();;  // String for seller_mobile
+            $table->string('seller_mobile')->nullable();  // String for seller_mobile
             $table->string('seller_phone')->nullable();  // String for seller_phone, nullable
-            $table->string('city');  // String for city
+            $table->string('city')->nullable();  // String for city
             $table->json('facilities_list')->nullable();  // JSON for facilities_list, nullable
-            $table->unsignedInteger('area');  // Integer for area
-            $table->unsignedTinyInteger('floor');  // Integer for floor
-            $table->unsignedTinyInteger('direction');  // Integer for direction
-            $table->unsignedTinyInteger('beds');  // Integer for beds
-            $table->unsignedTinyInteger('wc');  // Integer for wc
-            $table->unsignedTinyInteger('cooks');  // Integer for cooks
-            $table->unsignedTinyInteger('cooling');  // Integer for cooling
-            $table->unsignedTinyInteger('heating');  // Integer for heating
-            $table->unsignedTinyInteger('water');  // Integer for water
-            $table->unsignedTinyInteger('elec');  // Integer for electricity
-            $table->unsignedTinyInteger('gas');  // Integer for gas
-            $table->unsignedTinyInteger('landline');  // Integer for landline
-            $table->string('img'); // String for Images
+            $table->unsignedInteger('area')->nullable();  // Integer for area
+            $table->unsignedTinyInteger('floor')->nullable();  // Integer for floor
+            $table->unsignedTinyInteger('direction')->nullable();  // Integer for direction
+            $table->unsignedTinyInteger('beds')->nullable();  // Integer for beds
+            $table->unsignedTinyInteger('wcs')->nullable();  // Integer for wc
+            $table->unsignedTinyInteger('cooks')->nullable();  // Integer for cooks
+            $table->unsignedTinyInteger('cooling')->nullable();  // Integer for cooling
+            $table->unsignedTinyInteger('heating')->nullable();  // Integer for heating
+            $table->unsignedTinyInteger('water')->nullable();  // Integer for water
+            $table->unsignedTinyInteger('elec')->nullable();  // Integer for electricity
+            $table->unsignedTinyInteger('gas')->nullable();  // Integer for gas
+            $table->unsignedTinyInteger('landline')->nullable();  // Integer for landline
+            $table->string('img')->nullable(); // String for Images
             $table->timestamps(); // Created at and updated at timestamps
         });
     }

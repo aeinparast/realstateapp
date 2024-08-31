@@ -3,12 +3,11 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
-use App\Models\Upload;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use NumberFormatter;
+use App\Services\NumeralConverter;
 
 class AssetCreate extends Component
 {
@@ -23,13 +22,13 @@ class AssetCreate extends Component
     public $assetType = 0;
     public $dealType = 0;
     public $buildingType;
-    public int $price_private = 0, $price_public = 0;
-    public int $prepaymant = 0, $rent = 0;
+    public  $price_private = 0, $price_public = 0;
+    public  $prepaymant = 0, $rent = 0;
     public $notes;
     public $seller_name;
     public $seller_mobile;
     public $seller_phone;
-    public $city;
+    public $city = 0;
     public $facilities_list = [];
     public int $area = 0;
     public int $space = 0;
@@ -57,14 +56,14 @@ class AssetCreate extends Component
         'seller_name' => 'required|string|max:255',       // Required, max length 255 characters
         'seller_mobile' => 'required|string|max:15',      // Required, assume max 15 characters for a mobile number
         'seller_phone' => 'nullable|string|max:15',       // Optional, assume max 15 characters for a phone number
-        'city' => 'required|string|max:255',              // Required, max length 255 characters
+        'city' => 'required|integer|max:255',              // Required, max length 255 characters
         'facilities_list' => 'nullable|array',            // Optional, must be an array
         'facilities_list.*' => 'string|max:255',          // Each facility must be a string, max length 255 characters
         'area' => 'required|integer|min:0',               // Required, must be a positive integer
         'floor' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
         'direction' => 'required|integer|min:0|max:255',  // Required, assume direction is an integer between 0-255
         'beds' => 'required|integer|min:0|max:255',       // Required, must be an integer between 0-255
-        'wc' => 'required|integer|min:0|max:255',         // Required, must be an integer between 0-255
+        'wcs' => 'required|integer|min:0|max:255',         // Required, must be an integer between 0-255
         'cooks' => 'required|integer|min:0|max:255',      // Required, must be an integer between 0-255
         'cooling' => 'required|integer|min:0|max:255',    // Required, must be an integer between 0-255
         'heating' => 'required|integer|min:0|max:255',    // Required, must be an integer between 0-255
@@ -74,27 +73,48 @@ class AssetCreate extends Component
         'landline' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
     ];
 
-    public function save(): void
+    public function save()
     {
-        dd($this->assetType);
-        $validator = $this->validate([
-            'title' => 'required|min:3',
-            'seller_name' => 'required|min:3',
-            'price_private' => 'numeric',
-            'price_public' => 'required|numeric|min:0',
-            'seller_mobile' => 'required|digits:11|digits:11|starts_with:0',
-            'seller_phone' => 'digits:11|digits:11|starts_with:0',
-            'assetType' => 'required|numeric|between:0,3',
-            'notes' => 'required',
-        ]);
-        $img = implode('*', $this->photos);
-        $validator['img'] = $img;
-        $user_id = Auth::user()->id;
-        $validator['user_id'] = $user_id;
-        Asset::create($validator);
-        $this->redirect('/asset');
+        $this->convertNumerals(); // Convert any non-English numerals to English
+
+        // Validate the input data based on the defined rules
+        $validatedData = $this->validate($this->rules);
+
+        // Handle image processing (assuming $this->photos is an array of image paths)
+        $validatedData['img'] = implode('*', $this->photos);
+
+        // Attach the current user ID
+        $validatedData['user_id'] = Auth::id(); // Auth::id() is cleaner and safer
+
+        $validatedData['facilities_list'] = json_encode($this->facilities_list);
+
+        // Create the Asset with the validated data
+        Asset::create($validatedData);
+
+        // Redirect after saving
+        return redirect()->to('/asset');
     }
 
+    protected function convertNumerals()
+    {
+
+        $this->assetType = (int) NumeralConverter::convertToEnglish($this->assetType);
+        $this->dealType = (int) NumeralConverter::convertToEnglish($this->dealType);
+        $this->price_private = (int) NumeralConverter::convertToEnglish($this->price_private);
+        $this->price_public = (int) NumeralConverter::convertToEnglish($this->price_public);
+        $this->area = (int) NumeralConverter::convertToEnglish($this->area);
+        $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
+        $this->direction = (int) NumeralConverter::convertToEnglish($this->direction);
+        $this->beds = (int) NumeralConverter::convertToEnglish($this->beds);
+        $this->wcs = (int) NumeralConverter::convertToEnglish($this->wcs);
+        $this->cooks = (int) NumeralConverter::convertToEnglish($this->cooks);
+        $this->cooling = (int) NumeralConverter::convertToEnglish($this->cooling);
+        $this->heating = (int) NumeralConverter::convertToEnglish($this->heating);
+        $this->water = (int) NumeralConverter::convertToEnglish($this->water);
+        $this->elec = (int) NumeralConverter::convertToEnglish($this->elec);
+        $this->gas = (int) NumeralConverter::convertToEnglish($this->gas);
+        $this->landline = (int) NumeralConverter::convertToEnglish($this->landline);
+    }
 
     public function uploadImage(): void
     {
@@ -125,6 +145,13 @@ class AssetCreate extends Component
     }
 
 
+
+    public function updated($propertyName)
+    {
+        if (in_array($propertyName, ['price_public', 'price_private'])) {
+            $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
+        }
+    }
 
 
     public function render()

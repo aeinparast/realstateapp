@@ -12,15 +12,34 @@ class Asset extends Model
 
     protected $fillable = [
         'title',
+        'assetType',
+        'dealType',
+        'buildingType',
         'price_private',
         'price_public',
+        'prepaymant',
+        'rent',
         'notes',
-        'img',
         'seller_name',
-        'seller_phone',
         'seller_mobile',
+        'seller_phone',
         'city',
-        'user_id'
+        'facilities_list',
+        'area',
+        'space',
+        'floor',
+        'direction',
+        'beds',
+        'wc',
+        'cooks',
+        'cooling',
+        'heating',
+        'water',
+        'elec',
+        'gas',
+        'landline',
+        'img',
+        'user_id',
     ];
 
 

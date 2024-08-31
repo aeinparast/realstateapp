@@ -14,20 +14,24 @@ class PublicAsset extends Component
 
     public Asset $asset;
 
+    public $facilities;
+
     public function mount()
     {
-        $asset = Asset::find($this->id);
+        $asset = Asset::with('user')->find($this->id);
         if ($asset != null) {
             $this->asset = $asset;
         } else {
             $this->redirect('/');
         }
+        $this->facilities = config('facilities');
     }
 
 
     #[Layout('layouts.public')]
     public function render()
     {
-        return view('livewire.pages.public.public-asset');
+        $facilities_list = json_decode($this->asset['facilities_list']);
+        return view('livewire.pages.public.public-asset', compact('facilities_list'));
     }
 }
