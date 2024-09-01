@@ -146,6 +146,11 @@
                                         (رهن سالانه)
                                     </span>
                                     @endif
+                                    @if ($dealType==2)
+                                    <span class="font-light">
+                                        (پول پیش)
+                                    </span>
+                                    @endif
                                 </label>
                                 <input wire:model='price_public' wire:change='$refresh'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
@@ -171,19 +176,6 @@
                                 </p>
                             </div>
 
-                            <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0 
-                            @if ($dealType==0 || $dealType==1 || $dealType==3)
-                                hidden
-                            @endif">
-                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="prepayment">
-                                    پیش پرداخت
-                                </label>
-                                <input wire:model='prepaymant'
-                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="prepayment" type="number">
-
-                            </div>
                             <div class="w-full px-3 md:w-1/2
                              @if ($dealType==0 || $dealType==1 || $dealType==3)
                                 hidden
@@ -334,11 +326,9 @@
                                     <select wire:model='cooling'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="direction">
-                                        <option value="0">ندارد</option>
-                                        <option value="1">کولر</option>
-                                        <option value="2">چیلر</option>
-                                        <option value="3">داکت اسپیلیت</option>
-                                        <option value="4">پنکه</option>
+                                        @foreach (config('cooling') as $key => $cooling_val)
+                                        <option value="{{$key}}">{{$cooling_val}}</option>
+                                        @endforeach
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -353,12 +343,9 @@
                                     <select wire:model='heating'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="heating">
-                                        <option value="1">ندارد</option>
-                                        <option value="2">بخاری گازی</option>
-                                        <option value="3">بخاری نفتی</option>
-                                        <option value="4">بخاری هیزمی</option>
-                                        <option value="5">رادیاتور</option>
-                                        <option value="6">گرمایش از کف</option>
+                                        @foreach (config('heating') as $key => $heating_val)
+                                        <option value="{{$key}}">{{$heating_val}}</option>
+                                        @endforeach
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -373,11 +360,9 @@
                                     <select wire:model='water'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="water">
-                                        <option value="0">ندارد</option>
-                                        <option value="1">لوله‌کشی−اداره آب</option>
-                                        <option value="2">لوله‌کشی−شورای آب محل</option>
-                                        <option value="3">چاه</option>
-                                        <option value="4">رودخانه</option>
+                                        @foreach (config('water') as $key => $water)
+                                        <option value="{{$key}}">{{$water}}</option>
+                                        @endforeach
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -392,9 +377,9 @@
                                     <select wire:model='elec'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="elec">
-                                        <option value="1">ندارد</option>
-                                        <option value="2">تک‌فاز</option>
-                                        <option value="3">سه‌فاز</option>
+                                        @foreach (config('elec') as $key => $elec_var)
+                                        <option value="{{$key}}">{{$elec_var}}</option>
+                                        @endforeach
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
@@ -425,9 +410,57 @@
                                     <select wire:model='landline'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="landline">
+                                        @foreach (config('landline') as $key => $landline_var )
+                                        <option value="{{$key}}">{{$landline_var }}</option>
+                                        @endforeach
+                                    </select>
+                                    <div
+                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="elevator">
+                                    آسانسور </label>
+                                <div class="relative">
+                                    <select wire:model='elevator'
+                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="elevator">
                                         <option value="0">ندارد</option>
-                                        <option value="1">سیم‌مسی</option>
-                                        <option value="2">فیبرنوری</option>
+                                        <option value="1">دارد</option>
+                                    </select>
+                                    <div
+                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="storage">
+                                    انبار </label>
+                                <div class="relative">
+                                    <select wire:model='storage'
+                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="storage">
+                                        <option value="0">ندارد</option>
+                                        <option value="1">دارد</option>
+                                    </select>
+                                    <div
+                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="parking">
+                                    پارکینگ </label>
+                                <div class="relative">
+                                    <select wire:model='parking'
+                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                        id="parking">
+                                        <option value="0">ندارد</option>
+                                        <option value="1">دارد</option>
                                     </select>
                                     <div
                                         class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">

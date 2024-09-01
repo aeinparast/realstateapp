@@ -1,5 +1,5 @@
-<div class="grid min-h-screen grid-cols-1 gap-4 md:grid-cols-4">
-    <div class="flex flex-col gap-4 px-4 md:col-start-2">
+<div class="grid min-h-screen grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-6 pt-4">
+    <div class="flex flex-col gap-4 px-4 md:col-start-1 md:col-span-2 xl:col-start-2">
         <!-- Left Column Content -->
         <div class="flex flex-col gap-2">
             <h1 class="text-xl font-medium">{{$asset['title']}}</h1>
@@ -39,7 +39,8 @@
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">قیمت هر متر</div>
                 @if ($asset['price_public'] != 0)
-                <div class="">{{ number_format($asset['price_public'], 0, ".", "،") }} تومان</div>
+                <div class="">{{ number_format($asset['price_public']/$asset['area'], 0, ".", "،") }} تومان
+                </div>
                 @else
                 <div class="">تماس بگیرید</div>
                 @endif
@@ -48,7 +49,7 @@
 
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">متراژ</div>
-                <div class="">{{ $asset['area'] }}</div>
+                <div class="">{{ $asset['area'] }} متر</div>
             </div>
 
             @if (in_array($asset->assetType, [3, 4, 8, 9, 11]))
@@ -66,32 +67,138 @@
                 <div class="text-sm text-gray-600">مشاور:</div>
                 <div class="">{{ $asset->user->name }}</div>
                 <a href=""
-                    class="py-1 mt-2 text-center text-white transition-opacity rounded bg-mahdavi hover:opacity-90">تماس</a>
+                    class="py-1 mt-2 text-center text-white transition-opacity transition-transform rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس</a>
             </div>
         </div>
 
         <!-- Additional Information -->
         <div class="flex flex-col gap-2">
             <div class="">توضیحات:</div>
-            <p class="">{{ $asset['notes'] }}</p>
+            <p class="">{!! nl2br($asset['notes']) !!}</p>
         </div>
 
         <!-- Facilities -->
         <div>
-            <div>امکانات:</div>
-            <div class="flex flex-wrap gap-1">
+
+            <div class="flex flex-col gap-2 p-2 text-mahdavi ">
+                @if ($asset['elevator']==1)
+                <div class="public-asset__facility--main">
+                    <svg fill="currentColor" width="24px" height="24px" viewBox="0 0 8 8"
+                        xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3 0l-3 3h6l-3-3zm-3 5l3 3 3-3h-6z" transform="translate(1)" />
+                    </svg>
+                    <p class="text-sm font-bold">آسانسور</p>
+                </div>
+                @endif
+                @if ($asset['storage']==1)
+                <div class="public-asset__facility--main">
+                    <svg fill=" currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
+                        viewBox="0 0 169.676 169.676" xml:space="preserve">
+                        <g>
+                            <g>
+                                <path d="M80.668,53.92c-4.303,0-7.336,0.383-8.981,0.758V83.26c2.027,0.63,4.427,0.758,7.591,0.758
+			c11.633,0,18.713-5.815,18.713-15.679C97.99,58.852,91.409,53.92,80.668,53.92z" />
+                                <path d="M84.841,0.002C37.99,0.002,0,37.982,0,84.835c0,46.854,37.99,84.839,84.841,84.839c46.846,0,84.835-37.985,84.835-84.839
+			C169.676,37.987,131.687,0.002,84.841,0.002z M106.204,86.921c-6.314,6.198-15.924,9.236-26.927,9.236
+			c-2.912,0-5.444-0.126-7.591-0.63v32.25H56.255V43.674c5.693-1.013,13.406-1.773,23.786-1.773c11.369,0,19.592,2.403,25.034,6.954
+			c5.05,4.177,8.345,10.876,8.345,18.843C113.424,75.793,110.89,82.376,106.204,86.921z" />
+                            </g>
+                        </g>
+                    </svg>
+                    <p class="text-sm font-bold">پارکینگ</p>
+                </div>
+                @endif
+                @if ($asset['parking']==1)
+                <div class="public-asset__facility--main">
+                    <svg width="24px" height="24px" fill="currentColor" viewBox="0 0 1000 1000" version="1.1"
+                        xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                        enable-background="new 0 0 1000 1000" xml:space="preserve">
+                        <metadata> Svg Vector Icons : http://www.onlinewebfonts.com/icon </metadata>
+                        <g>
+
+                            <g transform="translate(0.000000,511.000000) scale(0.100000,-0.100000)">
+
+                                <path
+                                    d="M1852.4,4979.1c-60.4-16.1-155-54.3-211.3-84.5c-130.8-68.4-350.2-285.8-418.6-418.6c-124.8-231.4-116.7,42.3-116.7-4365.3c0-4393.4-6-4125.8,112.7-4363.3c68.4-134.8,289.8-356.2,424.7-424.7c235.5-118.7,64.4-112.7,3357-112.7c3292.5,0,3121.5-6,3357,112.7c134.8,68.4,356.2,289.8,424.7,424.7c118.7,237.5,112.7-30.2,112.7,4363.3c0,4393.4,6,4125.8-112.7,4363.3c-68.4,134.8-289.8,356.2-424.7,424.7c-235.5,118.7-62.4,112.7-3367,110.7C2409.8,5009.3,1945,5005.2,1852.4,4979.1z M8127.6,4371.3c38.2-18.1,88.5-60.4,110.7-90.6c42.3-56.4,42.3-80.5,48.3-1203.5l4-1145.2H5000H1709.5l4,1145.2c6,1123,6,1147.2,48.3,1203.5c22.1,30.2,72.5,72.4,110.7,90.6c64.4,34.2,255.6,36.2,3127.5,36.2C7872,4407.5,8063.2,4405.5,8127.6,4371.3z M8290.6,120.7v-1207.5H5000H1709.5V120.7v1207.5H5000h3290.5V120.7z M8286.5-2845.8c-6-1133.1-6-1157.2-48.3-1213.6c-22.1-30.2-72.5-72.4-110.7-90.6c-64.4-34.2-255.6-36.2-3127.5-36.2c-2871.9,0-3063.1,2-3127.5,36.2c-38.2,18.1-88.6,60.4-110.7,90.6c-42.3,56.3-42.3,80.5-48.3,1213.6l-4,1155.2H5000h3290.5L8286.5-2845.8z" />
+
+                                <path d="M4607.6,3652.8v-392.5H5000h392.4v392.5v392.5H5000h-392.5V3652.8z" />
+
+                                <path d="M3923.3,2676.7v-301.9H5000h1076.7v301.9v301.9H5000H3923.3V2676.7z" />
+
+                                <path d="M4607.6,543.4V161H5000h392.4v382.4v382.4H5000h-392.5V543.4z" />
+
+                                <path d="M3923.3-442.8v-301.9H5000h1076.7v301.9v301.9H5000H3923.3V-442.8z" />
+
+                                <path d="M4607.6-2465.4v-392.5H5000h392.4v392.5v392.5H5000h-392.5V-2465.4z" />
+
+                                <path d="M3923.3-3441.5v-301.9H5000h1076.7v301.9v301.9H5000H3923.3V-3441.5z" />
+
+                            </g>
+
+                        </g>
+                    </svg>
+                    <p class="text-sm font-bold">انبار</p>
+                </div>
+                @endif
+                <div class="grid grid-cols-2 gap-2">
+                    @if ($asset['water']!=0)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-droplet"></i>
+                        <p class="text-sm font-bold">{{config('water')[$asset['water']]}}</p>
+                    </div>
+                    @endif
+                    @if ($asset['elec']!=0)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-lightning-charge"></i>
+                        <p class="text-sm font-bold">برق {{config('elec')[$asset['elec']]}}</p>
+                    </div>
+                    @endif
+                    @if ($asset['gas']!=0)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-fire"></i>
+                        <p class="text-sm font-bold">گاز</p>
+                    </div>
+                    @endif
+                    @if ($asset['landline']!=0)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-telephone-fill"></i>
+                        <p class="text-sm font-bold">خط {{config('landline')[$asset['landline']]}}</p>
+                    </div>
+                    @endif
+                    @if ($asset['heating']!=0)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-thermometer-sun"></i>
+                        <p class="text-sm font-bold">{{config('heating')[$asset['heating']]}}</p>
+                    </div>
+                    @endif
+                    @if ($asset['cooling']==1)
+                    <div class="public-asset__facility--main">
+                        <i class="bi bi-thermometer-snow"></i>
+                        <p class="text-sm font-bold">{{config('cooling')[$asset['cooling']]}}</p>
+                    </div>
+                    @endif
+                </div>
+            </div>
+            <div class="flex flex-wrap gap-1 mt-2">
                 @foreach ($facilities_list as $facilitie)
+                @if ($facilitie==0||$facilitie==1||$facilitie==2)
+                @continue
+                @endif
                 <div class="px-2 font-bold border-2 rounded-full border-mahdavi hover:border-dashed text-mahdavi">
                     {{ $facilities[$facilitie] }}
                 </div>
                 @endforeach
             </div>
         </div>
+        <div class="block row-start-2 overflow-hidden rounded md:col-start-3 md:hidden" id="map">
+            <iframe width="100%" height="200" src="https://map.ir/lat/35.724747/lng/51.421002/z/16/p/ملک"></iframe>
+        </div>
     </div>
 
     <!-- Right Column Content -->
-    <div class="flex flex-col" id="right-col">
-        <div id="slide" class="row-start-1 md:col-start-3">
+    <div class="flex flex-col row-start-1 md:col-start-3 md:col-span-2 xl:col-start-4" id="right-col">
+        <div id="slide" class="">
             <div class="w-full" dir="ltr">
                 <section id="main-carousel" class="rounded splide" aria-label="My Awesome Gallery">
                     <div class="splide__track">
@@ -116,7 +223,7 @@
             </div>
         </div>
 
-        <div class="row-start-2 overflow-hidden rounded md:col-start-3" id="map">
+        <div class="hidden row-start-2 overflow-hidden rounded md:col-start-3 md:block" id="map">
             <iframe width="100%" height="200" src="https://map.ir/lat/35.724747/lng/51.421002/z/16/p/ملک"></iframe>
         </div>
     </div>

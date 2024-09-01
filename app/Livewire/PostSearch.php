@@ -14,7 +14,7 @@ class PostSearch extends Component
     public $assetType = '';
     public $dealType = '';
     public $minPrice = '0';
-    public $maxPrice = '9999999999';
+    public $maxPrice = '99999999999';
 
     // Check if assetType is valid
     public function checkType()
@@ -65,6 +65,7 @@ class PostSearch extends Component
         if ($this->minPrice !== null && $this->maxPrice !== null) {
             $query->whereBetween('price_public', [(int)$this->minPrice, (int)$this->maxPrice]);
         }
+
 
         // Return the view with paginated results
         return view('livewire.post-search', [

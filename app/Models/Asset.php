@@ -40,6 +40,9 @@ class Asset extends Model
         'landline',
         'img',
         'user_id',
+        'elevator',
+        'storage',
+        'parking'
     ];
 
 

@@ -132,3 +132,7 @@ body {
 .public-search__btn-radio {
   @apply w-4 h-4 bg-gray-100 border-gray-300 rounded-full text-mahdavi focus:ring-mahdavi focus:ring-2;
 }
+
+.public-asset__facility--main {
+  @apply flex items-center justify-center gap-2 px-2 py-1 border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white transition-colors;
+}

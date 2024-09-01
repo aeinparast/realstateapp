@@ -12,10 +12,14 @@
         </div>
         <div class="text-lg font-medium mt-7 ">
             <div class="flex items-center justify-between w-full px-2 py-1 border-2 rounded-md border-mahdavi">
+                @if ($asset['price_public']==0)
+                تماس بگیرید
+                @else
                 {{
                 number_format($asset['price_public'], 0,
                 ".","،") }}
                 تومانءء
+                @endif
                 <a target="_blank"
                     class="px-2 py-1 text-white border-2 rounded-md bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi"
                     href="{{route('asset-view')}}?id={{$asset['id']}}">مشاهده</a>

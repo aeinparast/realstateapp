@@ -43,6 +43,10 @@ class AssetCreate extends Component
     public int $elec = 0;
     public int $gas = 0;
     public int $landline = 0;
+    public int $elevator = 0;
+    public int $storage = 0;
+    public int $parking = 0;
+
     public $photos = [];
 
 
@@ -60,6 +64,7 @@ class AssetCreate extends Component
         'facilities_list' => 'nullable|array',            // Optional, must be an array
         'facilities_list.*' => 'string|max:255',          // Each facility must be a string, max length 255 characters
         'area' => 'required|integer|min:0',               // Required, must be a positive integer
+        'space' => 'required|integer|min:0',               // Required, must be a positive integer
         'floor' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
         'direction' => 'required|integer|min:0|max:255',  // Required, assume direction is an integer between 0-255
         'beds' => 'required|integer|min:0|max:255',       // Required, must be an integer between 0-255
@@ -71,6 +76,10 @@ class AssetCreate extends Component
         'elec' => 'required|integer|min:0|max:255',       // Required, must be an integer between 0-255
         'gas' => 'required|integer|min:0|max:255',        // Required, must be an integer between 0-255
         'landline' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
+        'elevator' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
+        'storage' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
+        'parking' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
+
     ];
 
     public function save()
@@ -103,6 +112,7 @@ class AssetCreate extends Component
         $this->price_private = (int) NumeralConverter::convertToEnglish($this->price_private);
         $this->price_public = (int) NumeralConverter::convertToEnglish($this->price_public);
         $this->area = (int) NumeralConverter::convertToEnglish($this->area);
+        $this->space = (int) NumeralConverter::convertToEnglish($this->space);
         $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
         $this->direction = (int) NumeralConverter::convertToEnglish($this->direction);
         $this->beds = (int) NumeralConverter::convertToEnglish($this->beds);
@@ -114,6 +124,9 @@ class AssetCreate extends Component
         $this->elec = (int) NumeralConverter::convertToEnglish($this->elec);
         $this->gas = (int) NumeralConverter::convertToEnglish($this->gas);
         $this->landline = (int) NumeralConverter::convertToEnglish($this->landline);
+        $this->elevator = (int) NumeralConverter::convertToEnglish($this->elevator);
+        $this->storage = (int) NumeralConverter::convertToEnglish($this->storage);
+        $this->parking = (int) NumeralConverter::convertToEnglish($this->parking);
     }
 
     public function uploadImage(): void

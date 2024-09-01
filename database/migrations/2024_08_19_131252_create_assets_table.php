@@ -27,6 +27,7 @@ return new class extends Migration
             $table->string('city')->nullable();  // String for city
             $table->json('facilities_list')->nullable();  // JSON for facilities_list, nullable
             $table->unsignedInteger('area')->nullable();  // Integer for area
+            $table->unsignedInteger('space')->nullable();  // Integer for area
             $table->unsignedTinyInteger('floor')->nullable();  // Integer for floor
             $table->unsignedTinyInteger('direction')->nullable();  // Integer for direction
             $table->unsignedTinyInteger('beds')->nullable();  // Integer for beds
@@ -38,6 +39,9 @@ return new class extends Migration
             $table->unsignedTinyInteger('elec')->nullable();  // Integer for electricity
             $table->unsignedTinyInteger('gas')->nullable();  // Integer for gas
             $table->unsignedTinyInteger('landline')->nullable();  // Integer for landline
+            $table->unsignedTinyInteger('elevator')->nullable();  // Integer for elevator
+            $table->unsignedTinyInteger('storage')->nullable();  // Integer for floor
+            $table->unsignedTinyInteger('parking')->nullable();  // Integer for floor
             $table->string('img')->nullable(); // String for Images
             $table->timestamps(); // Created at and updated at timestamps
         });
