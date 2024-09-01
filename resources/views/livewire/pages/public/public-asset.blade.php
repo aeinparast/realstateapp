@@ -13,6 +13,7 @@
 
         <div class="flex flex-col">
             <!-- Pricing Information -->
+
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">
                     @if ($asset['dealType'] != 2)
@@ -51,6 +52,13 @@
                 <div class="text-gray-600">متراژ</div>
                 <div class="">{{ $asset['area'] }} متر</div>
             </div>
+            @if ($asset['assetType']!=0)
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">زیربنا</div>
+                <div class="">{{ $asset['space'] }} متر</div>
+            </div>
+            @endif
+
 
             @if (in_array($asset->assetType, [3, 4, 8, 9, 11]))
             <div class="flex items-center justify-between py-2 border-b">
@@ -62,12 +70,19 @@
 
         <!-- Seller Information -->
         <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi">
-            <div class="w-20 h-20 bg-black rounded-full"></div>
+            @if ($pfp==null || $pfp=='')
+            <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                style="background-image: url('/img/logo.webp');"></div>
+            @else
+            <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$pfp}}');"></div>
+            @endif
             <div class="flex flex-col">
                 <div class="text-sm text-gray-600">مشاور:</div>
                 <div class="">{{ $asset->user->name }}</div>
-                <a href=""
-                    class="py-1 mt-2 text-center text-white transition-opacity transition-transform rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس</a>
+                <button x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
+                    class="py-1 mt-2 text-center text-white transition-opacity transition-transform rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس
+                    </ذ>
             </div>
         </div>
 
@@ -163,7 +178,7 @@
                     @if ($asset['landline']!=0)
                     <div class="public-asset__facility--main">
                         <i class="bi bi-telephone-fill"></i>
-                        <p class="text-sm font-bold">خط {{config('landline')[$asset['landline']]}}</p>
+                        <p class="text-sm font-bold">تلفن {{config('landline')[$asset['landline']]}}</p>
                     </div>
                     @endif
                     @if ($asset['heating']!=0)
@@ -182,9 +197,6 @@
             </div>
             <div class="flex flex-wrap gap-1 mt-2">
                 @foreach ($facilities_list as $facilitie)
-                @if ($facilitie==0||$facilitie==1||$facilitie==2)
-                @continue
-                @endif
                 <div class="px-2 font-bold border-2 rounded-full border-mahdavi hover:border-dashed text-mahdavi">
                     {{ $facilities[$facilitie] }}
                 </div>
@@ -227,4 +239,38 @@
             <iframe width="100%" height="200" src="https://map.ir/lat/35.724747/lng/51.421002/z/16/p/ملک"></iframe>
         </div>
     </div>
+    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+        <form wire:submit="deleteUser" class="p-6">
+
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                تماس با مشاور
+            </h2>
+
+            <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi">
+                @if ($pfp==null || $pfp=='')
+                <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                    style="background-image: url('/img/logo.webp');"></div>
+                @else
+                <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                    style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$pfp}}');"></div>
+                @endif
+                <div class="flex flex-col">
+                    <div class="text-sm text-gray-600">مشاور:</div>
+                    <div class="">{{ $asset->user->name }}</div>
+                    <div class="text-sm text-gray-600">تلفن:</div>
+                    <a href="tel:{{ $asset->user->phone }}" class="border-b-2 border-mahdavi">{{ $asset->user->phone
+                        }}</a>
+                    <div class="text-sm text-gray-600">همراه:</div>
+                    <a href="tel:{{ $asset->user->mobile }}" class="border-b-2 border-mahdavi">{{ $asset->user->mobile
+                        }}</a>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    <div class="!font-sans">بازگشت</div>
+                </x-secondary-button>
+            </div>
+        </form>
+    </x-modal>
 </div>

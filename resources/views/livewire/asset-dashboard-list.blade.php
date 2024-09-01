@@ -20,7 +20,7 @@
                             fill="currentColor" class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
                             <path
                                 d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                        </svg>مازندران - تنکابن - شهیدآباد</div>
+                        </svg>{{config('cityAreas')[$asset['city']]}}</div>
                 </div>
             </div>
             <div class=" justify-between flex flex-col">
@@ -30,7 +30,7 @@
                 <a href="" class="text-white text-sm ">
                     <button class="bg-yellow-500 px-2 rounded w-full">ویرایش</button>
                 </a>
-                <a href="" class="text-white text-sm ">
+                <a href="/view?id={{$asset['id']}}" target="__blank" class="text-white text-sm ">
                     <button class="bg-blue-500 px-2 rounded w-full">لینک عمومی</button>
                 </a>
             </div>

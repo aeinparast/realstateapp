@@ -10,6 +10,12 @@ new class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public string $phone = '';
+    public string $mobile = '';
+    public string $instagram = '';
+    public string $whatsup = '';
+    public string $bale = '';
+    public string $eta = '';
 
     /**
      * Mount the component.
@@ -18,6 +24,13 @@ new class extends Component
     {
         $this->name = Auth::user()->name;
         $this->email = Auth::user()->email;
+        $this->phone = Auth::user()->phone;
+        $this->mobile = Auth::user()->mobile;
+        $this->instagram = Auth::user()->instagram;
+        $this->telegram = Auth::user()->telegram;
+        $this->whatsup = Auth::user()->whatsup;
+        $this->bale = Auth::user()->bale;
+        $this->eta = Auth::user()->eta;
     }
 
     /**
@@ -30,6 +43,12 @@ new class extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
+            'phone'=>['string', 'max:15'],
+            'mobile'=>['string', 'max:15'],
+            'instagram'=>[ 'string', 'max:30'],
+            'whatsup'=>[ 'string', 'max:15'],
+            'bale'=>[ 'string', 'max:30'],
+            'eta'=>[ 'string', 'max:30'],
         ]);
 
         $user->fill($validated);
@@ -79,6 +98,45 @@ new class extends Component
             <x-text-input wire:model="name" id="name" name="name" type="text" class="mt-1 block w-full" required
                 autofocus autocomplete="name" />
             <x-input-error class="mt-2" :messages="$errors->get('name')" />
+        </div>
+        <div>
+            <x-input-label for="phone" :value="__('تلفن ثابت')" />
+            <x-text-input wire:model="phone" id="phone" name="phone" type="text" class="mt-1 block w-full" autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('phone')" />
+        </div>
+        <div>
+            <x-input-label for="mobile" :value="__('تلفن همراه')" />
+            <x-text-input wire:model="mobile" id="mobile" name="mobile" type="text" class="mt-1 block w-full"
+                autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('mobile')" />
+        </div>
+        <div>
+            <x-input-label for="instagram" :value="__('آیدی اینستاگرام')" />
+            <x-text-input wire:model="instagram" id="instagram" name="instagram" type="text" class="mt-1 block w-full"
+                autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('instagram')" />
+        </div>
+        <div>
+            <x-input-label for="telegram" :value="__('آیدی تلگرام')" />
+            <x-text-input wire:model="telegram" id="telegram" name="telegram" type="text" class="mt-1 block w-full"
+                autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('telegram')" />
+        </div>
+        <div>
+            <x-input-label for="whatsup" :value="__('شماره واتس‌آپ')" />
+            <x-text-input wire:model="whatsup" id="whatsup" name="whatsup" type="text" class="mt-1 block w-full"
+                autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('whatsup')" />
+        </div>
+        <div>
+            <x-input-label for="bale" :value="__('آیدی بله')" />
+            <x-text-input wire:model="bale" id="bale" name="bale" type="text" class="mt-1 block w-full" autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('bale')" />
+        </div>
+        <div>
+            <x-input-label for="eta" :value="__('آیدی ایتا')" />
+            <x-text-input wire:model="eta" id="eta" name="eta" type="text" class="mt-1 block w-full" autofocus />
+            <x-input-error class="mt-2" :messages="$errors->get('eta')" />
         </div>
 
         <div>
