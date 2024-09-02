@@ -64,10 +64,7 @@
                                 <textarea wire:model='notes'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none h-36 focus:outline-none focus:bg-white focus:border-gray-500"
                                     id="notes" type="text"> </textarea>
-                                <p class="text-xs text-gray-600">برای <b>**بولد**</b> کردن در میان دو ستاره قرار
-                                    دهید و برای
-                                    <i>--ایتالیک--</i> در میان دو خط تیره
-                                </p>
+
                             </div>
                         </div>
                         <div class="flex flex-wrap mb-2 -mx-3 ">

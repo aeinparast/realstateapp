@@ -36,7 +36,14 @@
             </li>
             <li class="text-sm font-light">املاک</li>
             <li class="text-sm font-light">شهرها</li>
-            <li class="text-sm font-light">مشاوران</li>
+            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+                        @if (request()->routeIs('public-agents'))
+                            border-b-mahdavi text-mahdavi font-normal
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif">
+              <a href="{{route('public-agents')}}">مشاوران</a>
             <li class="text-sm font-light">ارتباط با ما</li>
             <li class="text-sm font-light">درباره ما</li>
           </ul>

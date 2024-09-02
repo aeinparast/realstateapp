@@ -1,4 +1,4 @@
-<div class="flex flex-wrap">
+<div class="flex flex-wrap gap-2">
     @foreach ($agents as $agent)
     <div
         class="flex px-4 hover:scale-105 transition-transform flex-col text-center justify-center sm:flex-row sm:text-right items-center sm:items-start gap-4  py-2 border-2 rounded-md border-mahdavi">

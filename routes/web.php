@@ -1,5 +1,8 @@
 <?php
 
+use App\Livewire\AdminCreateUser;
+use App\Livewire\AdminUpdateUser;
+use App\Livewire\AdminUsers;
 use App\Livewire\AssetCreate;
 use App\Livewire\PublicAsset;
 use Illuminate\Support\Facades\Route;
@@ -29,6 +32,19 @@ Route::get('view', PublicAsset::class)
 
 Route::view('agents', 'public-agents')
     ->name('public-agents');
+
+
+Route::get('users', AdminUsers::class)
+    ->middleware(['auth'])
+    ->name('admin-users');
+
+Route::get('users-create', AdminCreateUser::class)
+    ->middleware(['auth'])
+    ->name('admin-users-create');
+
+Route::get('users-update/{user}', AdminUpdateUser::class)
+    ->middleware(['auth'])
+    ->name('admin-users-update');
 
 
 

@@ -34,23 +34,27 @@ new class extends Component
                         داشبورد
                     </x-nav-link>
                 </div>
+                @if (Auth::user()->role==0 || Auth::user()->role==1)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('asset')"
                         :active="request()->routeIs('asset')||request()->routeIs('asset-create')" wire:navigate>
                         فایل‌ها
                     </x-nav-link>
                 </div>
+                @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
                     <x-nav-link :href="route('dashboard')" wire:navigate>
                         پست‌ها
                     </x-nav-link>
                 </div>
 
+                @if (Auth::user()->role==0)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" wire:navigate>
-                        نامه‌ها
+                    <x-nav-link :href="route('admin-users')" :active="request()->routeIs('admin-users')" wire:navigate>
+                        کاربران
                     </x-nav-link>
                 </div>
+                @endif
             </div>
 
             <!-- Settings Dropdown -->
