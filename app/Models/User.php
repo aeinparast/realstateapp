@@ -28,6 +28,7 @@ class User extends Authenticatable
         'whatsup',
         'bale',
         'eta',
+        'pfp'
     ];
 
     /**

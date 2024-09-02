@@ -27,6 +27,8 @@ Route::get('view', PublicAsset::class)
     ->name('asset-view');
 
 
+Route::view('agents', 'public-agents')
+    ->name('public-agents');
 
 
 

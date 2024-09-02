@@ -4,8 +4,9 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 
 import '@splidejs/splide/css';
 
+
 import Splide from '@splidejs/splide';
-import { AutoScroll } from '@splidejs/splide-extension-auto-scroll';
+
 
 
 // new Splide('.splide', {
@@ -53,5 +54,20 @@ splide.on('mounted move', function () {
 
 
 splide.mount();
+
+
+AOS.init({ disable: true });
+
+
+document.addEventListener('livewire:load', function () {
+  Livewire.hook('message.processed', (message, component) => {
+    AOS.init();
+    document.querySelectorAll('[data-aos]').forEach((element) => {
+      element.style.opacity = 1; // Ensure opacity is set to 1
+      element.style.transform = 'none'; // Reset any transformations
+    });
+  });
+});
+
 
 
