@@ -22,13 +22,14 @@ class AssetCreate extends Component
     public $assetType = 0;
     public $dealType = 0;
     public $buildingType;
-    public  $price_private = 0, $price_public = 0;
-    public  $prepaymant = 0, $rent = 0;
+    public $price_private = 0, $price_public = 0, $price_per_meter = 0;
+    public $rent = 0;
     public $notes;
     public $seller_name;
     public $seller_mobile;
     public $seller_phone;
     public $city = 0;
+    public $map = '';
     public $facilities_list = [];
     public int $area = 0;
     public int $space = 0;
@@ -54,8 +55,9 @@ class AssetCreate extends Component
         'title' => 'required|string|max:255',
         'assetType' => 'required|integer|min:0|max:10',  // Assuming assetType is an integer between 0-255
         'dealType' => 'required|integer|min:0|max:10',   // Assuming dealType is an integer between 0-255
-        'price_private' => 'required|integer|min:0',             // Must be a positive integer
+        'price_private' => 'required|integer|min:0',       // Must be a positive integer
         'price_public' => 'required|integer|min:0',       // Must be a positive integer
+        'price_per_meter' => 'required|integer|min:0',       // Must be a positive integer
         'notes' => 'nullable|string|max:5000',            // Optional, max length 5000 characters
         'seller_name' => 'required|string|max:255',       // Required, max length 255 characters
         'seller_mobile' => 'required|string|max:15',      // Required, assume max 15 characters for a mobile number
@@ -79,7 +81,7 @@ class AssetCreate extends Component
         'elevator' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
         'storage' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
         'parking' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
-
+        'map' => 'required|string|min:0|max:255',   // Required, must be an integer between 0-255
     ];
 
     public function save()
@@ -111,6 +113,7 @@ class AssetCreate extends Component
         $this->dealType = (int) NumeralConverter::convertToEnglish($this->dealType);
         $this->price_private = (int) NumeralConverter::convertToEnglish($this->price_private);
         $this->price_public = (int) NumeralConverter::convertToEnglish($this->price_public);
+        $this->price_per_meter = (int) NumeralConverter::convertToEnglish($this->price_per_meter);
         $this->area = (int) NumeralConverter::convertToEnglish($this->area);
         $this->space = (int) NumeralConverter::convertToEnglish($this->space);
         $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
@@ -161,7 +164,7 @@ class AssetCreate extends Component
 
     public function updated($propertyName)
     {
-        if (in_array($propertyName, ['price_public', 'price_private'])) {
+        if (in_array($propertyName, ['price_public', 'price_private', 'price_per_meter'])) {
             $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
         }
     }

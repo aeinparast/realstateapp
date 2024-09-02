@@ -32,8 +32,9 @@ class PublicAsset extends Component
     #[Layout('layouts.public')]
     public function render()
     {
-        $pfp = Auth::user()->pfp;
+        $pfp = $this->asset->user->pfp;
+        $map = explode(',', $this->asset->map);
         $facilities_list = json_decode($this->asset['facilities_list']);
-        return view('livewire.pages.public.public-asset', compact(['facilities_list', 'pfp']));
+        return view('livewire.pages.public.public-asset', compact(['facilities_list', 'pfp', 'map']));
     }
 }

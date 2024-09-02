@@ -17,6 +17,7 @@ class Asset extends Model
         'buildingType',
         'price_private',
         'price_public',
+        'price_per_meter',
         'prepaymant',
         'rent',
         'notes',
@@ -42,7 +43,8 @@ class Asset extends Model
         'user_id',
         'elevator',
         'storage',
-        'parking'
+        'parking',
+        'map'
     ];
 
 

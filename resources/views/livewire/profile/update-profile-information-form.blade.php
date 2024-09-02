@@ -12,6 +12,7 @@ new class extends Component
     public string $email = '';
     public string $phone = '';
     public string $mobile = '';
+    public string $telegram='';
     public string $instagram = '';
     public string $whatsup = '';
     public string $bale = '';
@@ -45,6 +46,7 @@ new class extends Component
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
             'phone'=>['string', 'max:15'],
             'mobile'=>['string', 'max:15'],
+            'telegram'=>['string', 'max:15'],
             'instagram'=>[ 'string', 'max:30'],
             'whatsup'=>[ 'string', 'max:15'],
             'bale'=>[ 'string', 'max:30'],
@@ -90,6 +92,7 @@ new class extends Component
         <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
             بروزرسانی اطلاعات پروفایل شما
         </p>
+        <p class="text-red-500">شماره و آیدی باید با کیبورد اینگلیسی وارد شود!</p>
     </header>
 
     <form wire:submit="updateProfileInformation" class="mt-6 space-y-6">
@@ -101,13 +104,14 @@ new class extends Component
         </div>
         <div>
             <x-input-label for="phone" :value="__('تلفن ثابت')" />
-            <x-text-input wire:model="phone" id="phone" name="phone" type="text" class="mt-1 block w-full" autofocus />
+            <x-text-input wire:model="phone" id="phone" name="phone" type="text" class="mt-1 block w-full" autofocus
+                placeholder="شماره را با اعداد کیبورد اینگلیسی وارد کنید(فارسی نمایش داده خواهد شد)" />
             <x-input-error class="mt-2" :messages="$errors->get('phone')" />
         </div>
         <div>
             <x-input-label for="mobile" :value="__('تلفن همراه')" />
-            <x-text-input wire:model="mobile" id="mobile" name="mobile" type="text" class="mt-1 block w-full"
-                autofocus />
+            <x-text-input wire:model="mobile" id="mobile" name="mobile" type="text" class="mt-1 block w-full" autofocus
+                placeholder="شماره را با اعداد کیبورد اینگلیسی وارد کنید(فارسی نمایش داده خواهد شد)" />
             <x-input-error class="mt-2" :messages="$errors->get('mobile')" />
         </div>
         <div>
@@ -125,7 +129,7 @@ new class extends Component
         <div>
             <x-input-label for="whatsup" :value="__('شماره واتس‌آپ')" />
             <x-text-input wire:model="whatsup" id="whatsup" name="whatsup" type="text" class="mt-1 block w-full"
-                autofocus />
+                autofocus placeholder="شماره با کد کشور و بدون علامت بعلاوه" />
             <x-input-error class="mt-2" :messages="$errors->get('whatsup')" />
         </div>
         <div>

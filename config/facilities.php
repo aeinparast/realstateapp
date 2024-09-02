@@ -3,6 +3,7 @@
 return [
   'electric_parking_door' => 'درب پارکینگ برقی',
   'balcony' => 'بالکون',
+  'bts' => 'آنتن‌دهی‌ موبایل',
   'pool' => 'استخر',
   'sauna' => 'سونا',
   'jacuzzi' => 'جکوزی',

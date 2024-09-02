@@ -20,10 +20,12 @@ return new class extends Migration
             $table->unsignedTinyInteger('dealType')->default(0)->index();  // Integer with default value 0
             $table->unsignedBigInteger('price_private')->default(0); // Integer for price_private with default value
             $table->unsignedBigInteger('price_public')->default(0)->index();  // Integer for price_public with default value
+            $table->unsignedBigInteger('price_per_meter')->default(0);  // Integer for price_public with default value
             $table->text('notes')->nullable();  // Text field for notes, nullable
             $table->string('seller_name');  // String for seller_name
             $table->string('seller_mobile')->nullable();  // String for seller_mobile
             $table->string('seller_phone')->nullable();  // String for seller_phone, nullable
+            $table->string('map')->nullable()->default('');  // String for seller_phone, nullable
             $table->string('city')->nullable();  // String for city
             $table->json('facilities_list')->nullable();  // JSON for facilities_list, nullable
             $table->unsignedInteger('area')->nullable();  // Integer for area
