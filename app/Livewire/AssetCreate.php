@@ -32,7 +32,7 @@ class AssetCreate extends Component
     public $map = '';
     public $facilities_list = [];
     public int $area = 0;
-    public int $space = 0;
+    public $space = 0;
     public int $floor = 0;
     public int $direction = 0;
     public int $beds = 0;
@@ -55,8 +55,10 @@ class AssetCreate extends Component
         'title' => 'required|string|max:255',
         'assetType' => 'required|integer|min:0|max:10',  // Assuming assetType is an integer between 0-255
         'dealType' => 'required|integer|min:0|max:10',   // Assuming dealType is an integer between 0-255
+        'buildingType' => 'required|integer|min:0|max:25',   // Assuming dealType is an integer between 0-255
         'price_private' => 'required|integer|min:0',       // Must be a positive integer
         'price_public' => 'required|integer|min:0',       // Must be a positive integer
+        'rent' => 'required|integer|min:0',       // Must be a positive integer
         'price_per_meter' => 'required|integer|min:0',       // Must be a positive integer
         'notes' => 'nullable|string|max:5000',            // Optional, max length 5000 characters
         'seller_name' => 'required|string|max:255',       // Required, max length 255 characters
@@ -111,9 +113,11 @@ class AssetCreate extends Component
 
         $this->assetType = (int) NumeralConverter::convertToEnglish($this->assetType);
         $this->dealType = (int) NumeralConverter::convertToEnglish($this->dealType);
+        $this->buildingType = (int) NumeralConverter::convertToEnglish($this->buildingType);
         $this->price_private = (int) NumeralConverter::convertToEnglish($this->price_private);
         $this->price_public = (int) NumeralConverter::convertToEnglish($this->price_public);
         $this->price_per_meter = (int) NumeralConverter::convertToEnglish($this->price_per_meter);
+        $this->rent = (int) NumeralConverter::convertToEnglish($this->rent);
         $this->area = (int) NumeralConverter::convertToEnglish($this->area);
         $this->space = (int) NumeralConverter::convertToEnglish($this->space);
         $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
@@ -164,7 +168,7 @@ class AssetCreate extends Component
 
     public function updated($propertyName)
     {
-        if (in_array($propertyName, ['price_public', 'price_private', 'price_per_meter'])) {
+        if (in_array($propertyName, ['price_public', 'price_private', 'price_per_meter', 'rent', 'space'])) {
             $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
         }
     }

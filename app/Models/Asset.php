@@ -31,7 +31,7 @@ class Asset extends Model
         'floor',
         'direction',
         'beds',
-        'wc',
+        'wcs',
         'cooks',
         'cooling',
         'heating',

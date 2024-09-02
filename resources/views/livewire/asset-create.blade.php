@@ -184,7 +184,7 @@
                                     اجاره </label>
                                 <input wire:model='rent'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                    id="rent" type="number">
+                                    id="rent" type="text">
                             </div>
                             <div class="w-full px-3 md:w-1/2">
                                 </p>
@@ -248,30 +248,25 @@
                                     <select wire:model='buildingType'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="buildingType">
-                                        @if ($assetType==2)
-                                        <option value="0">ویلای جنگلی</option>
-                                        <option value="1">ویلای ساحلی</option>
-                                        <option value="2">ویلای محلی</option>
+                                        @if ($assetType==0)
+                                        @foreach (config('assetType')[0] as $key=> $at)
+                                        <option value="{{$key}}">{{$at}}</option>
+                                        @endforeach
                                         @endif
                                         @if ($assetType==1)
-                                        <option value="3">پنت هاوس</option>
-                                        <option value="4">آپارتمان</option>
-                                        <option value="5">خانه همکف</option>
-                                        <option value="6">سوئیت</option>
-                                        <option value="7">ملک کلنگی</option>
+                                        @foreach (config('assetType')[1] as $key=> $at)
+                                        <option value="{{$key}}">{{$at}}</option>
+                                        @endforeach
+                                        @endif
+                                        @if ($assetType==2)
+                                        @foreach (config('assetType')[2] as $key=> $at)
+                                        <option value="{{$key}}">{{$at}}</option>
+                                        @endforeach
                                         @endif
                                         @if ($assetType==3)
-                                        <option value="8">مغازه</option>
-                                        <option value="9">دفتر</option>
-                                        <option value="8">واحد صنعتی</option>
-                                        <option value="10">پارکینگ</option>
-                                        <option value="11">انبار</option>
-                                        @endif
-                                        @if ($assetType==0)
-                                        <option value="12">باغ</option>
-                                        <option value="13">شالیزار</option>
-                                        <option value="14">دشت</option>
-
+                                        @foreach (config('assetType')[3] as $key=> $at)
+                                        <option value="{{$key}}">{{$at}}</option>
+                                        @endforeach
                                         @endif
 
                                     </select>

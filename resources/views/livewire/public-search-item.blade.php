@@ -1,6 +1,6 @@
 <div
     class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi hover:scale-105">
-    <img src="https://mahdavi.storage.iran.liara.space/{{ explode('*',$asset['img'])[0] }}" alt=""
+    <img src="{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}" alt=""
         class="object-contain w-full rounded-t h-72">
     <div class="flex flex-col justify-between px-6 py-4">
         <div class="">
@@ -11,6 +11,32 @@
                 </svg>{{ config('cityAreas')[$asset['city']] }}</div>
         </div>
         <div class="text-lg font-medium mt-7 ">
+            @if ($asset['dealType']==2)
+            <div
+                class="flex items-center justify-between w-full px-2 py-1 border-2 rounded-md border-mahdavi text-base">
+                <div class="">
+                    @if ($asset['price_public']==0)
+                    تماس بگیرید
+                    @else
+                    <div class="">
+                        {{
+                        number_format($asset['price_public'], 0,
+                        ".","،") }}
+                        <span class="text-sm">تومانءءء</span>
+                    </div>
+                    <div class="">
+                        {{
+                        number_format($asset['rent'], 0,
+                        ".","،") }}
+                        <span class="text-sm">تومانءءء</span> اجاره
+                    </div>
+                    @endif
+                </div>
+                <a target="_blank"
+                    class="px-2 py-1 text-white border-2 rounded-md bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi"
+                    href="{{route('asset-view')}}?id={{$asset['id']}}">مشاهده</a>
+            </div>
+            @else
             <div class="flex items-center justify-between w-full px-2 py-1 border-2 rounded-md border-mahdavi">
                 @if ($asset['price_public']==0)
                 تماس بگیرید
@@ -24,6 +50,8 @@
                     class="px-2 py-1 text-white border-2 rounded-md bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi"
                     href="{{route('asset-view')}}?id={{$asset['id']}}">مشاهده</a>
             </div>
+            @endif
+
 
         </div>
 

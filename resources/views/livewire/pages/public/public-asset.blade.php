@@ -2,6 +2,7 @@
     <div class="flex flex-col gap-4 px-4 md:col-start-1 md:col-span-2 xl:col-start-2">
         <!-- Left Column Content -->
         <div class="flex flex-col gap-2">
+            <div class=""></div>
             <h1 class="text-xl font-medium">{{$asset['title']}}</h1>
             <div class="flex gap-2 text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
@@ -16,10 +17,28 @@
 
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">
-                    @if ($asset['dealType'] != 2)
-                    قیمت
-                    @else
+                    معامله
+                </div>
+                {{config('dealType')[$asset['dealType']]}}
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">
+                    نوع‌ملک
+                </div>
+                {{config('assetType')[$asset['assetType']][$asset['buildingType']]}}
+            </div>
+
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">
+                    @if ($asset['dealType'] == 2 )
                     پول پیش
+                    @elseif ($asset['dealType']==3)
+                    رهن
+                    @elseif ($asset['dealType']==1)
+                    پیش‌ فروش
+                    @else
+                    قیمت
                     @endif
                 </div>
                 @if ($asset['price_public'] != 0)
@@ -32,7 +51,7 @@
             @if ($asset['dealType'] == 2)
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">اجاره</div>
-                <div class="">{{ $asset['floor'] }}</div>
+                <div class="">{{ number_format($asset['rent'], 0, ".", "،") }} تومان</div>
             </div>
             @endif
 
@@ -47,23 +66,35 @@
                 @endif
             </div>
             @endif
-
-            <div class="flex items-center justify-between py-2 border-b">
-                <div class="text-gray-600">متراژ</div>
-                <div class="">{{ $asset['area'] }} متر</div>
-            </div>
             @if ($asset['assetType']!=0)
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">زیربنا</div>
                 <div class="">{{ $asset['space'] }} متر</div>
             </div>
             @endif
+            @if ($asset['area']!=0)
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">متراژ</div>
+                <div class="">{{ $asset['area'] }} متر</div>
+            </div>
+            @endif
 
-
+            @if ($asset['beds']!=0)
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">تعداد اتاق‌خواب</div>
+                <div class="">{{ $asset['beds'] }}</div>
+            </div>
+            @endif
             @if (in_array($asset->assetType, [3, 4, 8, 9, 11]))
             <div class="flex items-center justify-between py-2 border-b">
                 <div class="text-gray-600">طبقه</div>
                 <div class="">{{ $asset['floor'] }}</div>
+            </div>
+            @endif
+            @if ($asset['wcs']!=0)
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">سرویس بهداشتی</div>
+                <div class="">{{ $asset['wcs'] }} عدد</div>
             </div>
             @endif
         </div>
@@ -75,14 +106,14 @@
                 style="background-image: url('/img/logo.webp');"></div>
             @else
             <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
-                style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$pfp}}');"></div>
+                style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$pfp }}');"></div>
             @endif
             <div class="flex flex-col">
                 <div class="text-sm text-gray-600">مشاور:</div>
                 <div class="">{{ $asset->user->name }}</div>
                 <button x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                    class="py-1 mt-2 text-center text-white transition-opacity transition-transform rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس
-                    </ذ>
+                    class="py-1 mt-2 text-center text-white transition-all rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس
+                </button>
             </div>
         </div>
 
@@ -156,6 +187,29 @@
                     <p class="text-sm font-bold">انبار</p>
                 </div>
                 @endif
+                @if ($asset['cooks']!=0)
+                <div class="public-asset__facility--main">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px"
+                        xmlns:xlink="http://www.w3.org/1999/xlink" fill="currentColor" version="1.1" id="Capa_1"
+                        viewBox="0 0 511 511" xml:space="preserve">
+                        <g>
+                            <path
+                                d="M391.5,0c-4.142,0-7.5,3.358-7.5,7.5v120c0,4.687-3.813,8.5-8.5,8.5s-8.5-3.813-8.5-8.5V7.5c0-4.142-3.358-7.5-7.5-7.5   S352,3.358,352,7.5v120c0,4.687-3.813,8.5-8.5,8.5s-8.5-3.813-8.5-8.5V7.5c0-4.142-3.358-7.5-7.5-7.5S320,3.358,320,7.5v120   c0,4.687-3.813,8.5-8.5,8.5s-8.5-3.813-8.5-8.5V7.5c0-4.142-3.358-7.5-7.5-7.5S288,3.358,288,7.5v160   c0,12.958,10.542,23.5,23.5,23.5c4.687,0,8.5,3.813,8.5,8.5v73.409c-13.759,3.374-24,15.806-24,30.591v160   c0,26.191,21.309,47.5,47.5,47.5s47.5-21.309,47.5-47.5v-160c0-14.785-10.241-27.216-24-30.591V199.5c0-4.687,3.813-8.5,8.5-8.5   c12.958,0,23.5-10.542,23.5-23.5V7.5C399,3.358,395.642,0,391.5,0z M376,303.5v160c0,17.92-14.58,32.5-32.5,32.5   S311,481.42,311,463.5v-160c0-9.098,7.402-16.5,16.5-16.5h32C368.598,287,376,294.402,376,303.5z M375.5,176   c-12.958,0-23.5,10.542-23.5,23.5V272h-17v-72.5c0-12.958-10.542-23.5-23.5-23.5c-4.687,0-8.5-3.813-8.5-8.5v-18.097   c2.638,1.027,5.503,1.597,8.5,1.597c6.177,0,11.801-2.399,16-6.31c4.199,3.911,9.823,6.31,16,6.31s11.801-2.399,16-6.31   c4.199,3.911,9.823,6.31,16,6.31c2.997,0,5.862-0.57,8.5-1.597V167.5C384,172.187,380.187,176,375.5,176z" />
+                            <path
+                                d="M183.5,0c-20.479,0-38.826,11.623-51.663,32.728C118.86,54.064,112,84.07,112,119.5c0,25.652,13.894,49.464,36.26,62.144   c7.242,4.105,11.74,12.106,11.74,20.88v70.385c-13.759,3.374-24,15.806-24,30.591v160c0,26.191,21.309,47.5,47.5,47.5   s47.5-21.309,47.5-47.5v-160c0-14.785-10.241-27.216-24-30.591v-70.385c0-8.774,4.499-16.775,11.74-20.88   C241.106,168.964,255,145.152,255,119.5c0-35.43-6.86-65.436-19.837-86.772C222.326,11.623,203.979,0,183.5,0z M216,303.5v160   c0,17.92-14.58,32.5-32.5,32.5S151,481.42,151,463.5v-160c0-9.098,7.402-16.5,16.5-16.5h32C208.598,287,216,294.402,216,303.5z    M211.343,168.595C199.412,175.359,192,188.36,192,202.524V272h-17v-69.476c0-14.164-7.412-27.165-19.342-33.929   C137.981,158.574,127,139.762,127,119.5c0-32.68,6.104-59.99,17.653-78.978C154.809,23.826,168.242,15,183.5,15   s28.691,8.826,38.847,25.522C233.896,59.51,240,86.82,240,119.5C240,139.762,229.019,158.574,211.343,168.595z" />
+                            <path
+                                d="M191.5,304c-4.142,0-7.5,3.358-7.5,7.5v16c0,4.142,3.358,7.5,7.5,7.5s7.5-3.358,7.5-7.5v-16   C199,307.358,195.642,304,191.5,304z" />
+                            <path
+                                d="M191.5,352c-4.142,0-7.5,3.358-7.5,7.5v72c0,4.142,3.358,7.5,7.5,7.5s7.5-3.358,7.5-7.5v-72   C199,355.358,195.642,352,191.5,352z" />
+                            <path
+                                d="M351.5,304c-4.142,0-7.5,3.358-7.5,7.5v16c0,4.142,3.358,7.5,7.5,7.5s7.5-3.358,7.5-7.5v-16   C359,307.358,355.642,304,351.5,304z" />
+                            <path
+                                d="M351.5,352c-4.142,0-7.5,3.358-7.5,7.5v72c0,4.142,3.358,7.5,7.5,7.5s7.5-3.358,7.5-7.5v-72   C359,355.358,355.642,352,351.5,352z" />
+                        </g>
+                    </svg>
+                    <p class="text-sm font-bold">آشپزخانه</p>
+                </div>
+                @endif
                 <div class="grid grid-cols-2 gap-2">
                     @if ($asset['water']!=0)
                     <div class="public-asset__facility--main">
@@ -187,7 +241,7 @@
                         <p class="text-sm font-bold">{{config('heating')[$asset['heating']]}}</p>
                     </div>
                     @endif
-                    @if ($asset['cooling']==1)
+                    @if ($asset['cooling']!=0)
                     <div class="public-asset__facility--main">
                         <i class="bi bi-thermometer-snow"></i>
                         <p class="text-sm font-bold">{{config('cooling')[$asset['cooling']]}}</p>
@@ -219,7 +273,7 @@
                         <ul class="h-64 splide__list">
                             @foreach (explode("*", $asset['img']) as $img)
                             <picture class="w-full min-w-full splide__slide max-h-80">
-                                <img src="https://mahdavi.storage.iran.liara.space/{{ $img }}" alt=""
+                                <img src="{{ env('BUCKET_FULL_URL').'/'.$img }}" alt=""
                                     class="object-contain max-w-full mx-auto rounded max-h-80">
                             </picture>
                             @endforeach
@@ -230,7 +284,7 @@
                 <ul id="thumbnails" class="hidden grid-cols-5 gap-2 mt-2 md:grid">
                     @foreach (explode("*", $asset['img']) as $img)
                     <li class="bg-center bg-no-repeat bg-contain thumbnail max-h-16 max-w-16 min-h-16 min-w-16"
-                        style="background-image: url('https://mahdavi.storage.iran.liara.space/{{ $img }}')">
+                        style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$img }}')">
                     </li>
                     @endforeach
                 </ul>
@@ -256,7 +310,7 @@
                     style="background-image: url('/img/logo.webp');"></div>
                 @else
                 <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
-                    style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$pfp}}');"></div>
+                    style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$pfp }}');"></div>
                 @endif
                 <div class="flex flex-col">
                     <div class="text-sm text-gray-600">مشاور:</div>

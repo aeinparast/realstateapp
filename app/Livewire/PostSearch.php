@@ -48,7 +48,7 @@ class PostSearch extends Component
         $this->setPrice();
 
         // Initialize the query
-        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img');
+        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img', 'rent');
 
 
         // Apply filters based on assetType

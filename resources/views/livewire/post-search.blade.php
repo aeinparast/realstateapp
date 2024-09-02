@@ -34,7 +34,7 @@
                     <label for="sell" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
                 </div>
                 <div class="flex items-center mb-1">
-                    <input id="year" type="radio" name="dealType" value="1" wire:model="dealType" wire:change='$refresh'
+                    <input id="year" type="radio" name="dealType" value="3" wire:model="dealType" wire:change='$refresh'
                         class="public-search__btn-radio">
                     <label for="year" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
                 </div>
@@ -45,7 +45,7 @@
                 </div>
                 @if ($assetType!=0)
                 <div class="flex items-center mb-1">
-                    <input id="project" type="radio" name="dealType" value="3" wire:model="dealType"
+                    <input id="project" type="radio" name="dealType" value="1" wire:model="dealType"
                         wire:change='$refresh' class="public-search__btn-radio">
                     <label for="project" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
                         مشارکت</label>
