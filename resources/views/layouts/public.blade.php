@@ -16,40 +16,45 @@
 </head>
 
 <body class="relative font-sans antialiased " dir="rtl" id="body">
-  {{-- <div
-    class="fixed z-50 top-3 right-4 border-2 border-white w-7 h-7 flex items-center justify-center rounded-full text-white">
-    <i class="bi bi-list flex justify-center items-center"></i>
+  <div class=" navigation md:hidden">
+    <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
+
+    <label for="navi-toggle" class="navigation__button">
+      <span class="navigation__icon">&nbsp;</span>
+    </label>
+
+    <div class="navigation__background">&nbsp;</div>
+
+    <nav class="navigation__nav">
+      <ul class="navigation__list">
+        <li class="navigation__item"><a href="{{route('home')}}" class="text-white
+                            @if (request()->routeIs('home'))
+                            border-b
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif
+          ">خانه</a></li>
+        <li class="navigation__item"><a href="#" class="text-white">املاک</a></li>
+        <li class="navigation__item"><a href="#" class="text-white">شهرها</a></li>
+        <li class="navigation__item"><a href="{{route('public-agents')}}" class="text-white
+          @if (request()->routeIs('public-agents'))
+                            border-b
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif
+          ">مشاوران</a></li>
+        <li class="navigation__item"><a href="#" class="text-white">تماس با ما</a></li>
+        <li class="navigation__item"><a href="#" class="text-white">درباره ما</a></li>
+
+
+      </ul>
+    </nav>
   </div>
-  <div class=" bg-mahdavi fixed h-screen w-full z-20 flex justify-center items-center" id="mobile-nav">
-    <ul class="flex justify-center items-center flex-col gap-2">
-      <li class="text-3xl font-bold transition-colors text-white
-      @if (request()->routeIs('home'))
-        border-b-2
-      @endif
-      ">
-        <a href="{{route('home')}}">خانه</a>
-      </li>
-      <li class="text-3xl font-bold transition-colors text-white">
-        <a href="{{route('home')}}">شهرها</a>
-      </li>
-      <li class="text-3xl font-bold transition-colors text-white
-      @if (request()->routeIs('public-agents'))
-        border-b-2
-      @endif
-      ">
-        <a href="{{route('public-agents')}}">مشاوران</a>
-      </li>
-      <li class="text-3xl font-bold transition-colors text-white">
-        <a href="{{route('home')}}">ارتباط با ما</a>
-      </li>
-      <li class="text-3xl font-bold transition-colors text-white">
-        <a href="{{route('home')}}">درباره‌ما</a>
-      </li>
-    </ul>
-  </div> --}}
   <div class="lg:container md:mx-auto">
     <header class="">
-      <nav class="flex items-center justify-between w-full h-12 px-1 rounded sm:px-8">
+      <nav class="items-center justify-between hidden w-full h-12 px-1 rounded md:flex sm:px-8">
         <div class="flex items-center sm:gap-2 md:gap-2 lg:gap-6 xl:gap-12">
           <a href="/"
             class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-mahdavi hover:border-b-mahdavi">

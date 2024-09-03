@@ -1,7 +1,7 @@
-<div class="grid grid-cols-1 gap-4 px-4 mt-8 lg:grid-cols-4" id="post-search">
-    <div class="relative top-0 right-0 flex flex-col col-span-1 gap-2 p-2 border-2 rounded border-mahdavi">
-        <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
+<div class="grid grid-cols-1 gap-4 px-4 mt-8 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3" id="post-search">
 
+    <div class="relative top-0 right-0 flex-col hidden col-span-1 gap-2 p-2 border-2 rounded sm:flex border-mahdavi">
+        <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
             <p class="mb-2 text-lg font-bold text-gray-600">نوع ملک</p>
             <div class="flex flex-col gap-2 pr-4 mb-6">
                 <div class="items-center">
@@ -75,7 +75,8 @@
         </div>
     </div>
 
-    <div class="grid grid-cols-3 col-span-3 gap-2">
+    <div class="relative grid justify-center col-span-1 gap-2 md:justify-normal md:grid-cols-2 md:col-span-2">
+        <div class="sticky !left-0 w-10 h-10 bg-black top-2"></div>
         @foreach ($assets as $asset)
         <livewire:public-search-item :$asset wire:key="{{ $asset['id'] }}" />
 
