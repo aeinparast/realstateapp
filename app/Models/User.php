@@ -55,8 +55,8 @@ class User extends Authenticatable
         ];
     }
 
-    protected function assets(): HasMany
+    public function assets()
     {
-        return $this->hasMany(Asset::class);
+        return $this->hasMany(Asset::class); // Adjust the relationship type if needed
     }
 }

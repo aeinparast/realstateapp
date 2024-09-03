@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 
@@ -10,9 +11,7 @@ class AdminUpdateUser extends Component
 {
     public User $user;
 
-    #[Validate('required|string|max:52')]
     public string $name;
-    #[Validate('required|email|max:52')]
     public string $email;
 
     public $role;
@@ -33,11 +32,28 @@ class AdminUpdateUser extends Component
 
     public function update()
     {
-        $this->user->name = $this->name;
-        $this->user->email = $this->email;
-        $this->user->role = $this->role;
+        $validData = $this->validate([
+            'name' => 'required|string|max:52',
+            'email' => 'required|email|max:52',
+            'role' => 'required|between:0,2'
+        ]);
+        $this->user->fill($validData);
+        $this->dispatch('user-updated',);
         $this->user->save();
-        return redirect()->route('admin-users');
+    }
+
+    public function updatePassword()
+    {
+        $validated = $this->validate([
+            'password' => 'required|string|confirmed'
+        ]);
+
+        $this->user->update([
+            'password' => Hash::make($validated['password']),
+        ]);
+
+        $this->reset('password', 'password_confirmation');
+        $this->dispatch('user-password-updated');
     }
 
     public function render()

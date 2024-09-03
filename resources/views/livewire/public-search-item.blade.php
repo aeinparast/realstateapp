@@ -2,7 +2,7 @@
     class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi hover:scale-105">
     <img src="{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}" alt=""
         class="object-contain w-full rounded-t h-72">
-    <div class="flex flex-col justify-between px-6 py-4">
+    <div class="flex flex-col justify-between flex-1 px-6 py-4">
         <div class="">
             <div class="mb-2 text-xl font-bold text-cyan-800">{{ $asset['title'] }}</div>
             <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
@@ -13,7 +13,7 @@
         <div class="text-lg font-medium mt-7 ">
             @if ($asset['dealType']==2)
             <div
-                class="flex items-center justify-between w-full px-2 py-1 border-2 rounded-md border-mahdavi text-base">
+                class="flex items-center justify-between w-full px-2 py-1 text-base border-2 rounded-md border-mahdavi">
                 <div class="">
                     @if ($asset['price_public']==0)
                     تماس بگیرید

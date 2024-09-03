@@ -1,10 +1,10 @@
 <x-public-layout>
-  <section class="min-h-screen grid-cols-1 px-8 m-2 rounded-lg lg:grid-cols-2 hero py-14  border-b" id="hero">
+  <section class="min-h-screen grid-cols-1 px-8 m-2 border-b rounded-lg lg:grid-cols-2 hero py-14" id="hero">
     <div class="flex flex-col items-center mb-2">
-      <h1 class=" text-mahdavi font-bold text-6xl ">مشاوران هلدینگ سرمایه‌گذاری مهدوی
+      <h1 class="text-6xl font-bold text-mahdavi">مشاوران هلدینگ سرمایه‌گذاری مهدوی
       </h1>
       <h2
-        class="text-lg mt-3 text-white py-1 bg-mahdavi transition-all px-4 rounded-sm hover:ring-4 ring-mahdavi ring-offset-4 cursor-default">
+        class="px-4 py-1 mt-3 text-lg text-white transition-all rounded-sm cursor-default bg-mahdavi hover:ring-4 ring-mahdavi ring-offset-4">
         از ابتدا تا
         انتها با شما هستیم
       </h2>

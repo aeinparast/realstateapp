@@ -1,18 +1,18 @@
 <div class="flex flex-wrap gap-2">
     @foreach ($agents as $agent)
-    <div
-        class="flex px-4 hover:scale-105 transition-transform flex-col text-center justify-center sm:flex-row sm:text-right items-center sm:items-start gap-4  py-2 border-2 rounded-md border-mahdavi">
+    <div data-aos="fade" data-aos-duration="1000"
+        class="flex flex-col items-center justify-center gap-4 px-4 py-2 text-center transition-transform border-2 rounded-md hover:scale-105 sm:flex-row sm:text-right sm:items-start border-mahdavi">
         @if ($agent->pfp=='')
-        <div class="w-24 h-24  rounded-full bg-contain bg-center bg-no-repeat"
+        <div class="w-24 h-24 bg-center bg-no-repeat bg-contain rounded-full"
             style="background-image: url('/img/logo.webp');"></div>
         @else
-        <div class="w-24 h-24  rounded-full bg-contain bg-center bg-no-repeat"
+        <div class="w-24 h-24 bg-center bg-no-repeat bg-contain rounded-full"
             style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$agent->pfp }}');"></div>
         @endif
         <div class="flex flex-col">
             <div class="text-sm text-gray-600">مشاور:</div>
             <a href="/agent/{{ $agent->id }}"
-                class="font-medium bg-mahdavi text-white px-4 rounded-sm  transition-colors">{{
+                class="px-4 font-medium text-white transition-colors rounded-sm bg-mahdavi">{{
                 $agent->name }}</a>
             <div class="text-sm text-gray-600">تلفن:</div>
             <a href="tel:{{ $agent->phone }}" class="border-b-2 border-mahdavi">{{ $agent->phone
@@ -20,10 +20,10 @@
             <div class="text-sm text-gray-600">همراه:</div>
             <a href="tel:{{ $agent->mobile }}" class="border-b-2 border-mahdavi">{{ $agent->mobile
                 }}</a>
-            <div class=" mt-2 flex gap-2 justify-center sm:justify-normal">
+            <div class="flex justify-center gap-2 mt-2 sm:justify-normal">
                 @if ($agent->instagram!='')
                 <a href="https://www.instagram.com/{{$agent->instagram}}" target="_blank" rel="noopener noreferrer"
-                    class="h-6 w-6 hover:scale-105 transition-transform">
+                    class="w-6 h-6 transition-transform hover:scale-105">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 102">
                         <defs>
                             <radialGradient id="a" cx="6.601" cy="99.766" r="129.502" gradientUnits="userSpaceOnUse">
@@ -49,7 +49,7 @@
                 @endif
                 @if ($agent->telegram!='')
                 <a href="https://t.me/{{$agent->telegram}}" target="_blank" rel="noopener noreferrer"
-                    class="h-6 w-6 hover:scale-105 transition-transform">
+                    class="w-6 h-6 transition-transform hover:scale-105">
                     <svg xmlns="http://www.w3.org/2000/svg" data-name="7" viewBox="0 0 64 64">
                         <path fill="#21a7db" fill-rule="evenodd"
                             d="m60,12c0-4.42-3.58-8-8-8H12C7.58,4,4,7.58,4,12v40c0,4.42,3.58,8,8,8h40c4.42,0,8-3.58,8-8V12h0Z" />
@@ -60,7 +60,7 @@
                 @endif
                 @if ($agent->whatsup!='')
                 <a href="https://wa.me/{{$agent->whatsup}}" target="_blank" rel="noopener noreferrer"
-                    class="h-6 w-6 hover:scale-105 transition-transform text-green-500">
+                    class="w-6 h-6 text-green-500 transition-transform hover:scale-105">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 102">
                         <defs>
                             <linearGradient id="a" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
@@ -81,7 +81,7 @@
                 @endif
                 @if ($agent->eta!='')
                 <a href="https://eitaa.com/{{$agent->eta}}" target="_blank" rel="noopener noreferrer"
-                    class="h-6 w-6 hover:scale-105 transition-transform">
+                    class="w-6 h-6 transition-transform hover:scale-105">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3584.55 3673.6">
                         <g id="Isolation_Mode" data-name="Isolation Mode">
                             <path

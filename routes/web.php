@@ -4,6 +4,7 @@ use App\Livewire\AdminCreateUser;
 use App\Livewire\AdminUpdateUser;
 use App\Livewire\AdminUsers;
 use App\Livewire\AssetCreate;
+use App\Livewire\AssetUpdate;
 use App\Livewire\PublicAsset;
 use Illuminate\Support\Facades\Route;
 
@@ -25,6 +26,10 @@ Route::view('asset', 'asset')
 Route::get('create-asset', AssetCreate::class)
     ->middleware(['auth'])
     ->name('asset-create');
+
+Route::get('update-asset/{asset}', AssetUpdate::class)
+    ->middleware(['auth'])
+    ->name('asset-update');
 
 Route::get('view', PublicAsset::class)
     ->name('asset-view');

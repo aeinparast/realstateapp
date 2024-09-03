@@ -17,7 +17,9 @@
     "dependencies": {
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-auto-scroll": "^0.5.3",
+        "aos": "^2.3.4",
         "bootstrap-icons": "^1.11.3",
+        "install": "^0.13.0",
         "taos": "^1.0.5"
     }
 }

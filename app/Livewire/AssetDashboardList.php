@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Livewire\WithPagination;
 
@@ -12,11 +13,20 @@ class AssetDashboardList extends Component
 
 
 
+
     public function render()
     {
-        return view('livewire.asset-dashboard-list', [
-            'star' => '*',
-            'assets' => Asset::paginate(15),
-        ]);
+
+        if (Auth::user()->role == 0) {
+            return view('livewire.asset-dashboard-list', [
+                'star' => '*',
+                'assets' => Asset::paginate(30),
+            ]);
+        } else {
+            return view('livewire.asset-dashboard-list', [
+                'star' => '*',
+                'assets' => Auth::user()->assets()->paginate(30),
+            ]);
+        }
     }
 }

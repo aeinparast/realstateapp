@@ -134,5 +134,5 @@ body {
 }
 
 .public-asset__facility--main {
-  @apply flex items-center justify-center gap-2 px-2 py-1 border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white transition-colors;
+  @apply flex items-center justify-center gap-2 px-2 py-1 transition-colors border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white;
 }

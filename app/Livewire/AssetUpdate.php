@@ -3,13 +3,13 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use App\Services\NumeralConverter;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
 use Livewire\WithFileUploads;
-use App\Services\NumeralConverter;
 
-class AssetCreate extends Component
+class AssetUpdate extends Component
 {
     use WithFileUploads;
 
@@ -17,7 +17,7 @@ class AssetCreate extends Component
     #[Validate('image|max:1024')] // 1MB Max
     public $file;
 
-
+    public $assetId;
     public $title;
     public $assetType = 0;
     public $dealType = 0;
@@ -103,8 +103,9 @@ class AssetCreate extends Component
 
         $validatedData['facilities_list'] = json_encode($this->facilities_list);
 
-        // Create the Asset with the validated data
-        Asset::create($validatedData);
+        $asset = Asset::find($this->assetId);
+        $asset->fill($validatedData);
+        $asset->save();
 
         // Redirect after saving
         return redirect()->to('/asset');
@@ -181,12 +182,49 @@ class AssetCreate extends Component
         $this->buildingType = array_key_first(config('assetType')[$this->assetType]);
     }
 
+    public function mount(Asset $asset)
+    {
+        $this->title = $asset->title;
+        $this->seller_phone = $asset->seller_phone;
+        $this->seller_mobile = $asset->seller_mobile;
+        $this->seller_name = $asset->seller_name;
+        $this->notes = $asset->notes;
+        $this->assetType = (int) $asset->assetType;
+        $this->dealType = (int) $asset->dealType;
+        $this->buildingType = (int) $asset->buildingType;
+        $this->price_private = (int) $asset->price_private;
+        $this->price_public = (int) $asset->price_public;
+        $this->price_per_meter = (int) $asset->price_per_meter;
+        $this->rent = (int) $asset->rent;
+        $this->area = (int) $asset->area;
+        $this->space = (int) $asset->space;
+        $this->floor = (int) $asset->floor;
+        $this->direction = (int) $asset->direction;
+        $this->beds = (int) $asset->beds;
+        $this->wcs = (int) $asset->wcs;
+        $this->cooks = (int) $asset->cooks;
+        $this->cooling = (int) $asset->cooling;
+        $this->heating = (int) $asset->heating;
+        $this->water = (int) $asset->water;
+        $this->elec = (int) $asset->elec;
+        $this->gas = (int) $asset->gas;
+        $this->landline = (int) $asset->landline;
+        $this->elevator = (int) $asset->elevator;
+        $this->storage = (int) $asset->storage;
+        $this->parking = (int) $asset->parking;
+        $this->fileType = (int) $asset->fileType;
+
+        $this->map = $asset->map;
+        $this->facilities_list = json_decode($asset->facilities_list);
+        $this->photos = explode('*', $asset->img);
+        $this->assetId = $asset['id'];
+    }
+
 
     public function render()
     {
         $facilities = config('facilities');
         $cityAreas = config('cityAreas');
-
-        return view('livewire.asset-create', compact(['facilities', 'cityAreas']));
+        return view('livewire.asset-update', compact(['facilities', 'cityAreas']));
     }
 }

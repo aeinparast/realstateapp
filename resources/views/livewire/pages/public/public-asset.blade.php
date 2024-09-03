@@ -1,4 +1,4 @@
-<div class="grid min-h-screen grid-cols-1 gap-4 md:grid-cols-4 xl:grid-cols-6 pt-4">
+<div class="grid min-h-screen grid-cols-1 gap-4 pt-4 md:grid-cols-4 xl:grid-cols-6">
     <div class="flex flex-col gap-4 px-4 md:col-start-1 md:col-span-2 xl:col-start-2">
         <!-- Left Column Content -->
         <div class="flex flex-col gap-2">
@@ -97,15 +97,36 @@
                 <div class="">{{ $asset['wcs'] }} عدد</div>
             </div>
             @endif
+            @if ($asset['direction']!=0)
+            <div class="flex items-center justify-between py-2 border-b">
+                <div class="text-gray-600">جهت</div>
+                <div class="">
+                    @switch($asset['direction'])
+                    @case(1)
+                    شمال
+                    @break
+                    @case(2)
+                    شرق
+                    @break
+                    @case(3)
+                    جنوب
+                    @break
+                    @default
+                    غرب
+                    @endswitch
+
+                </div>
+            </div>
+            @endif
         </div>
 
         <!-- Seller Information -->
         <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi">
             @if ($pfp==null || $pfp=='')
-            <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+            <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                 style="background-image: url('/img/logo.webp');"></div>
             @else
-            <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+            <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                 style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$pfp }}');"></div>
             @endif
             <div class="flex flex-col">
@@ -304,17 +325,17 @@
             </h2>
 
             <div
-                class="flex flex-col text-center justify-center sm:flex-row sm:text-right items-center sm:items-start gap-4 px-2 py-2 border rounded-md border-mahdavi">
+                class="flex flex-col items-center justify-center gap-4 px-2 py-2 text-center border rounded-md sm:flex-row sm:text-right sm:items-start border-mahdavi">
                 @if ($pfp==null || $pfp=='')
-                <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                     style="background-image: url('/img/logo.webp');"></div>
                 @else
-                <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
+                <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                     style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$pfp }}');"></div>
                 @endif
                 <div class="flex flex-col">
                     <div class="text-sm text-gray-600">مشاور:</div>
-                    <a href="/agent/{{ $asset->user->id }}" class="font-medium hover:text-mahdavi transition-colors">{{
+                    <a href="/agent/{{ $asset->user->id }}" class="font-medium transition-colors hover:text-mahdavi">{{
                         $asset->user->name }}</a>
                     <div class="text-sm text-gray-600">تلفن:</div>
                     <a href="tel:{{ $asset->user->phone }}" class="border-b-2 border-mahdavi">{{ $asset->user->phone
@@ -322,10 +343,10 @@
                     <div class="text-sm text-gray-600">همراه:</div>
                     <a href="tel:{{ $asset->user->mobile }}" class="border-b-2 border-mahdavi">{{ $asset->user->mobile
                         }}</a>
-                    <div class=" mt-2 flex gap-2 justify-center sm:justify-normal">
+                    <div class="flex justify-center gap-2 mt-2  sm:justify-normal">
                         @if ($asset->user->instagram!='')
                         <a href="https://www.instagram.com/{{$asset->user->instagram}}" target="_blank"
-                            rel="noopener noreferrer" class="h-6 w-6 hover:scale-105 transition-transform">
+                            rel="noopener noreferrer" class="w-6 h-6 transition-transform hover:scale-105">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 102">
                                 <defs>
                                     <radialGradient id="a" cx="6.601" cy="99.766" r="129.502"
@@ -353,7 +374,7 @@
                         @endif
                         @if ($asset->user->telegram!='')
                         <a href="https://t.me/{{$asset->user->telegram}}" target="_blank" rel="noopener noreferrer"
-                            class="h-6 w-6 hover:scale-105 transition-transform">
+                            class="w-6 h-6 transition-transform hover:scale-105">
                             <svg xmlns="http://www.w3.org/2000/svg" data-name="7" viewBox="0 0 64 64">
                                 <path fill="#21a7db" fill-rule="evenodd"
                                     d="m60,12c0-4.42-3.58-8-8-8H12C7.58,4,4,7.58,4,12v40c0,4.42,3.58,8,8,8h40c4.42,0,8-3.58,8-8V12h0Z" />
@@ -364,7 +385,7 @@
                         @endif
                         @if ($asset->user->whatsup!='')
                         <a href="https://wa.me/{{$asset->user->whatsup}}" target="_blank" rel="noopener noreferrer"
-                            class="h-6 w-6 hover:scale-105 transition-transform text-green-500">
+                            class="w-6 h-6 text-green-500 transition-transform hover:scale-105">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 102 102">
                                 <defs>
                                     <linearGradient id="a" x1=".5" x2=".5" y2="1" gradientUnits="objectBoundingBox">
@@ -385,7 +406,7 @@
                         @endif
                         @if ($asset->user->eta!='')
                         <a href="https://eitaa.com/{{$asset->user->eta}}" target="_blank" rel="noopener noreferrer"
-                            class="h-6 w-6 hover:scale-105 transition-transform">
+                            class="w-6 h-6 transition-transform hover:scale-105">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3584.55 3673.6">
                                 <g id="Isolation_Mode" data-name="Isolation Mode">
                                     <path
@@ -397,7 +418,7 @@
                         @endif
                         {{-- @if ($asset->user->bale!='')
                         <a href="" target="_blank" rel="noopener noreferrer"
-                            class="h-6 w-6 hover:scale-105 transition-transform">
+                            class="w-6 h-6 transition-transform hover:scale-105">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
                                 viewBox="0 0 1000 999.72">
                                 <defs>
@@ -428,7 +449,7 @@
 
             </div>
 
-            <div class="mt-6 flex justify-end">
+            <div class="flex justify-end mt-6">
                 <x-secondary-button x-on:click="$dispatch('close')">
                     <div class="!font-sans">بازگشت</div>
                 </x-secondary-button>

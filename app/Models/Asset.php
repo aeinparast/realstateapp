@@ -44,7 +44,8 @@ class Asset extends Model
         'elevator',
         'storage',
         'parking',
-        'map'
+        'map',
+        'fileType'
     ];
 
 

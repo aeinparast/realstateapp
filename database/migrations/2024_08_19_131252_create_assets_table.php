@@ -16,6 +16,8 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class);
             $table->string('title'); // String for the title
+            $table->unsignedTinyInteger('fileType')->default(0); // Integer with default value 0
+            $table->unsignedTinyInteger('isPublic')->default(0); // Integer with default value 0
             $table->unsignedTinyInteger('assetType')->default(0)->index(); // Integer with default value 0
             $table->unsignedTinyInteger('dealType')->default(0)->index();  // Integer with default value 0
             $table->unsignedTinyInteger('buildingType')->default(0)->index();  // Integer with default value 0
