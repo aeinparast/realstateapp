@@ -23,7 +23,7 @@ new class extends Component
             <div class="flex">
                 <!-- Logo -->
                 <div class="flex items-center shrink-0">
-                    <a href="{{ route('dashboard') }}" wire:navigate>
+                    <a href="/" target="__blank">
                         <x-application-logo class="block w-auto text-gray-800 fill-current h-9 dark:text-gray-200" />
                     </a>
                 </div>
@@ -130,13 +130,13 @@ new class extends Component
 
             <div class="mt-3 space-y-1">
                 <x-responsive-nav-link :href="route('profile')" wire:navigate>
-                    {{ __('Profile') }}
+                    {{ __('پروفایل') }}
                 </x-responsive-nav-link>
 
                 <!-- Authentication -->
                 <button wire:click="logout" class="w-full text-start">
                     <x-responsive-nav-link>
-                        {{ __('Log Out') }}
+                        {{ __('خروج') }}
                     </x-responsive-nav-link>
                 </button>
             </div>

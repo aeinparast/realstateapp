@@ -8,28 +8,28 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                </svg>{{config('cityAreas')[$asset['city']]}}
+                </svg>{{config('cityAreas')[$asset['city']]}} - {{$asset['created_at']->locale('fa')->diffForHumans()}}
             </div>
         </div>
 
         <div class="flex flex-col">
             <!-- Pricing Information -->
 
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">
                     معامله
                 </div>
                 {{config('dealType')[$asset['dealType']]}}
             </div>
 
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">
                     نوع‌ملک
                 </div>
                 {{config('assetType')[$asset['assetType']][$asset['buildingType']]}}
             </div>
 
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">
                     @if ($asset['dealType'] == 2 )
                     پول پیش
@@ -49,14 +49,14 @@
             </div>
 
             @if ($asset['dealType'] == 2)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">اجاره</div>
                 <div class="">{{ number_format($asset['rent'], 0, ".", "،") }} تومان</div>
             </div>
             @endif
 
             @if ($asset['price_per_meter'] != 0 && $asset['dealType'] != 2)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">قیمت هر متر</div>
                 @if ($asset['price_public'] != 0)
                 <div class="">{{ number_format($asset['price_per_meter'], 0, ".", "،") }} تومان
@@ -67,38 +67,38 @@
             </div>
             @endif
             @if ($asset['assetType']!=0)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">زیربنا</div>
                 <div class="">{{ $asset['space'] }} متر</div>
             </div>
             @endif
             @if ($asset['area']!=0)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">متراژ</div>
                 <div class="">{{ $asset['area'] }} متر</div>
             </div>
             @endif
 
             @if ($asset['beds']!=0)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">تعداد اتاق‌خواب</div>
                 <div class="">{{ $asset['beds'] }}</div>
             </div>
             @endif
             @if (in_array($asset->assetType, [3, 4, 8, 9, 11]))
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">طبقه</div>
                 <div class="">{{ $asset['floor'] }}</div>
             </div>
             @endif
             @if ($asset['wcs']!=0)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">سرویس بهداشتی</div>
                 <div class="">{{ $asset['wcs'] }} عدد</div>
             </div>
             @endif
             @if ($asset['direction']!=0)
-            <div class="flex items-center justify-between py-2 border-b">
+            <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">جهت</div>
                 <div class="">
                     @switch($asset['direction'])
@@ -121,7 +121,7 @@
         </div>
 
         <!-- Seller Information -->
-        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi">
+        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi  list_item">
             @if ($pfp==null || $pfp=='')
             <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                 style="background-image: url('/img/logo.webp');"></div>

@@ -30,16 +30,25 @@
         </div>
         @endswitch
         <div class="text-sm">{{ $asset['seller_name'] }} - <a
-                href="tel:{{$asset['seller_phone']}}">{{$asset['seller_phone']}}</a></div>
+                href="tel:{{$asset['seller_phone']}}">{{$asset['seller_phone']}}</a>-
+            <a href="tel:{{$asset['seller_mobile']}}">{{$asset['seller_mobile']}}</a>
+        </div>
         <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                 fill="currentColor" class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-            </svg>{{config('cityAreas')[$asset['city']]}}</div>
+            </svg>{{config('cityAreas')[$asset['city']]}} - {{$asset['created_at']->locale('fa')->diffForHumans()}}
+        </div>
     </div>
 </div>
 <div class="flex flex-col justify-between ">
     <a href="" class="text-sm text-white ">
-        <button class="w-full px-2 bg-green-500 rounded">عمومی سازی</button>
+        <button wire:click.prevent='publish({{$asset->id}})' class="w-full px-2 bg-green-500 rounded">
+            @if ($asset->isPublic==0)
+            عمومی سازی
+            @else
+            خصوصی سازی
+            @endif
+        </button>
     </a>
     <a href="{{route('asset-update',$asset->id)}}" class="text-sm text-white ">
         <button class="w-full px-2 bg-yellow-500 rounded">ویرایش</button>

@@ -9,6 +9,8 @@ use App\Livewire\PublicAsset;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
+Route::view('/test', 'test');
+
 
 Route::view('dashboard', 'dashboard')
     ->middleware(['auth', 'verified'])

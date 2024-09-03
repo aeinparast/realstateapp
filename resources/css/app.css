@@ -111,7 +111,7 @@ body {
 }
 
 .navigation__btn--secondery {
-  @apply transition-colors hover:bg-transparent text-mahdavi hover:border-dashed;
+  @apply hidden md:flex transition-colors hover:bg-transparent text-mahdavi hover:border-dashed;
 }
 
 
@@ -135,4 +135,18 @@ body {
 
 .public-asset__facility--main {
   @apply flex items-center justify-center gap-2 px-2 py-1 transition-colors border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white;
+}
+
+
+/* Initial state for list items */
+.list_item {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.2s ease-in, transform 0.2s ease-in;
+}
+
+/* Visible state */
+.visible {
+  opacity: 1;
+  transform: translateY(0);
 }

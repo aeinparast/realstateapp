@@ -50,6 +50,10 @@ class PostSearch extends Component
         // Initialize the query
         $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img', 'rent');
 
+        $query->where('isPublic', 1);
+        $query->where('fileType', 1);
+
+
 
         // Apply filters based on assetType
         if ($this->assetType !== '') {

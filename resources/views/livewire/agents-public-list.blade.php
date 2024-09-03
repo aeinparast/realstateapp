@@ -1,7 +1,9 @@
-<div class="flex flex-wrap gap-2">
+<div class="grid gap-2 md:grid-cols-2 xl:grid-cols-3">
     @foreach ($agents as $agent)
     <div data-aos="fade" data-aos-duration="1000"
-        class="flex flex-col items-center justify-center gap-4 px-4 py-2 text-center transition-transform border-2 rounded-md hover:scale-105 sm:flex-row sm:text-right sm:items-start border-mahdavi">
+        class="
+        list_item
+        flex flex-col items-center justify-center gap-4 px-4 py-2 text-center transition-all border-2 rounded-md hover:scale-105 sm:flex-row sm:text-right sm:items-start border-mahdavi">
         @if ($agent->pfp=='')
         <div class="w-24 h-24 bg-center bg-no-repeat bg-contain rounded-full"
             style="background-image: url('/img/logo.webp');"></div>

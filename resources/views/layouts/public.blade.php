@@ -15,7 +15,38 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased" dir="rtl">
+<body class="relative font-sans antialiased " dir="rtl" id="body">
+  {{-- <div
+    class="fixed z-50 top-3 right-4 border-2 border-white w-7 h-7 flex items-center justify-center rounded-full text-white">
+    <i class="bi bi-list flex justify-center items-center"></i>
+  </div>
+  <div class=" bg-mahdavi fixed h-screen w-full z-20 flex justify-center items-center" id="mobile-nav">
+    <ul class="flex justify-center items-center flex-col gap-2">
+      <li class="text-3xl font-bold transition-colors text-white
+      @if (request()->routeIs('home'))
+        border-b-2
+      @endif
+      ">
+        <a href="{{route('home')}}">خانه</a>
+      </li>
+      <li class="text-3xl font-bold transition-colors text-white">
+        <a href="{{route('home')}}">شهرها</a>
+      </li>
+      <li class="text-3xl font-bold transition-colors text-white
+      @if (request()->routeIs('public-agents'))
+        border-b-2
+      @endif
+      ">
+        <a href="{{route('public-agents')}}">مشاوران</a>
+      </li>
+      <li class="text-3xl font-bold transition-colors text-white">
+        <a href="{{route('home')}}">ارتباط با ما</a>
+      </li>
+      <li class="text-3xl font-bold transition-colors text-white">
+        <a href="{{route('home')}}">درباره‌ما</a>
+      </li>
+    </ul>
+  </div> --}}
   <div class="lg:container md:mx-auto">
     <header class="">
       <nav class="flex items-center justify-between w-full h-12 px-1 rounded sm:px-8">

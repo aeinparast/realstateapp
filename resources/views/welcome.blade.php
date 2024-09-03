@@ -1,6 +1,7 @@
 <x-public-layout>
     <section class=" grid min-h-screen grid-cols-1 px-8 m-2 rounded-lg lg:grid-cols-2 hero py-14 bg-mahdavi" id="hero">
-        <div class="text-center lg:text-right">
+        <div
+            class="text-center lg:text-right scroll-section  opacity-0 transform translate-y-10 transition-opacity duration-700 ease-in">
             <h1 class="text-6xl text-center lg:text-right font-bold text-white lg:text-9xl lg:font-black"
                 style="line-height: 1.3">ورود به
                 قلب بازار
@@ -18,7 +19,7 @@
         <div class="rounded-lg sm:p-6 h-[90%] grid grid-cols-1 gap-4 p-2 ">
             <div class="grid grid-cols-2 gap-4 font-black  text-white sm:grid-cols-4  lg:grid-cols-2 xl:grid-cols-4">
                 <div
-                    class="grid  content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
+                    class="list_item grid  content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor"
                         class="mx-auto bi bi-houses" viewBox="0 0 16 16">
                         <path
@@ -27,7 +28,7 @@
                     <div class="">مشاهده املاک</div>
                 </div>
                 <div
-                    class="grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
+                    class="list_item grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor"
                         class="mx-auto bi bi-telephone-outbound" viewBox="0 0 16 16">
                         <path
@@ -36,7 +37,7 @@
                     <div class="">تماس با مشاورین</div>
                 </div>
                 <div
-                    class="grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
+                    class="list_item grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor"
                         class="mx-auto bi bi-book-half" viewBox="0 0 16 16">
                         <path
@@ -45,7 +46,7 @@
                     <div class="">فروش ملک</div>
                 </div>
                 <div
-                    class="grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
+                    class="list_item grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
                     <svg xmlns="http://www.w3.org/2000/svg" width="46" height="46" fill="currentColor"
                         class="mx-auto bi bi-newspaper" viewBox="0 0 16 16">
                         <path

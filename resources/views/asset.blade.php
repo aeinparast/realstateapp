@@ -13,7 +13,7 @@
             لیست فایل‌هایی که به آن دسترسی دارید.
           </div>
           <a href="{{route('asset-create')}}" wire:navigate
-            class="px-4 py-2 font-bold text-white transition-colors bg-blue-500 border border-transparent rounded hover:bg-transparent hover:border-blue-500 hover:text-blue-500 ">
+            class="px-4 py-2 font-bold text-white transition-colors bg-blue-500 border-2 border-transparent rounded hover:bg-transparent hover:border-blue-500 hover:text-blue-500 ">
             فایل جدید</a>
         </div>
       </div>

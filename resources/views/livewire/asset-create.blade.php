@@ -515,13 +515,14 @@
                             </div>
                         </div>
 
-                        @error('*') {{ $message }} <br> @enderror
 
 
                     </div>
 
+                    @if ($photos)
                     <button type="submit"
                         class="w-full px-4 py-2 font-bold text-white transition-colors bg-blue-500 rounded hover:bg-blue-400">ثبت</button>
+                    @endif
                 </form>
 
                 <form wire:submit='uploadImage' class="flex flex-col items-center justify-center w-full gap-4 ">

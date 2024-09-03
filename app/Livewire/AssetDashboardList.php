@@ -12,6 +12,13 @@ class AssetDashboardList extends Component
     use WithPagination;
 
 
+    public function publish($key)
+    {
+        $asset = Asset::find($key);
+        $asset->isPublic = 1;
+        $asset->save();
+        return $this->redirect('asset');
+    }
 
 
     public function render()
@@ -20,12 +27,12 @@ class AssetDashboardList extends Component
         if (Auth::user()->role == 0) {
             return view('livewire.asset-dashboard-list', [
                 'star' => '*',
-                'assets' => Asset::paginate(30),
+                'assets' => Asset::orderBy('created_at', 'desc')->paginate(30),
             ]);
         } else {
             return view('livewire.asset-dashboard-list', [
                 'star' => '*',
-                'assets' => Auth::user()->assets()->paginate(30),
+                'assets' => Auth::user()->assets()->orderBy('created_at', 'desc')->paginate(30),
             ]);
         }
     }

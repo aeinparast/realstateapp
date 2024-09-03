@@ -45,6 +45,45 @@ console.log(`%cIran-Sans Font License: %cvdsavsavds`, style.key, style.value);
 // }).mount();
 
 
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const sections = document.querySelectorAll('.scroll-section');
+
+  const options = {
+    root: null,
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.list_item');
+
+  items.forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add('visible');
+    }, index * 300); // 300ms delay for each item
+  });
+});
+
+
+
+
 var splide = new Splide('#main-carousel', {
 
   pagination: false,

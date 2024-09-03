@@ -168,6 +168,12 @@ class AssetUpdate extends Component
         $this->photos[$key] = $one;
     }
 
+    public function remove()
+    {
+        $asset = Asset::find($this->assetId);
+        $asset->delete();
+        return redirect('asset');
+    }
 
 
     public function updated($propertyName)
@@ -176,6 +182,7 @@ class AssetUpdate extends Component
             $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
         }
     }
+
 
     public function updateBuildingType()
     {

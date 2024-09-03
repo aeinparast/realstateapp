@@ -514,14 +514,15 @@
                                 </div>
                             </div>
                         </div>
-
-                        @error('*') {{ $message }} <br> @enderror
-
-
                     </div>
 
+                    @if ($photos)
                     <button type="submit"
                         class="w-full px-4 py-2 font-bold text-white transition-colors bg-blue-500 rounded hover:bg-blue-400">ثبت</button>
+                    @endif
+                    <button type="button" x-on:click.prevent="$dispatch('open-modal', 'confirm-asset-deletion')"
+                        class="mt-2 w-full px-4 py-2 font-bold text-white transition-colors bg-red-500 rounded hover:bg-red-400">حذف
+                        کامل</button>
                 </form>
 
                 <form wire:submit='uploadImage' class="flex flex-col items-center justify-center w-full gap-4 ">
@@ -615,5 +616,27 @@
             </div>
         </div>
     </div>
+    <x-modal name="confirm-asset-deletion" :show="$errors->isNotEmpty()" focusable>
+        <form wire:submit="remove" class="p-6">
+
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                آیا از حذف این دارایی اطمینان دارید؟
+            </h2>
+
+            <p class="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                این کار قابل بازگشت نیست. </p>
+
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    بازگشت
+                </x-secondary-button>
+
+                <x-danger-button class="ms-3">
+                    بله
+                </x-danger-button>
+            </div>
+        </form>
+    </x-modal>
 
 </div>
