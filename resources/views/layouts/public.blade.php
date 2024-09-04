@@ -15,8 +15,8 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative font-sans antialiased " dir="rtl" id="body">
-  <div class=" navigation md:hidden">
+<body class="relative font-sans antialiased overflow-x-hidden" dir="rtl" id="body">
+  <div class=" navigation md:hidden" id="nav">
     <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 
     <label for="navi-toggle" class="navigation__button">

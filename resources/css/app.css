@@ -137,6 +137,18 @@ body {
   @apply flex items-center justify-center gap-2 px-2 py-1 transition-colors border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white;
 }
 
+.fade-in {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.fade-out {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease-in-out;
+}
+
 
 /* Initial state for list items */
 .list_item {
@@ -165,7 +177,7 @@ body {
   top: 1rem;
   right: 1rem;
   border-radius: 50%;
-  z-index: 2000;
+  z-index: 20;
   box-shadow: 0 1rem 3rem rgba(255, 255, 255, 0.1);
   text-align: center;
   cursor: pointer;
@@ -179,7 +191,7 @@ body {
   top: 1.5rem;
   right: 1.3rem;
   background-image: radial-gradient(#d2ab65, #d2ab65);
-  z-index: 1000;
+  z-index: 10;
   transition: transform 0.8s cubic-bezier(0.86, 0, 0.07, 1);
 }
 
@@ -188,7 +200,7 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 1500;
+  z-index: 15;
   opacity: 0;
   width: 0;
   transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
@@ -269,4 +281,32 @@ body {
 .navigation__checkbox:checked+.navigation__button .navigation__icon::after {
   top: 0;
   transform: rotate(-135deg);
+}
+
+
+
+
+#fullscreen-image {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+  /* Ensures the image fits within its container without being cropped */
+}
+
+/* Center the buttons vertically */
+#prev-slide,
+#next-slide {
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+
+.thumbnail {
+  opacity: 0.6;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+
+.thumbnail.active {
+  opacity: 1;
 }

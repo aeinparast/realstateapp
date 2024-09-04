@@ -48,7 +48,7 @@ class PostSearch extends Component
         $this->setPrice();
 
         // Initialize the query
-        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img', 'rent');
+        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img', 'rent', 'created_at');
 
         $query->where('isPublic', 1);
         $query->where('fileType', 1);

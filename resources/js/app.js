@@ -70,6 +70,37 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+// main search-nav
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const settingsSection = document.getElementById('main');
+  const settingsNavbar = document.getElementById('search-nav');
+  const navBtn = document.getElementById('nav');
+
+
+  window.addEventListener('scroll', function () {
+    const sectionTop = settingsSection.getBoundingClientRect().top;
+    const sectionBottom = settingsSection.getBoundingClientRect().bottom;
+
+    if (sectionTop <= 0 && sectionBottom > 0) {
+      settingsNavbar.classList.add('fade-in');
+      settingsNavbar.classList.remove('fade-out');
+      navBtn.classList.add('fade-out');
+      navBtn.classList.remove('fade-in');
+      navBtn.classList.add('hidden');
+    } else {
+      settingsNavbar.classList.add('fade-out');
+      settingsNavbar.classList.remove('fade-in');
+      navBtn.classList.remove('hidden');
+      navBtn.classList.add('fade-in');
+      navBtn.classList.remove('fade-out');
+
+
+    }
+  });
+});
+
 
 document.addEventListener('DOMContentLoaded', function () {
   const items = document.querySelectorAll('.list_item');
@@ -81,54 +112,102 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+  var searchBtn = document.getElementById('search-btn');
+  var searchModal = document.getElementById('search-modal');
+  var searchModalClose = document.getElementById('searchModalClose');
 
-
-
-var splide = new Splide('#main-carousel', {
-
-  pagination: false,
-});
-
-
-var thumbnails = document.getElementsByClassName('thumbnail');
-var current;
-
-
-for (var i = 0; i < thumbnails.length; i++) {
-  initThumbnail(thumbnails[i], i);
-}
-
-
-function initThumbnail(thumbnail, index) {
-  thumbnail.addEventListener('click', function () {
-    splide.go(index);
+  searchBtn.addEventListener('click', function () {
+    searchModal.classList.remove('translate-x-full');
   });
-}
 
+  searchModalClose.addEventListener('click', function () {
 
-splide.on('mounted move', function () {
-  var thumbnail = thumbnails[splide.index];
-
-
-  if (thumbnail) {
-    if (current) {
-      current.classList.remove('is-active');
-    }
-
-
-    thumbnail.classList.add('is-active');
-    current = thumbnail;
-  }
+    searchModal.classList.add('translate-x-full');
+  });
 });
 
 
-splide.mount();
 
 
+document.addEventListener('DOMContentLoaded', function () {
+  // Initialize Splide carousel
+  var splide = new Splide('#main-carousel').mount();
 
+  // Thumbnail click to navigate to the corresponding slide
+  var thumbnails = document.querySelectorAll('#thumbnails .thumbnail');
 
+  // Function to update the active thumbnail
+  function updateActiveThumbnail(index) {
+    thumbnails.forEach(function (thumbnail, i) {
+      if (i === index) {
+        thumbnail.classList.add('active');
+      } else {
+        thumbnail.classList.remove('active');
+      }
+    });
+  }
 
+  // Initialize the first thumbnail as active
+  updateActiveThumbnail(0);
 
+  // Update thumbnail when a thumbnail is clicked
+  thumbnails.forEach(function (thumbnail, index) {
+    thumbnail.addEventListener('click', function () {
+      splide.go(index); // Navigate to the corresponding slide
+      updateActiveThumbnail(index); // Update active thumbnail
+    });
+  });
+
+  // Update thumbnail when the main slide changes
+  splide.on('moved', function (newIndex) {
+    updateActiveThumbnail(newIndex); // Update active thumbnail
+  });
+
+  // Fullscreen modal functionality
+  var modal = document.getElementById('fullscreen-modal');
+  var fullscreenImage = document.getElementById('fullscreen-image');
+  var closeModalButton = document.getElementById('close-modal');
+  var prevSlideButton = document.getElementById('prev-slide');
+  var nextSlideButton = document.getElementById('next-slide');
+
+  var slides = document.querySelectorAll('.splide__slide img');
+  var currentIndex = 0;
+
+  function showModal(index) {
+    currentIndex = index;
+    fullscreenImage.src = slides[currentIndex].src;
+    modal.classList.remove('hidden');
+  }
+
+  slides.forEach(function (slide, index) {
+    slide.addEventListener('click', function () {
+      showModal(index);
+    });
+  });
+
+  closeModalButton.addEventListener('click', function () {
+    modal.classList.add('hidden');
+  });
+
+  prevSlideButton.addEventListener('click', function () {
+    currentIndex = (currentIndex > 0) ? currentIndex - 1 : slides.length - 1;
+    fullscreenImage.src = slides[currentIndex].src;
+    updateActiveThumbnail(currentIndex); // Update active thumbnail when navigating
+  });
+
+  nextSlideButton.addEventListener('click', function () {
+    currentIndex = (currentIndex < slides.length - 1) ? currentIndex + 1 : 0;
+    fullscreenImage.src = slides[currentIndex].src;
+    updateActiveThumbnail(currentIndex); // Update active thumbnail when navigating
+  });
+
+  modal.addEventListener('click', function (event) {
+    if (event.target === modal) {
+      modal.classList.add('hidden');
+    }
+  });
+});
 
 
 

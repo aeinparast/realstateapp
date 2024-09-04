@@ -2,10 +2,13 @@
     <section class=" grid min-h-screen grid-cols-1 px-8 m-2 rounded-lg lg:grid-cols-2 hero py-14 bg-mahdavi" id="hero">
         <div
             class="text-center lg:text-right scroll-section  opacity-0 transform translate-y-10 transition-opacity duration-700 ease-in">
-            <h1 class="text-6xl text-center lg:text-right font-bold text-white lg:text-9xl lg:font-black"
+            <h1 class="hidden md:block text-6xl text-center lg:text-right font-bold text-white lg:text-9xl lg:font-black"
                 style="line-height: 1.3">ورود به
                 قلب بازار
                 ملک!</h1>
+
+            <h1 class="md:hidden text-5xl text-center lg:text-right font-bold text-white lg:text-9xl lg:font-black"
+                style="line-height: 1.3">هلدینگ سرمایه‌گذاری مهدی</h1>
 
         </div>
         <div class="col-span-full sm:hidden flex justify-center items-center">

@@ -82,7 +82,7 @@
             @if ($asset['beds']!=0)
             <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">تعداد اتاق‌خواب</div>
-                <div class="">{{ $asset['beds'] }}</div>
+                <div class="">{{ $asset['beds'] }} عدد</div>
             </div>
             @endif
             @if (in_array($asset->assetType, [3, 4, 8, 9, 11]))
@@ -295,26 +295,35 @@
                             @foreach (explode("*", $asset['img']) as $img)
                             <picture class="w-full min-w-full splide__slide max-h-80">
                                 <img src="{{ env('BUCKET_FULL_URL').'/'.$img }}" alt=""
-                                    class="object-contain max-w-full mx-auto rounded max-h-80">
+                                    class="object-contain max-w-full mx-auto rounded max-h-80 cursor-pointer"
+                                    data-slide-index="{{ $loop->index }}">
                             </picture>
                             @endforeach
                         </ul>
                     </div>
                 </section>
 
-                <ul id="thumbnails" class="hidden grid-cols-5 gap-2 mt-2 md:grid">
-                    @foreach (explode("*", $asset['img']) as $img)
-                    <li class="bg-center bg-no-repeat bg-contain thumbnail max-h-16 max-w-16 min-h-16 min-w-16"
-                        style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$img }}')">
+                <ul id="thumbnails" class="grid grid-cols-5 gap-2 mt-2">
+                    @foreach (explode("*", $asset['img']) as $index => $img)
+                    <li class="bg-center bg-no-repeat bg-contain cursor-pointer thumbnail max-h-16 max-w-16 min-h-16 min-w-16"
+                        style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.$img }}')"
+                        data-slide-index="{{ $index }}">
                     </li>
                     @endforeach
                 </ul>
+
             </div>
         </div>
-
-        <div class="hidden row-start-2 overflow-hidden rounded md:col-start-3 md:block" id="map">
-            <iframe width="100%" height="200"
-                src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
+    </div>
+    <div id="fullscreen-modal"
+        class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
+        <div class="relative max-w-screen-lg w-full h-full flex items-center justify-center">
+            <button id="close-modal" class="absolute top-2 right-2 text-white text-3xl">&times;</button>
+            <img id="fullscreen-image" class="w-auto max-h-full" src="" alt="Fullscreen Image">
+            <button id="prev-slide"
+                class="absolute left-0 top-1/2 text-white text-4xl px-4 transform -translate-y-1/2">&gt;</button>
+            <button id="next-slide"
+                class="absolute right-0 top-1/2 text-white text-4xl px-4 transform -translate-y-1/2">&lt;</button>
         </div>
     </div>
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
@@ -456,4 +465,5 @@
             </div>
         </form>
     </x-modal>
+
 </div>
