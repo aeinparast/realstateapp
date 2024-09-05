@@ -45,6 +45,7 @@ Route::view('cities', 'cities')
 
 Route::resource('city', CityController::class);
 
+
 Route::view('agents', 'public-agents')
     ->name('public-agents');
 

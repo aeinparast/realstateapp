@@ -15,7 +15,9 @@ class CitiesList extends Component
     public $cities;
     public function __construct()
     {
-        $this->cities = City::all();
+        $this->cities = City::withCount(['assets' => function ($query) {
+            $query->where('isPublic', true);
+        }])->get();
     }
 
     /**

@@ -85,6 +85,7 @@ class CityController extends Controller
             'image' => 'image|mimes:png,jpg,jpeg,webp|max:2048'
         ]);
         if ($request->hasFile('image')) {
+
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('photos', $imageName, 'liara');

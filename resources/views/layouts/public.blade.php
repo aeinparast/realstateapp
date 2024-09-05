@@ -15,7 +15,7 @@
   @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="relative font-sans antialiased overflow-x-hidden" dir="rtl" id="body">
+<body class="relative overflow-x-hidden font-sans antialiased" dir="rtl" id="body">
   <div class=" navigation md:hidden" id="nav">
     <input type="checkbox" class="navigation__checkbox" id="navi-toggle">
 
@@ -71,7 +71,7 @@
               <a href="{{route('home')}}">خانه</a>
             </li>
             <li class="text-sm font-light"><a href="/amlak">املاک</a></li>
-            <li class="text-sm font-light">شهرها</li>
+            <li class="text-sm font-light"><a href="/cities">شهرها</a></li>
             <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
                         @if (request()->routeIs('public-agents'))
                             border-b-mahdavi text-mahdavi font-normal
