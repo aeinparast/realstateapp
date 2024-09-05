@@ -53,7 +53,7 @@
                         <li
                             class="flex items-center justify-between px-2 py-1 bg-white border-b rounded shadow border-b-mahdavi">
                             <div class="">
-                                <p class="font-medium">{{$city->name}}</p>
+                                <p class="font-medium">{{$city->name}} - {{ $city->assets_count }} ملک</p>
                             </div>
                             <div class="flex gap-2">
                                 <a href="{{route('city.edit', $city->id)}}"

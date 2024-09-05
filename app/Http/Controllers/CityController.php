@@ -14,7 +14,9 @@ class CityController extends Controller
      */
     public function index()
     {
-        $cities = City::all();
+        $cities = City::withCount(['assets' => function ($query) {
+            $query->where('isPublic', true);
+        }])->get();
         return view('DashboardCity', ['cities' => $cities]);
     }
 
