@@ -1,25 +1,25 @@
-<div class=" grid grid-cols-1 gap-4 px-4 mt-8 lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3 overflow-hidden"
+<div class="grid grid-cols-1 gap-4 px-4 mt-8 overflow-hidden  lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3"
     id="post-search">
-    <div class="fixed md:hidden  z-20 top-0 left-0 right-0 bg-mahdavi text-white px-4 py-2  opacity-0 invisible transition-opacity duration-300"
+    <div class="fixed top-0 left-0 right-0 z-20 invisible px-4 py-2 text-white transition-opacity duration-300 opacity-0 md:hidden bg-mahdavi"
         id="search-nav">
-        <div class="w-full flex justify-between">
-            <div class="border-white border-2 rounded-full flex justify-center items-center p-2" id="search-btn">
-                <i class="bi bi-search cursor-pointer flex justify-center items-center"></i>
+        <div class="flex justify-between w-full">
+            <div class="flex items-center justify-center p-2 border-2 border-white rounded-full" id="search-btn">
+                <i class="flex items-center justify-center cursor-pointer bi bi-search"></i>
             </div>
             <div class="">
                 <div class=""> {{ $assets->links(data:['scrollTo' => '#post-search']) }}</div>
             </div>
         </div>
     </div>
-    <div class="fixed w-full h-screen bg-white  top-0 right-0 z-50 translate-x-full transition-transform"
+    <div class="fixed top-0 right-0 z-50 w-full h-screen transition-transform translate-x-full bg-white"
         id="search-modal">
 
-        <div class="w-full h-screen relative">
+        <div class="relative w-full h-screen">
 
             <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
-                <div class="fixed top-2 left-2 h-7 w-7 rounded-full bg-mahdavi flex justify-center items-center"
+                <div class="fixed flex items-center justify-center rounded-full top-2 left-2 h-7 w-7 bg-mahdavi"
                     wire:click='$refresh'>
-                    <i class="bi bi-x-circle text-white flex justify-center items-center"></i>
+                    <i class="flex items-center justify-center text-white bi bi-x-circle"></i>
                 </div>
                 <p class="mb-2 text-lg font-bold text-gray-600">نوع ملک</p>
                 <div class="flex flex-col gap-2 pr-4 mb-6">
@@ -130,7 +130,7 @@
                     </div>
 
                 </div>
-                <button class="font-medium border-2 rounded bg-mahdavi text-white w-full py-1"
+                <button class="w-full py-1 font-medium text-white border-2 rounded bg-mahdavi"
                     wire:click='$refresh'>جستوجو</button>
             </div>
         </div>
@@ -216,9 +216,9 @@
         @endif
         ">
         @if ($assets->isEmpty())
-        <div class="col-span-full text-center text-3xl text-gray-600">متاسفانه در این زمان آیتمی برای نمایش وجود ندارد.
+        <div class="text-3xl text-center text-gray-600 col-span-full">متاسفانه در این زمان آیتمی برای نمایش وجود ندارد.
         </div>
-        <div class=" text-gray-500 text-center">برای تغییر جستوجو از نوار گزینه ذره‌بین را انتخاب کنید</div>
+        <div class="text-center text-gray-500  md:hidden">برای تغییر جستوجو از نوار گزینه ذره‌بین را انتخاب کنید</div>
         @endif
         @foreach ($assets as $asset)
         <livewire:public-search-item :$asset wire:key="{{ $asset['id'] }}" />

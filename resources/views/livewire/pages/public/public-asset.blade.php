@@ -313,6 +313,8 @@
                 </ul>
 
             </div>
+            <iframe class="mt-2" width="100%" height="200"
+                src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
         </div>
     </div>
     <div id="fullscreen-modal"

@@ -28,7 +28,7 @@
                         <path
                             d="M5.793 1a1 1 0 0 1 1.414 0l.647.646a.5.5 0 1 1-.708.708L6.5 1.707 2 6.207V12.5a.5.5 0 0 0 .5.5.5.5 0 0 1 0 1A1.5 1.5 0 0 1 1 12.5V7.207l-.146.147a.5.5 0 0 1-.708-.708zm3 1a1 1 0 0 1 1.414 0L12 3.793V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5v3.293l1.854 1.853a.5.5 0 0 1-.708.708L15 8.207V13.5a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 4 13.5V8.207l-.146.147a.5.5 0 1 1-.708-.708zm.707.707L5 7.207V13.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5V7.207z" />
                     </svg>
-                    <div class="">مشاهده املاک</div>
+                    <div class=""><a href="/amlak">مشاهده املاک</a></div>
                 </div>
                 <div
                     class="list_item grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
@@ -37,7 +37,7 @@
                         <path
                             d="M3.654 1.328a.678.678 0 0 0-1.015-.063L1.605 2.3c-.483.484-.661 1.169-.45 1.77a17.6 17.6 0 0 0 4.168 6.608 17.6 17.6 0 0 0 6.608 4.168c.601.211 1.286.033 1.77-.45l1.034-1.034a.678.678 0 0 0-.063-1.015l-2.307-1.794a.68.68 0 0 0-.58-.122l-2.19.547a1.75 1.75 0 0 1-1.657-.459L5.482 8.062a1.75 1.75 0 0 1-.46-1.657l.548-2.19a.68.68 0 0 0-.122-.58zM1.884.511a1.745 1.745 0 0 1 2.612.163L6.29 2.98c.329.423.445.974.315 1.494l-.547 2.19a.68.68 0 0 0 .178.643l2.457 2.457a.68.68 0 0 0 .644.178l2.189-.547a1.75 1.75 0 0 1 1.494.315l2.306 1.794c.829.645.905 1.87.163 2.611l-1.034 1.034c-.74.74-1.846 1.065-2.877.702a18.6 18.6 0 0 1-7.01-4.42 18.6 18.6 0 0 1-4.42-7.009c-.362-1.03-.037-2.137.703-2.877zM11 .5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 .5.5v4a.5.5 0 0 1-1 0V1.707l-4.146 4.147a.5.5 0 0 1-.708-.708L14.293 1H11.5a.5.5 0 0 1-.5-.5" />
                     </svg>
-                    <div class="">تماس با مشاورین</div>
+                    <div class=""><a href="/agents">تماس با مشاوران</a></div>
                 </div>
                 <div
                     class="list_item grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg lg:py-0 hover:scale-105 hover:cursor-pointer">
@@ -75,10 +75,15 @@
                         d="M1 8a7 7 0 1 0 14 0A7 7 0 0 0 1 8m15 0A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v5.793L5.354 8.146a.5.5 0 1 0-.708.708l3 3a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 10.293z" />
                 </svg></a>
         </div>
-
     </section>
-    <section id="main" class="">
-        <livewire:post-search />
+    <section id="main">
+        <h2 class="text-center text-4xl text-mahdavi font-bold my-4">تازه ترینها</h2>
+        <x-latest-assets />
+        <div class="w-full flex justify-center my-4">
+            <a href="/amlak"
+                class="text-center font-medium text-white bg-mahdavi border-2 ring-0 ring-mahdavi border-mahdavi transition-all rounded px-4 py-1 hover:bg-white hover:text-mahdavi hover:ring-4 hover:ring-offset-4">مشاهده
+                موارد بیشتر</a>
+        </div>
     </section>
     <section id="blog">
         <livewire:hot-blog />

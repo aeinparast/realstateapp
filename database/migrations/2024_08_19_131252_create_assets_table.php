@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\City;
 use App\Models\User;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
@@ -15,6 +16,7 @@ return new class extends Migration
         Schema::create('assets', function (Blueprint $table) {
             $table->id();
             $table->foreignIdFor(User::class);
+            $table->foreignIdFor(City::class);
             $table->string('title'); // String for the title
             $table->unsignedTinyInteger('fileType')->default(0); // Integer with default value 0
             $table->unsignedTinyInteger('isPublic')->default(0); // Integer with default value 0

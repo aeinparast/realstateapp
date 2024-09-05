@@ -70,7 +70,7 @@
                         @endif">
               <a href="{{route('home')}}">خانه</a>
             </li>
-            <li class="text-sm font-light">املاک</li>
+            <li class="text-sm font-light"><a href="/amlak">املاک</a></li>
             <li class="text-sm font-light">شهرها</li>
             <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
                         @if (request()->routeIs('public-agents'))

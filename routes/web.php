@@ -36,9 +36,14 @@ Route::get('update-asset/{asset}', AssetUpdate::class)
 Route::get('view', PublicAsset::class)
     ->name('asset-view');
 
+Route::view('amlak', 'amlak')
+    ->name('amlak');
+
 
 Route::view('agents', 'public-agents')
     ->name('public-agents');
+
+
 
 
 Route::get('users', AdminUsers::class)

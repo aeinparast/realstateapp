@@ -70,7 +70,7 @@ class PostSearch extends Component
             $query->whereBetween('price_public', [(int)$this->minPrice, (int)$this->maxPrice]);
         }
 
-
+        $query->orderBy('created_at', 'desc');
         // Return the view with paginated results
         return view('livewire.post-search', [
             'assets' => $query->paginate(13),
