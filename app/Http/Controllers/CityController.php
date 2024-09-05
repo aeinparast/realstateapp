@@ -31,22 +31,28 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        $request->validate([
+        // Validate request data
+        $validated = $request->validate([
             'name' => 'required|string',
             'map' => 'required|string',
             'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
         ]);
 
+        // Handle file upload if an image exists
         if ($request->hasFile('image')) {
             $image = $request->file('image');
             $imageName = time() . '.' . $image->getClientOriginalExtension();
             $path = $image->storeAs('photos', $imageName, 'liara');
-            City::create([
-                'name' => $request->name,
-                'map' => $request->map,
-                'logo' => $path
-            ]);
+
+            // Merge the path into validated data
+            $validated['logo'] = $path;
         }
+
+        // Create the city using validated data
+        City::create($validated);
+
+        // Redirect with success message
+        return redirect()->route('city.index')->with('success', 'شهر با موفقیت ساخته شد');
     }
 
     /**
@@ -70,7 +76,27 @@ class CityController extends Controller
      */
     public function update(UpdateCityRequest $request, City $city)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'map' => 'required|string',
+            'image' => 'image|mimes:png,jpg,jpeg,webp|max:2048'
+        ]);
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('photos', $imageName, 'liara');
+            $city->update([
+                'name' => $request->name,
+                'map' => $request->map,
+                'logo' => $path
+            ]);
+            return redirect()->route('city.index')->with('edited', 'شهر با موفقیت ویرایش شد');
+        }
+        $city->update([
+            'name' => $request->name,
+            'map' => $request->map,
+        ]);
+        return redirect()->route('city.index')->with('edited', 'شهر با موفقیت ویرایش شد');
     }
 
     /**
@@ -78,6 +104,7 @@ class CityController extends Controller
      */
     public function destroy(City $city)
     {
-        //
+        $city->delete();
+        return redirect()->route('city.index')->with('removed', 'شهر با موفقیت حذف شد');
     }
 }

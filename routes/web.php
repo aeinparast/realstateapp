@@ -43,7 +43,7 @@ Route::view('amlak', 'amlak')
 Route::view('cities', 'cities')
     ->name('cities');
 
-Route::resource('dash-city', CityController::class);
+Route::resource('city', CityController::class);
 
 Route::view('agents', 'public-agents')
     ->name('public-agents');

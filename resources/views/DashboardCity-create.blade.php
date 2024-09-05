@@ -2,7 +2,7 @@
     <!-- Very little is needed to make a happy life. - Marcus Aurelius -->
     <div class="mt-2 overflow-hidden bg-white shadow dark:bg-gray-800 sm:rounded-lg">
 
-        <form class="w-full" method="POST" action="{{ route('dash-city.store') }}" enctype="multipart/form-data">
+        <form class="w-full" method="POST" action="{{ route('city.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 text-gray-900  dark:text-gray-100">
                 <div>
