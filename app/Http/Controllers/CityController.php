@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreCityRequest;
 use App\Http\Requests\UpdateCityRequest;
 use App\Models\City;
+use Illuminate\Support\Facades\Storage;
 
 class CityController extends Controller
 {
@@ -13,7 +14,8 @@ class CityController extends Controller
      */
     public function index()
     {
-        //
+        $cities = City::all();
+        return view('DashboardCity', ['cities' => $cities]);
     }
 
     /**
@@ -21,7 +23,7 @@ class CityController extends Controller
      */
     public function create()
     {
-        //
+        return view('DashboardCity-create');
     }
 
     /**
@@ -29,7 +31,22 @@ class CityController extends Controller
      */
     public function store(StoreCityRequest $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'map' => 'required|string',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
+        ]);
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('photos', $imageName, 'liara');
+            City::create([
+                'name' => $request->name,
+                'map' => $request->map,
+                'logo' => $path
+            ]);
+        }
     }
 
     /**
@@ -45,7 +62,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        return view('DashboardCity-edit', compact('city'));
     }
 
     /**

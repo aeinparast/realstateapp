@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CityController;
 use App\Livewire\AdminCreateUser;
 use App\Livewire\AdminUpdateUser;
 use App\Livewire\AdminUsers;
@@ -39,6 +40,10 @@ Route::get('view', PublicAsset::class)
 Route::view('amlak', 'amlak')
     ->name('amlak');
 
+Route::view('cities', 'cities')
+    ->name('cities');
+
+Route::resource('dash-city', CityController::class);
 
 Route::view('agents', 'public-agents')
     ->name('public-agents');
