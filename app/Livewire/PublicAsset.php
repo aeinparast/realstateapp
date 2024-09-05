@@ -19,7 +19,7 @@ class PublicAsset extends Component
 
     public function mount()
     {
-        $asset = Asset::with('user')->find($this->id);
+        $asset = Asset::with(['user', 'city'])->find($this->id);
         if ($asset != null) {
             $this->asset = $asset;
         } else {

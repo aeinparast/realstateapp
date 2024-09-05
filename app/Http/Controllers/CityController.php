@@ -35,19 +35,20 @@ class CityController extends Controller
         $validated = $request->validate([
             'name' => 'required|string',
             'map' => 'required|string',
-            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
+            // 'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048'
         ]);
 
         // Handle file upload if an image exists
-        if ($request->hasFile('image')) {
-            $image = $request->file('image');
-            $imageName = time() . '.' . $image->getClientOriginalExtension();
-            $path = $image->storeAs('photos', $imageName, 'liara');
+        // if ($request->hasFile('image')) {
+        //     $image = $request->file('image');
+        //     $imageName = time() . '.' . $image->getClientOriginalExtension();
+        //     $path = $image->storeAs('photos', $imageName, 'liara');
 
-            // Merge the path into validated data
-            $validated['logo'] = $path;
-        }
+        //     // Merge the path into validated data
+        //     $validated['logo'] = $path;
+        // }
 
+        $validated['logo'] = 'ddos';
         // Create the city using validated data
         City::create($validated);
 

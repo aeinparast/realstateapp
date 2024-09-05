@@ -15,7 +15,7 @@ class LatestAssets extends Component
     public $assets;
     public function __construct()
     {
-        $this->assets = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city', 'img', 'rent', 'created_at')
+        $this->assets = Asset::with('city')
             ->orderBy('created_at', 'desc')
             ->limit(4)
             ->get();

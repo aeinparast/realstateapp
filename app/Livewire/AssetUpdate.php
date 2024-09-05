@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use App\Models\City;
 use App\Services\NumeralConverter;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
@@ -28,12 +29,13 @@ class AssetUpdate extends Component
     public $seller_name;
     public $seller_mobile;
     public $seller_phone;
-    public $city = 0;
+    public $city_id = 0;
     public $map = '';
     public $facilities_list = [];
     public int $area = 0;
     public $space = 0;
     public int $floor = 0;
+    public int $floors = 0;
     public int $direction = 0;
     public int $beds = 0;
     public int $wcs = 0;
@@ -65,12 +67,13 @@ class AssetUpdate extends Component
         'seller_name' => 'required|string|max:255',       // Required, max length 255 characters
         'seller_mobile' => 'required|string|max:15',      // Required, assume max 15 characters for a mobile number
         'seller_phone' => 'nullable|string|max:15',       // Optional, assume max 15 characters for a phone number
-        'city' => 'required|integer|max:255',              // Required, max length 255 characters
+        'city_id' => 'required|integer|max:255',              // Required, max length 255 characters
         'facilities_list' => 'nullable|array',            // Optional, must be an array
         'facilities_list.*' => 'string|max:255',          // Each facility must be a string, max length 255 characters
         'area' => 'required|integer|min:0',               // Required, must be a positive integer
         'space' => 'required|integer|min:0',               // Required, must be a positive integer
         'floor' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
+        'floors' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
         'direction' => 'required|integer|min:0|max:255',  // Required, assume direction is an integer between 0-255
         'beds' => 'required|integer|min:0|max:255',       // Required, must be an integer between 0-255
         'wcs' => 'required|integer|min:0|max:255',         // Required, must be an integer between 0-255
@@ -124,6 +127,8 @@ class AssetUpdate extends Component
         $this->area = (int) NumeralConverter::convertToEnglish($this->area);
         $this->space = (int) NumeralConverter::convertToEnglish($this->space);
         $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
+        $this->floor = (int) NumeralConverter::convertToEnglish($this->floor);
+        $this->floors = (int) NumeralConverter::convertToEnglish($this->floors);
         $this->direction = (int) NumeralConverter::convertToEnglish($this->direction);
         $this->beds = (int) NumeralConverter::convertToEnglish($this->beds);
         $this->wcs = (int) NumeralConverter::convertToEnglish($this->wcs);
@@ -206,6 +211,7 @@ class AssetUpdate extends Component
         $this->area = (int) $asset->area;
         $this->space = (int) $asset->space;
         $this->floor = (int) $asset->floor;
+        $this->floors = (int) $asset->floors;
         $this->direction = (int) $asset->direction;
         $this->beds = (int) $asset->beds;
         $this->wcs = (int) $asset->wcs;
@@ -220,7 +226,7 @@ class AssetUpdate extends Component
         $this->storage = (int) $asset->storage;
         $this->parking = (int) $asset->parking;
         $this->fileType = (int) $asset->fileType;
-
+        $this->city_id = (int) $asset->city->id;
         $this->map = $asset->map;
         $this->facilities_list = json_decode($asset->facilities_list);
         $this->photos = explode('*', $asset->img);
@@ -231,7 +237,7 @@ class AssetUpdate extends Component
     public function render()
     {
         $facilities = config('facilities');
-        $cityAreas = config('cityAreas');
+        $cityAreas = City::all();
         return view('livewire.asset-update', compact(['facilities', 'cityAreas']));
     }
 }

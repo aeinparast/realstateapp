@@ -1,7 +1,7 @@
 <x-slot name="header">
     <h2 class="font-sans text-xl font-medium text-gray-800 dark:text-gray-200">
         <a href="{{route('asset')}}" wire:navigate class="transition-colors hover:text-gray-400">فایل‌ها</a> >
-        ساخت فایل
+        ویرایش فایل
     </h2>
 </x-slot>
 
@@ -75,11 +75,11 @@
                                     شهر
                                 </label>
                                 <div class="relative">
-                                    <select wire:model='city'
+                                    <select wire:model='city_id'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="city">
-                                        @foreach ($cityAreas as $key => $cityArea)
-                                        <option value="{{$key}}">{{$cityArea}}</option>
+                                        @foreach ($cityAreas as $cityArea)
+                                        <option value="{{$cityArea->id}}">{{$cityArea->name}}</option>
                                         @endforeach
                                     </select>
                                     <div
@@ -279,6 +279,16 @@
                                     طبقه
                                 </label>
                                 <input wire:model='floor'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="floor" type="number">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="floors">
+                                    طبقات
+                                </label>
+                                <input wire:model='floors'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
                                     id="floor" type="number">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}

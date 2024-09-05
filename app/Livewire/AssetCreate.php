@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use App\Models\City;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Attributes\Validate;
 use Livewire\Component;
@@ -28,16 +29,18 @@ class AssetCreate extends Component
     public $seller_name;
     public $seller_mobile;
     public $seller_phone;
-    public $city = 0;
-    public $map = '';
-    public $facilities_list = [];
-    public int $area = 0;
+    public $city_id; //TODO: Fix this shit
+    public $area = 0;
     public $space = 0;
-    public int $floor = 0;
+    public $floor = 0;
+    public $floors = 0;
+    public $beds = 0;
+    public $wcs = 0;
+    public $cooks = 0;
+    public $parking = 0;
+    public $facilities_list = [];
+    public $map = '';
     public int $direction = 0;
-    public int $beds = 0;
-    public int $wcs = 0;
-    public int $cooks = 0;
     public int $cooling = 0;
     public int $heating = 0;
     public int $water = 0;
@@ -46,8 +49,8 @@ class AssetCreate extends Component
     public int $landline = 0;
     public int $elevator = 0;
     public int $storage = 0;
-    public int $parking = 0;
     public int $fileType = 0;
+
 
     public $photos = [];
 
@@ -65,12 +68,13 @@ class AssetCreate extends Component
         'seller_name' => 'required|string|max:255',       // Required, max length 255 characters
         'seller_mobile' => 'required|string|max:15',      // Required, assume max 15 characters for a mobile number
         'seller_phone' => 'nullable|string|max:15',       // Optional, assume max 15 characters for a phone number
-        'city' => 'required|integer|max:255',              // Required, max length 255 characters
+        'city_id' => 'required|integer|max:255',              // Required, max length 255 characters
         'facilities_list' => 'nullable|array',            // Optional, must be an array
         'facilities_list.*' => 'string|max:255',          // Each facility must be a string, max length 255 characters
         'area' => 'required|integer|min:0',               // Required, must be a positive integer
         'space' => 'required|integer|min:0',               // Required, must be a positive integer
         'floor' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
+        'floors' => 'required|integer|min:0|max:255',      // Required, assume floor is an integer between 0-255
         'direction' => 'required|integer|min:0|max:255',  // Required, assume direction is an integer between 0-255
         'beds' => 'required|integer|min:0|max:255',       // Required, must be an integer between 0-255
         'wcs' => 'required|integer|min:0|max:255',         // Required, must be an integer between 0-255
@@ -141,7 +145,7 @@ class AssetCreate extends Component
 
     public function uploadImage(): void
     {
-        $upload = $this->file->store('photos', 'liara');
+        $upload = $this->file->store('photos');
         array_push($this->photos, $upload);
         $this->file = null;
     }
@@ -169,12 +173,7 @@ class AssetCreate extends Component
 
 
 
-    public function updated($propertyName)
-    {
-        if (in_array($propertyName, ['price_public', 'price_private', 'price_per_meter', 'rent', 'space'])) {
-            $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
-        }
-    }
+
 
     public function updateBuildingType()
     {
@@ -182,11 +181,32 @@ class AssetCreate extends Component
     }
 
 
+    public function updated($propertyName)
+    {
+        if (in_array($propertyName, [
+            'price_public',
+            'price_private',
+            'price_per_meter',
+            'rent',
+            'space',
+            'area',
+            'floor',
+            'floors',
+            'beds',
+            'wcs',
+            'cooks',
+            'parking'
+        ])) {
+            $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
+        }
+    }
+
+
     public function render()
     {
         $facilities = config('facilities');
-        $cityAreas = config('cityAreas');
-
+        $cityAreas = City::all();
+        $this->city_id = $cityAreas->first()->id;
         return view('livewire.asset-create', compact(['facilities', 'cityAreas']));
     }
 }

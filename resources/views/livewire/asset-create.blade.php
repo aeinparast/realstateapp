@@ -75,11 +75,11 @@
                                     شهر
                                 </label>
                                 <div class="relative">
-                                    <select wire:model='city'
+                                    <select wire:model='city_id'
                                         class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
                                         id="city">
-                                        @foreach ($cityAreas as $key => $cityArea)
-                                        <option value="{{$key}}">{{$cityArea}}</option>
+                                        @foreach ($cityAreas as $cityArea)
+                                        <option value="{{$cityArea->id}}">{{$cityArea->name}}</option>
                                         @endforeach
                                     </select>
                                     <div
@@ -203,7 +203,7 @@
                                 </label>
                                 <input wire:model='area'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="area" type="number">
+                                    id="area" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 md:w-1/3">
@@ -280,7 +280,17 @@
                                 </label>
                                 <input wire:model='floor'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="floor" type="number">
+                                    id="floor" type="text">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="floors">
+                                    طبقات
+                                </label>
+                                <input wire:model='floors'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="floor" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
@@ -311,7 +321,7 @@
                                 </label>
                                 <input wire:model='beds'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="beds" type="number">
+                                    id="beds" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
@@ -321,7 +331,7 @@
                                 </label>
                                 <input wire:model='wcs'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="wcs" type="number">
+                                    id="wcs" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
@@ -331,7 +341,17 @@
                                 </label>
                                 <input wire:model='cooks'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                                    id="cooks" type="number">
+                                    id="cooks" type="text">
+                                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                            </div>
+                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0">
+                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                    for="parking">
+                                    پارکینگ
+                                </label>
+                                <input wire:model='parking'
+                                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                                    id="parking" type="text">
                                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
@@ -467,22 +487,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
-                                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                                    for="parking">
-                                    پارکینگ </label>
-                                <div class="relative">
-                                    <select wire:model='parking'
-                                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
-                                        id="parking">
-                                        <option value="0">ندارد</option>
-                                        <option value="1">دارد</option>
-                                    </select>
-                                    <div
-                                        class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="fileType">
