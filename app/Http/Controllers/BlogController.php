@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 
 class BlogController extends Controller
 {
@@ -29,7 +31,17 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        //
+        $blog_content = $request->validate([
+            'title' => 'required|min:3',
+            'content' => 'required|json', // Ensure content is JSON
+        ]);
+        // Save the content to the database
+        $blog = new Blog();
+        $blog->data = $blog_content['content'];
+        $blog->title = $blog_content['title'];
+        $blog->user_id = Auth::id();
+        $blog->public = true;
+        $blog->save();
     }
 
     /**

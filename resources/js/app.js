@@ -90,6 +90,24 @@ const editor = new EditorJS({
   },
 });
 
+document.getElementById('save-button').addEventListener('click', () => {
+  // Save the Editor.js data and transform it into JSON
+  editor.save().then((outputData) => {
+    // Transform the data into a JSON string
+    const blogPostInput = document.getElementById('blogpost');
+
+    // Insert the JSON data into the hidden input field
+    blogPostInput.value = JSON.stringify(outputData);
+
+    // Once the data is set, submit the form
+    const form = document.getElementById('blog-submit');
+    form.submit();
+
+  }).catch((error) => {
+    // Handle any errors in saving the data
+    console.error('Saving failed:', error);
+  });
+});
 
 
 
