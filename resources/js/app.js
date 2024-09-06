@@ -5,6 +5,8 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@splidejs/splide/css';
 import Splide from '@splidejs/splide';
 
+import 'preline'
+
 
 
 // Define styles for each part of the table

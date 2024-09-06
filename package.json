@@ -20,6 +20,7 @@
         "aos": "^2.3.4",
         "bootstrap-icons": "^1.11.3",
         "install": "^0.13.0",
+        "preline": "^2.4.1",
         "taos": "^1.0.5"
     }
 }
