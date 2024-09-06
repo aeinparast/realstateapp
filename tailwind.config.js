@@ -7,7 +7,6 @@ export default {
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        'node_modules/preline/dist/*.js',
     ],
 
     theme: {
@@ -21,5 +20,5 @@ export default {
         },
     },
 
-    plugins: [forms, require('preline/plugin'),],
+    plugins: [forms],
 };

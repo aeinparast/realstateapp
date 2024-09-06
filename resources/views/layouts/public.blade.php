@@ -70,8 +70,24 @@
                         @endif">
               <a href="{{route('home')}}">خانه</a>
             </li>
-            <li class="text-sm font-light"><a href="/amlak">املاک</a></li>
-            <li class="text-sm font-light"><a href="/cities">شهرها</a></li>
+            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+                        @if (request()->routeIs('amlak'))
+                            border-b-mahdavi text-mahdavi font-normal
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif">
+              <a href="{{route('amlak')}}">املاک</a>
+            </li>
+            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            @if (request()->routeIs('cities'))
+                border-b-mahdavi text-mahdavi font-normal
+            @else
+            border-b-transparent
+            font-light
+            @endif">
+              <a href="{{route('cities')}}">شهرها</a>
+            </li>
             <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
                         @if (request()->routeIs('public-agents'))
                             border-b-mahdavi text-mahdavi font-normal

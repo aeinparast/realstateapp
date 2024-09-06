@@ -28,7 +28,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="seller_name">
-                                    نام فروشنده
+                                    نام مالک
                                 </label>
                                 <input wire:model='seller_name'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
@@ -39,7 +39,7 @@
                             <div class="w-full px-3 mb-6 md:w-1/2 md:mb-0">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="seller_phone">
-                                    شماره ثابت فروشنده
+                                    شماره ثابت مالک
                                 </label>
                                 <input wire:model='seller_phone'
                                     class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
@@ -48,7 +48,7 @@
                             <div class="w-full px-3 md:w-1/2">
                                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
                                     for="seller_mobile">
-                                    شماره همراه فروشنده
+                                    شماره همراه مالک
                                 </label>
                                 <input wire:model='seller_mobile'
                                     class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"

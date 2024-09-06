@@ -8,7 +8,8 @@
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
                     class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
-                </svg>{{$asset->city->name}} - {{$asset['created_at']->locale('fa')->diffForHumans()}}
+                </svg><a href="/amlak?city={{$asset->city_id}}">{{$asset->city->name}}</a> -
+                {{$asset['created_at']->locale('fa')->diffForHumans()}}
             </div>
         </div>
 
@@ -93,7 +94,6 @@
                     از
                     {{$asset['floors']}}
                     @endif
-                    از
 
                 </div>
 
@@ -165,7 +165,7 @@
                     <p class="text-sm font-bold">آسانسور</p>
                 </div>
                 @endif
-                @if ($asset['storage']==1)
+                @if ($asset['parking']!=0)
                 <div class="public-asset__facility--main">
                     <svg fill=" currentColor" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
                         xmlns:xlink="http://www.w3.org/1999/xlink" width="24px" height="24px"
@@ -184,7 +184,7 @@
                     <p class="text-sm font-bold">پارکینگ</p>
                 </div>
                 @endif
-                @if ($asset['parking']==1)
+                @if ($asset['storage']==1)
                 <div class="public-asset__facility--main">
                     <svg width="24px" height="24px" fill="currentColor" viewBox="0 0 1000 1000" version="1.1"
                         xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
@@ -319,10 +319,12 @@
                     </li>
                     @endforeach
                 </ul>
-
             </div>
-            <iframe class="mt-2" width="100%" height="200"
-                src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
+            <div class="hidden  overflow-hidden rounded md:block mt-4" id="map">
+
+                <iframe width="100%" height="200"
+                    src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
+            </div>
         </div>
     </div>
     <div id="fullscreen-modal"
@@ -354,7 +356,8 @@
                 @endif
                 <div class="flex flex-col">
                     <div class="text-sm text-gray-600">مشاور:</div>
-                    <a href="/agent/{{ $asset->user->id }}" class="font-medium transition-colors hover:text-mahdavi">{{
+                    <a href="/amlak?agent={{ $asset->user->id }}"
+                        class="font-medium transition-colors hover:text-mahdavi">{{
                         $asset->user->name }}</a>
                     <div class="text-sm text-gray-600">تلفن:</div>
                     <a href="tel:{{ $asset->user->phone }}" class="border-b-2 border-mahdavi">{{ $asset->user->phone

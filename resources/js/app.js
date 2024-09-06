@@ -5,7 +5,91 @@ import 'bootstrap-icons/font/bootstrap-icons.css';
 import '@splidejs/splide/css';
 import Splide from '@splidejs/splide';
 
-import 'preline'
+
+import EditorJS from '@editorjs/editorjs';
+import Header from '@editorjs/header';
+import List from '@editorjs/list';
+import Quote from '@editorjs/quote';
+import SimpleImage from "@editorjs/simple-image";
+
+
+const editor = new EditorJS({
+  holder: 'editorjs',
+
+  tools: {
+    header: {
+      class: Header,
+      shortcut: 'CMD+SHIFT+H',
+    },
+    image: SimpleImage
+    ,
+    list: {
+      class: List,
+      inlineToolbar: true,
+      config: {
+        defaultStyle: 'unordered'
+      }
+    },
+    quote: {
+      class: Quote,
+      inlineToolbar: true,
+      shortcut: 'CMD+SHIFT+O',
+      config: {
+        quotePlaceholder: 'Enter a quote',
+        captionPlaceholder: 'Quote\'s author',
+      },
+    },
+  },
+
+
+  i18n: {
+    direction: 'rtl',
+    messages: {
+
+      ui: {
+        "blockTunes": {
+          "toggler": {
+            "Click to tune": "برای تنظیم کلیک کنید",
+            "or drag to move": "یا برای جابجایی بکشید"
+          },
+        },
+        "inlineToolbar": {
+          "converter": {
+            "Convert to": "تبدیل به"
+          }
+        },
+        "toolbar": {
+          "toolbox": {
+            "Add": "افزودن"
+          }
+        }
+      },
+
+      toolNames: {
+        "Text": "متن",
+        "Heading": "هدر",
+        "List": 'لیست',
+        "Quote": "نقل قول"
+      },
+
+      blockTunes: {
+        'Convert To': 'تبدیل به',
+        "delete": {
+          "Delete": "حذف"
+        },
+        "moveUp": {
+          "Move up": "انتقال به بالا"
+        },
+        "moveDown": {
+          "Move down": "انتقال به پایین"
+        }
+      }
+
+    }
+
+  },
+});
+
 
 
 

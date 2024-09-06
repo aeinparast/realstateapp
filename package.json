@@ -15,6 +15,12 @@
         "vite": "^5.0"
     },
     "dependencies": {
+        "@editorjs/editorjs": "^2.30.5",
+        "@editorjs/embed": "^2.7.4",
+        "@editorjs/header": "^2.8.7",
+        "@editorjs/list": "^1.10.0",
+        "@editorjs/quote": "^2.7.2",
+        "@editorjs/simple-image": "^1.6.0",
         "@splidejs/splide": "^4.1.4",
         "@splidejs/splide-extension-auto-scroll": "^0.5.3",
         "aos": "^2.3.4",

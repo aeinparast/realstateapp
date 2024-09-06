@@ -1,7 +1,6 @@
 <div
     class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi">
-    {{-- <img src="{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}" alt=""
-        class="object-contain w-full rounded-t h-72"> --}}
+
     <div class="bg-no-repeat bg-cover h-52 md:h-72 "
         style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}');"></div>
     <div class="flex flex-col justify-between flex-1 px-6 py-4">
@@ -28,10 +27,14 @@
                         <span class="text-sm">تومانءءء</span>
                     </div>
                     <div class="">
+                        @if ($asset['rent']>0)
                         {{
                         number_format($asset['rent'], 0,
                         ".","،") }}
                         <span class="text-sm">تومانءءء</span> اجاره
+                        @else
+                        تماس بگیرید
+                        @endif
                     </div>
                     @endif
                 </div>

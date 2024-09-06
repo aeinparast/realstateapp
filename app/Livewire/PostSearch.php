@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use App\Models\City;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
@@ -18,12 +19,38 @@ class PostSearch extends Component
     #[Url]
     public $agent = '';
 
+    public $City;
+    public $bt = '';
     public $assetType = '';
     public $dealType = '';
     public $minPrice = '0';
     public $maxPrice = '99999999999';
     public $rentMinPrice = '0';
     public $rentMaxPrice = '99999999999';
+
+
+
+    public $cities;
+
+    public function mount()
+    {
+        $this->cities = City::all();;
+    }
+
+    public function changeCity()
+    {        // Apply filters based on assetType
+        if ($this->City !== '' && is_numeric($this->City)) {
+            $local_city = City::where('id', (int)$this->City)->first();
+            $this->city = $local_city->id;
+            return;
+        }
+        $this->city = '';
+    }
+
+    public function changeAsset()
+    {
+        $this->bt = '';
+    }
 
     // Check if assetType is valid
     public function checkType()
@@ -38,6 +65,13 @@ class PostSearch extends Component
     {
         if (!is_numeric($this->dealType) || $this->dealType < 0 || $this->dealType > 4) {
             $this->dealType = ''; // Reset to empty if invalid
+        }
+    }
+
+    public function checkBT()
+    {
+        if (!is_numeric($this->bt) || $this->bt < 0 || $this->dealType > 15) {
+            $this->bt = ''; // Reset to empty if invalid
         }
     }
 
@@ -56,6 +90,7 @@ class PostSearch extends Component
         // Validate filters
         $this->checkType();
         $this->checkDeal();
+        $this->checkBT();
         $this->setPrice();
 
         // Initialize the query
@@ -68,6 +103,7 @@ class PostSearch extends Component
         // Apply filters based on assetType
         if ($this->city !== '' && is_numeric($this->city)) {
 
+            $this->City = $this->city;
             $query->where('city_id', (int)$this->city);
         }
 
@@ -83,6 +119,10 @@ class PostSearch extends Component
             $query->where('assetType', (int)$this->assetType);
         }
 
+        if ($this->bt !== '') {
+            $query->where('buildingType', (int)$this->bt);
+        }
+
         // Apply filters based on dealType
         if ($this->dealType !== '') {
             $query->where('dealType', (int)$this->dealType);
@@ -93,10 +133,17 @@ class PostSearch extends Component
             $query->whereBetween('price_public', [(int)$this->minPrice, (int)$this->maxPrice]);
         }
 
+        // Apply filters based on price range
+        if ($this->rentMinPrice !== null && $this->rentMaxPrice !== null) {
+            $query->whereBetween('rent', [(int)$this->rentMinPrice, (int)$this->rentMaxPrice]);
+        }
+
+
+
         $query->orderBy('created_at', 'desc');
         // Return the view with paginated results
         return view('livewire.post-search', [
-
+            'cities' => $this->cities,
             'assets' => $query->paginate(13),
         ]);
     }

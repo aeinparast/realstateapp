@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
 use App\Livewire\AdminCreateUser;
 use App\Livewire\AdminUpdateUser;
@@ -44,6 +45,9 @@ Route::view('cities', 'cities')
     ->name('cities');
 
 Route::resource('city', CityController::class);
+
+
+Route::resource('blog', BlogController::class);
 
 
 Route::view('agents', 'public-agents')
