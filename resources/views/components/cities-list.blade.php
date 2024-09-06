@@ -5,7 +5,8 @@
         هلدینگ
         سرمایه‌گذاری مهدوی</h1>
     @foreach ($cities as $city)
-    <a href="/amlak" class="flex flex-col items-center justify-center transition-transform rounded hover:scale-95">
+    <a href="/amlak?city={{$city->id}}"
+        class="flex flex-col items-center justify-center transition-transform rounded hover:scale-95">
         <div class="w-full h-64 bg-center bg-no-repeat bg-cover rounded-t"
             style="background-image: url('{{env('BUCKET_FULL_URL').'/'.$city->logo}}')">
         </div>

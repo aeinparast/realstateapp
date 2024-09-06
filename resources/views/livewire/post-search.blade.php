@@ -190,22 +190,52 @@
             </div>
             <div class="flex mb-4">
                 <div class="w-full px-3 md:w-1/2">
-                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                        for="grid-last-name">
-                        قیمت از: </label>
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="minPrice">
+                        @switch($dealType)
+                        @case(3)
+                        رهن
+                        @break
+                        @case(2)
+                        وعدیه
+                        @break
+                        @case(1)
+                        پیش‌فروش
+                        @break
+                        @default
+                        قیمت
+                        @endswitch
+                        از: </label>
                     <input wire:model='minPrice' wire:change='setPrice'
                         class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                        id="grid-last-name" type="number" placeholder="کف قیمت">
+                        id="minPrice" type="number" placeholder="کف قیمت">
                 </div>
                 <div class="w-full px-3 md:w-1/2">
-                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
-                        for="grid-last-name">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="maxPrice">
                         تا: </label>
                     <input wire:model='maxPrice' wire:change='setPrice'
                         class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                        id="grid-last-name" type="number" placeholder="سقف قیمت">
+                        id="maxPrice" type="number" placeholder="سقف قیمت">
                 </div>
             </div>
+            @if ($dealType==2)
+            <div class="flex mb-4">
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_min">
+                        اجاره از: </label>
+                    <input wire:model='rentMinPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="rent_min" type="number" placeholder="کف قیمت">
+                </div>
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_max">
+                        تا: </label>
+                    <input wire:model='rentMaxPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="rent_max" type="number" placeholder="سقف قیمت">
+                </div>
+            </div>
+            @endif
+
 
         </div>
     </div>

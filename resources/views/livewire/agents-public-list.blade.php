@@ -13,7 +13,7 @@
         @endif
         <div class="flex flex-col">
             <div class="text-sm text-gray-600">مشاور:</div>
-            <a href="/agent/{{ $agent->id }}"
+            <a href="/amlak?agent={{ $agent->id }}"
                 class="px-4 font-medium text-white transition-colors rounded-sm bg-mahdavi">{{
                 $agent->name }}</a>
             <div class="text-sm text-gray-600">تلفن:</div>

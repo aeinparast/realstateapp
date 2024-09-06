@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use App\Models\Asset;
+use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
@@ -11,10 +12,18 @@ class PostSearch extends Component
 {
     use WithPagination, WithoutUrlPagination;
 
+    #[Url]
+    public $city = '';
+
+    #[Url]
+    public $agent = '';
+
     public $assetType = '';
     public $dealType = '';
     public $minPrice = '0';
     public $maxPrice = '99999999999';
+    public $rentMinPrice = '0';
+    public $rentMaxPrice = '99999999999';
 
     // Check if assetType is valid
     public function checkType()
@@ -36,7 +45,9 @@ class PostSearch extends Component
     public function setPrice()
     {
         $this->minPrice = is_numeric($this->minPrice) ? $this->minPrice : 0;
-        $this->maxPrice = is_numeric($this->maxPrice) ? $this->maxPrice : 9999999999;
+        $this->maxPrice = is_numeric($this->maxPrice) ? $this->maxPrice : 99999999999;
+        $this->rentMinPrice = is_numeric($this->rentMinPrice) ? $this->rentMinPrice : 0;
+        $this->rentMaxPrice = is_numeric($this->rentMaxPrice) ? $this->rentMaxPrice : 99999999999;
     }
 
     // Render the component
@@ -48,12 +59,23 @@ class PostSearch extends Component
         $this->setPrice();
 
         // Initialize the query
-        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'city', 'img', 'rent', 'created_at')
+        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'city', 'img', 'rent', 'created_at')
             ->with('city');
 
         $query->where('isPublic', 1);
         $query->where('fileType', 1);
 
+        // Apply filters based on assetType
+        if ($this->city !== '' && is_numeric($this->city)) {
+
+            $query->where('city_id', (int)$this->city);
+        }
+
+        // Apply filters based on agent
+        if ($this->agent !== '' && is_numeric($this->agent)) {
+
+            $query->where('user_id', (int)$this->agent);
+        }
 
 
         // Apply filters based on assetType
@@ -74,6 +96,7 @@ class PostSearch extends Component
         $query->orderBy('created_at', 'desc');
         // Return the view with paginated results
         return view('livewire.post-search', [
+
             'assets' => $query->paginate(13),
         ]);
     }
