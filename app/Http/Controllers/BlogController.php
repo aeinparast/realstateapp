@@ -15,7 +15,8 @@ class BlogController extends Controller
      */
     public function index()
     {
-        return view('blog.index');
+        $blogs = Blog::all();
+        return view('blog.index', compact('blogs'));
     }
 
     /**
@@ -23,7 +24,7 @@ class BlogController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -31,17 +32,29 @@ class BlogController extends Controller
      */
     public function store(StoreBlogRequest $request)
     {
-        $blog_content = $request->validate([
-            'title' => 'required|min:3',
-            'content' => 'required|json', // Ensure content is JSON
+        // Validate request data
+        $validated = $request->validate([
+            // 'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
+            'title' => 'required|string',
         ]);
-        // Save the content to the database
-        $blog = new Blog();
-        $blog->data = $blog_content['content'];
-        $blog->title = $blog_content['title'];
-        $blog->user_id = Auth::id();
-        $blog->public = true;
-        $blog->save();
+
+
+        //Handle file upload if an image exists
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('photos', $imageName, 'liara');
+            // Merge the path into validated data
+            $validated['logo'] = $path;
+        }
+        $validated['user_id'] = Auth::id();
+        $validated['data'] = '';
+
+        // Create the city using validated data
+        Blog::create($validated);
+
+        // Redirect with success message
+        return redirect()->route('blog.index')->with('success', 'پست با موفقیت ساخته شد');
     }
 
     /**
@@ -57,7 +70,7 @@ class BlogController extends Controller
      */
     public function edit(Blog $blog)
     {
-        //
+        return view('blog.edit', compact('blog'));
     }
 
     /**
@@ -66,6 +79,18 @@ class BlogController extends Controller
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
         //
+
+        $blog_content = $request->validate([
+            'title' => 'required|min:3',
+            'content' => 'required|json', // Ensure content is JSON
+        ]);
+        // Save the content to the database
+        $blog = new Blog();
+        $blog->data = $blog_content['content'];
+        $blog->title = $blog_content['title'];
+        $blog->user_id = Auth::id();
+        $blog->public = true;
+        $blog->save();
     }
 
     /**

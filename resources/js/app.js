@@ -13,6 +13,73 @@ import Quote from '@editorjs/quote';
 import SimpleImage from "@editorjs/simple-image";
 
 
+
+document.addEventListener('DOMContentLoaded', function () {
+  const sections = document.querySelectorAll('.scroll-section');
+
+  const options = {
+    root: null,
+    threshold: 0.1,
+  };
+
+  const observer = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.remove('opacity-0', 'translate-y-10');
+        entry.target.classList.add('opacity-100', 'translate-y-0');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, options);
+
+  sections.forEach(section => {
+    observer.observe(section);
+  });
+});
+
+// main search-nav
+
+
+document.addEventListener('DOMContentLoaded', function () {
+  const settingsSection = document.getElementById('main');
+  const settingsNavbar = document.getElementById('search-nav');
+  const navBtn = document.getElementById('nav');
+
+
+  window.addEventListener('scroll', function () {
+    const sectionTop = settingsSection.getBoundingClientRect().top;
+    const sectionBottom = settingsSection.getBoundingClientRect().bottom;
+
+    if (sectionTop <= 0 && sectionBottom > 0) {
+      settingsNavbar.classList.add('fade-in');
+      settingsNavbar.classList.remove('fade-out');
+      navBtn.classList.add('fade-out');
+      navBtn.classList.remove('fade-in');
+      navBtn.classList.add('hidden');
+    } else {
+      settingsNavbar.classList.add('fade-out');
+      settingsNavbar.classList.remove('fade-in');
+      navBtn.classList.remove('hidden');
+      navBtn.classList.add('fade-in');
+      navBtn.classList.remove('fade-out');
+
+
+    }
+  });
+});
+
+document.addEventListener('DOMContentLoaded', function () {
+  const items = document.querySelectorAll('.list_item');
+
+  items.forEach((item, index) => {
+    setTimeout(() => {
+      item.classList.add('visible');
+    }, index * 300); // 300ms delay for each item
+  });
+});
+
+
+
 const editor = new EditorJS({
   holder: 'editorjs',
 

@@ -87,7 +87,7 @@
     
             // Copy the text inside the input to the clipboard
             navigator.clipboard.writeText(fileUrl.value).then(function() {
-                alert('آدرس فایل کپی شد!'); // Alert the user that the text was copied
+                alert('آدرس فایل کپی شد. میتوانید آن را در مکان مناسب در پست بچسبانید.'); // Alert the user that the text was copied
             }).catch(function(error) {
                 console.error('Failed to copy text: ', error); // Handle any errors
             });

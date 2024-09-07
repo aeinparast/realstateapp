@@ -43,7 +43,7 @@ new class extends Component
                 </div>
                 @endif
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" wire:navigate>
+                    <x-nav-link :href="route('blog.index')" :active="request()->routeIs('blog.index')">
                         پست‌ها
                     </x-nav-link>
                 </div>

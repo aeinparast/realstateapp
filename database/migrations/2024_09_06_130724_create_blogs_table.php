@@ -16,8 +16,9 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(User::class)->nullable();
             $table->string('title')->default('');
+            $table->string('logo')->default('');
             $table->boolean('public')->default(false);
-            $table->text('data'); // To store the JSON result from Editor.js
+            $table->text('data')->default(''); // To store the JSON result from Editor.js
             $table->timestamps();
         });
     }
