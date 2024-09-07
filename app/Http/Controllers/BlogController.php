@@ -15,7 +15,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::all();
+        $blogs = Blog::orderBy('updated_at', 'desc')->paginate(30);
         return view('blog.index', compact('blogs'));
     }
 
@@ -34,8 +34,9 @@ class BlogController extends Controller
     {
         // Validate request data
         $validated = $request->validate([
-            // 'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
+            'image' => 'required|image|mimes:png,jpg,jpeg,webp|max:2048',
             'title' => 'required|string',
+            'tags' => 'required|string'
         ]);
 
 
@@ -63,6 +64,7 @@ class BlogController extends Controller
     public function show(Blog $blog)
     {
         //
+        return view('blog.view', compact('blog'));
     }
 
     /**
@@ -85,12 +87,13 @@ class BlogController extends Controller
             'content' => 'required|json', // Ensure content is JSON
         ]);
         // Save the content to the database
-        $blog = new Blog();
-        $blog->data = $blog_content['content'];
         $blog->title = $blog_content['title'];
-        $blog->user_id = Auth::id();
-        $blog->public = true;
+        $blog->data = $blog_content['content'];
+
         $blog->save();
+        return redirect()->route('blog.index')->with('success', 'پست با موفقیت ویرایش شد');
+
+        return;
     }
 
     /**
@@ -98,6 +101,7 @@ class BlogController extends Controller
      */
     public function destroy(Blog $blog)
     {
-        //
+        $blog->delete();
+        return redirect()->route('blog.index')->with('removed', 'پست با موفقیت ساخته شد');
     }
 }

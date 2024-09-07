@@ -1,7 +1,7 @@
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-2 px-2">
+<div class="flex flex-col justify-center items-center md:grid md:grid-cols-2  xl:grid-cols-4 gap-2 px-2">
     @foreach ($assets as $asset)
     <div
-        class="flex flex-col max-w-sm col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi">
+        class="flex flex-col  col-span-1 overflow-hidden transition-transform border-b-2 rounded shadow-xl border-b-mahdavi">
         {{-- <img src="{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}" alt=""
             class="object-contain w-full rounded-t h-72"> --}}
         <div class="bg-cover bg-no-repeat h-52 md:h-72 "

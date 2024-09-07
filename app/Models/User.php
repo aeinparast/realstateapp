@@ -59,4 +59,9 @@ class User extends Authenticatable
     {
         return $this->hasMany(Asset::class); // Adjust the relationship type if needed
     }
+
+    public function blogs()
+    {
+        return $this->hasMany(Blog::class); // Adjust the relationship type if needed
+    }
 }

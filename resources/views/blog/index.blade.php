@@ -19,7 +19,7 @@
                 </div>
             </div>
             <div class="overflow-hidden bg-white shadow-sm dark:bg-gray-800 sm:rounded-lg">
-                <div class="flex items-center justify-between p-6 text-gray-900 dark:text-gray-100">
+                <div class="flex flex-col items-center justify-between p-6 text-gray-900 dark:text-gray-100">
                     <div class="flex flex-col justify-center w-full gap-2">
                         @foreach ($blogs as $post)
                         <div
@@ -29,12 +29,12 @@
                                     style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$post['logo']}}'">
                                 </div>
                                 <div class="flex flex-col justify-between">
-                                    <div class="">{{ $post['title'] }}
-                                    </div>
+                                    <a href="/blog/{{$post['id']}}" target="__blank" class="">{{ $post['title'] }}
+                                    </a>
                                     <div class="flex gap-2 text-xs">ساخته شده در:
                                         {{$post['created_at']->locale('fa')->diffForHumans()}}
                                         - آخرین
-                                        بروزرسانی: {{$post['created_at']->locale('fa')->diffForHumans()}}
+                                        بروزرسانی: {{$post['updated_at']->locale('fa')->diffForHumans()}}
                                     </div>
                                 </div>
 
@@ -49,6 +49,7 @@
                         </div>
                         @endforeach
                     </div>
+                    {{ $blogs->links() }}
                 </div>
             </div>
             <ul>

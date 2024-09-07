@@ -86,6 +86,12 @@
         </div>
     </section>
     <section id="blog">
-        <livewire:hot-blog />
+        <h2 class="text-center text-4xl text-mahdavi font-bold my-4">آخرین‌های وبلاگ</h2>
+        <x-hot-blog />
+        <div class="w-full flex justify-center my-4">
+            <a href="/blogposts"
+                class="text-center font-medium text-white bg-mahdavi border-2 ring-0 ring-mahdavi border-mahdavi transition-all rounded px-4 py-1 hover:bg-white hover:text-mahdavi hover:ring-4 hover:ring-offset-4">مشاهده
+                موارد بیشتر</a>
+        </div>
     </section>
 </x-public-layout>

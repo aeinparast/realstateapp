@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CityController;
+use App\Http\Controllers\EditorDataController;
 use App\Livewire\AdminCreateUser;
 use App\Livewire\AdminUpdateUser;
 use App\Livewire\AdminUsers;
@@ -48,6 +49,7 @@ Route::resource('city', CityController::class);
 
 
 Route::resource('blog', BlogController::class);
+Route::get('/get-editor-data/{id}', [EditorDataController::class, 'getEditorData']);
 
 
 Route::view('agents', 'public-agents')

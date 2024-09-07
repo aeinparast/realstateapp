@@ -19,6 +19,19 @@
                             <p class="text-xs italic text-red-500">خواهشمندیم نام پست را وارد کنید</p>
                             @enderror
                         </div>
+                        <div class="w-full px-3 mb-6 md:w-full md:mb-0">
+                            <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase"
+                                for="title">
+                                کلمات کلیدی
+                            </label>
+                            <input
+                                class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200  border-none rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                                id="tags" name="tags" type="text"
+                                placeholder="کلمات کلیدی را با کاما , اینگلیسی از هم جدا کنید" required>
+                            @error('tags')
+                            <p class="text-xs italic text-red-500">خواهشمندیم نام پست را وارد کنید</p>
+                            @enderror
+                        </div>
 
                     </div>
                     <div class="flex flex-col items-center justify-center w-full gap-4 ">

@@ -79,83 +79,126 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
-const editor = new EditorJS({
-  holder: 'editorjs',
-
-  tools: {
-    header: {
-      class: Header,
-      shortcut: 'CMD+SHIFT+H',
-    },
-    image: SimpleImage
-    ,
-    list: {
-      class: List,
-      inlineToolbar: true,
-      config: {
-        defaultStyle: 'unordered'
-      }
-    },
-    quote: {
-      class: Quote,
-      inlineToolbar: true,
-      shortcut: 'CMD+SHIFT+O',
-      config: {
-        quotePlaceholder: 'Enter a quote',
-        captionPlaceholder: 'Quote\'s author',
+function initEditor(savedData = null) {
+  const editor = new EditorJS({
+    holder: 'editorjs',
+    data: savedData ? savedData : {},
+    tools: {
+      header: {
+        class: Header,
+        shortcut: 'CMD+SHIFT+H',
+      },
+      image: SimpleImage
+      ,
+      list: {
+        class: List,
+        inlineToolbar: true,
+        config: {
+          defaultStyle: 'unordered'
+        }
+      },
+      quote: {
+        class: Quote,
+        inlineToolbar: true,
+        shortcut: 'CMD+SHIFT+O',
+        config: {
+          quotePlaceholder: 'Enter a quote',
+          captionPlaceholder: 'Quote\'s author',
+        },
       },
     },
-  },
 
 
-  i18n: {
-    direction: 'rtl',
-    messages: {
+    i18n: {
+      direction: 'rtl',
+      messages: {
 
-      ui: {
-        "blockTunes": {
-          "toggler": {
-            "Click to tune": "برای تنظیم کلیک کنید",
-            "or drag to move": "یا برای جابجایی بکشید"
+        ui: {
+          "blockTunes": {
+            "toggler": {
+              "Click to tune": "برای تنظیم کلیک کنید",
+              "or drag to move": "یا برای جابجایی بکشید"
+            },
           },
-        },
-        "inlineToolbar": {
-          "converter": {
-            "Convert to": "تبدیل به"
+          "inlineToolbar": {
+            "converter": {
+              "Convert to": "تبدیل به"
+            }
+          },
+          "toolbar": {
+            "toolbox": {
+              "Add": "افزودن"
+            }
           }
         },
-        "toolbar": {
-          "toolbox": {
-            "Add": "افزودن"
+
+        toolNames: {
+          "Text": "متن",
+          "Heading": "هدر",
+          "List": 'لیست',
+          "Quote": "نقل قول"
+        },
+
+        blockTunes: {
+          'Convert To': 'تبدیل به',
+          "delete": {
+            "Delete": "حذف"
+          },
+          "moveUp": {
+            "Move up": "انتقال به بالا"
+          },
+          "moveDown": {
+            "Move down": "انتقال به پایین"
           }
         }
-      },
 
-      toolNames: {
-        "Text": "متن",
-        "Heading": "هدر",
-        "List": 'لیست',
-        "Quote": "نقل قول"
-      },
-
-      blockTunes: {
-        'Convert To': 'تبدیل به',
-        "delete": {
-          "Delete": "حذف"
-        },
-        "moveUp": {
-          "Move up": "انتقال به بالا"
-        },
-        "moveDown": {
-          "Move down": "انتقال به پایین"
-        }
       }
 
-    }
+    },
+  });
 
-  },
-});
+  document.getElementById('save-button').addEventListener('click', () => {
+
+    editor.save().then((outputData) => {
+      document.getElementById('blogpost').value = JSON.stringify(outputData);
+      const form = document.getElementById('blog-submit');
+      form.submit();
+
+    }).catch((error) => {
+      console.error('Saving failed: ', error);
+
+      // Hide loading indicator even on failure
+      document.getElementById('loading-indicator').style.display = 'none';
+    });
+  });
+
+};
+
+function fetchEditorData(postId) {
+  // Fetch the editor data for the given blog post ID
+  fetch(`/get-editor-data/${postId}`)
+    .then(response => response.json())
+    .then(data => {
+      initEditor(data); // Initialize Editor.js with the fetched data
+    })
+    .catch(error => {
+      console.error('Error fetching editor data:', error);
+      initEditor(); // Initialize without data in case of an error
+    });
+}
+
+// Function to extract the blog post ID from the current URL
+function getBlogIdFromUrl() {
+  const pathParts = window.location.pathname.split('/');
+  return pathParts[pathParts.length - 2]; // Extract the second-to-last part (ID)
+}
+
+// Check if the user is on an edit page (e.g., /blog/{id}/edit)
+if (window.location.pathname.includes('/edit') && window.location.pathname.includes('/blog')) {
+  const postId = getBlogIdFromUrl(); // Extract the post ID from the URL
+  fetchEditorData(postId); // Fetch the editor data for this post
+}
+
 
 document.getElementById('save-button').addEventListener('click', () => {
   // Save the Editor.js data and transform it into JSON

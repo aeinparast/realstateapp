@@ -13,8 +13,14 @@ class Blog extends Model
         'user_id',
         'data',
         'title',
+        'tags',
         'public',
         'logo',
         'user-id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }
