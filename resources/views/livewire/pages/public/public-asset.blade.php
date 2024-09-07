@@ -129,7 +129,7 @@
         </div>
 
         <!-- Seller Information -->
-        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi  list_item">
+        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi list_item">
             @if ($pfp==null || $pfp=='')
             <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                 style="background-image: url('/img/logo.webp');"></div>
@@ -303,7 +303,7 @@
                             @foreach (explode("*", $asset['img']) as $img)
                             <picture class="w-full min-w-full splide__slide max-h-80">
                                 <img src="{{ env('BUCKET_FULL_URL').'/'.$img }}" alt=""
-                                    class="object-contain max-w-full mx-auto rounded max-h-80 cursor-pointer"
+                                    class="object-contain max-w-full mx-auto rounded cursor-pointer max-h-80"
                                     data-slide-index="{{ $loop->index }}">
                             </picture>
                             @endforeach
@@ -320,7 +320,7 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="hidden  overflow-hidden rounded md:block mt-4" id="map">
+            <div class="hidden mt-4 overflow-hidden rounded md:block" id="map">
 
                 <iframe width="100%" height="200"
                     src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
@@ -328,14 +328,14 @@
         </div>
     </div>
     <div id="fullscreen-modal"
-        class="hidden fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50">
-        <div class="relative max-w-screen-lg w-full h-full flex items-center justify-center">
-            <button id="close-modal" class="absolute top-2 right-2 text-white text-3xl">&times;</button>
+        class="fixed inset-0 z-50 flex items-center justify-center hidden bg-black bg-opacity-90">
+        <div class="relative flex items-center justify-center w-full h-full max-w-screen-lg">
+            <button id="close-modal" class="absolute text-3xl text-white top-2 right-2">&times;</button>
             <img id="fullscreen-image" class="w-auto max-h-full" src="" alt="Fullscreen Image">
             <button id="prev-slide"
-                class="absolute left-0 top-1/2 text-white text-4xl px-4 transform -translate-y-1/2">&gt;</button>
+                class="absolute left-0 px-4 text-4xl text-white transform -translate-y-1/2 top-1/2">&gt;</button>
             <button id="next-slide"
-                class="absolute right-0 top-1/2 text-white text-4xl px-4 transform -translate-y-1/2">&lt;</button>
+                class="absolute right-0 px-4 text-4xl text-white transform -translate-y-1/2 top-1/2">&lt;</button>
         </div>
     </div>
     <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
@@ -365,7 +365,7 @@
                     <div class="text-sm text-gray-600">همراه:</div>
                     <a href="tel:{{ $asset->user->mobile }}" class="border-b-2 border-mahdavi">{{ $asset->user->mobile
                         }}</a>
-                    <div class="flex justify-center gap-2 mt-2  sm:justify-normal">
+                    <div class="flex justify-center gap-2 mt-2 sm:justify-normal">
                         @if ($asset->user->instagram!='')
                         <a href="https://www.instagram.com/{{$asset->user->instagram}}" target="_blank"
                             rel="noopener noreferrer" class="w-6 h-6 transition-transform hover:scale-105">

@@ -13,7 +13,7 @@ import Quote from '@editorjs/quote';
 import SimpleImage from "@editorjs/simple-image";
 
 
-
+var savebutton = document.querySelector('#save-button');
 document.addEventListener('DOMContentLoaded', function () {
   const sections = document.querySelectorAll('.scroll-section');
 
@@ -157,22 +157,26 @@ function initEditor(savedData = null) {
     },
   });
 
-  document.getElementById('save-button').addEventListener('click', () => {
 
-    editor.save().then((outputData) => {
-      document.getElementById('blogpost').value = JSON.stringify(outputData);
-      const form = document.getElementById('blog-submit');
-      form.submit();
+  if (savebutton) {
+    document.getElementById('save-button').addEventListener('click', () => {
 
-    }).catch((error) => {
-      console.error('Saving failed: ', error);
+      editor.save().then((outputData) => {
+        document.getElementById('blogpost').value = JSON.stringify(outputData);
+        const form = document.getElementById('blog-submit');
+        form.submit();
 
-      // Hide loading indicator even on failure
-      document.getElementById('loading-indicator').style.display = 'none';
+      }).catch((error) => {
+        console.error('Saving failed: ', error);
+
+        // Hide loading indicator even on failure
+        document.getElementById('loading-indicator').style.display = 'none';
+      });
     });
-  });
 
-};
+  };
+}
+
 
 function fetchEditorData(postId) {
   // Fetch the editor data for the given blog post ID
@@ -199,26 +203,26 @@ if (window.location.pathname.includes('/edit') && window.location.pathname.inclu
   fetchEditorData(postId); // Fetch the editor data for this post
 }
 
+if (savebutton) {
+  document.getElementById('save-button').addEventListener('click', () => {
+    // Save the Editor.js data and transform it into JSON
+    editor.save().then((outputData) => {
+      // Transform the data into a JSON string
+      const blogPostInput = document.getElementById('blogpost');
 
-document.getElementById('save-button').addEventListener('click', () => {
-  // Save the Editor.js data and transform it into JSON
-  editor.save().then((outputData) => {
-    // Transform the data into a JSON string
-    const blogPostInput = document.getElementById('blogpost');
+      // Insert the JSON data into the hidden input field
+      blogPostInput.value = JSON.stringify(outputData);
 
-    // Insert the JSON data into the hidden input field
-    blogPostInput.value = JSON.stringify(outputData);
+      // Once the data is set, submit the form
+      const form = document.getElementById('blog-submit');
+      form.submit();
 
-    // Once the data is set, submit the form
-    const form = document.getElementById('blog-submit');
-    form.submit();
-
-  }).catch((error) => {
-    // Handle any errors in saving the data
-    console.error('Saving failed:', error);
+    }).catch((error) => {
+      // Handle any errors in saving the data
+      console.error('Saving failed:', error);
+    });
   });
-});
-
+}
 
 
 // Define styles for each part of the table
@@ -262,6 +266,10 @@ console.log(`%cIran-Sans Font License: %cvdsavsavds`, style.key, style.value);
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  var mainCarousel = document.querySelector('.scroll-section');
+  if (!mainCarousel) {
+    return;
+  }
   const sections = document.querySelectorAll('.scroll-section');
 
   const options = {
@@ -288,6 +296,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 document.addEventListener('DOMContentLoaded', function () {
+  var mainCarousel = document.querySelector('#search-nav');
+  if (!mainCarousel) {
+    return;
+  }
   const settingsSection = document.getElementById('main');
   const settingsNavbar = document.getElementById('search-nav');
   const navBtn = document.getElementById('nav');
@@ -346,6 +358,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.addEventListener('DOMContentLoaded', function () {
   // Initialize Splide carousel
+  var mainCarousel = document.querySelector('#main-carousel');
+  if (!mainCarousel) {
+    return;
+  }
   var splide = new Splide('#main-carousel').mount();
 
   // Thumbnail click to navigate to the corresponding slide
