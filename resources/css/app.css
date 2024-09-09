@@ -5,9 +5,13 @@
 
 @layer base {
   h2 {
-    @apply text-4xl font-bold;
+    @apply text-3xl font-medium;
     /* Customize the h1 style */
   }
+}
+
+.blog_p a {
+  @apply transition-colors text-slate-600 hover:text-slate-700;
 }
 
 

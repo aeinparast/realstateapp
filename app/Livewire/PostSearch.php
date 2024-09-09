@@ -144,7 +144,7 @@ class PostSearch extends Component
         // Return the view with paginated results
         return view('livewire.post-search', [
             'cities' => $this->cities,
-            'assets' => $query->paginate(13),
+            'assets' => $query->paginate(3),
         ]);
     }
 }

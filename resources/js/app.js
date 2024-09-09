@@ -12,7 +12,6 @@ import List from '@editorjs/list';
 import Quote from '@editorjs/quote';
 import SimpleImage from "@editorjs/simple-image";
 
-
 var savebutton = document.querySelector('#save-button');
 document.addEventListener('DOMContentLoaded', function () {
   const sections = document.querySelectorAll('.scroll-section');
@@ -97,6 +96,7 @@ function initEditor(savedData = null) {
           defaultStyle: 'unordered'
         }
       },
+
       quote: {
         class: Quote,
         inlineToolbar: true,

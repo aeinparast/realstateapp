@@ -12,9 +12,12 @@ class HotBlog extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public $limit;
+    public $pagi;
+    public function __construct($limit = 3, $pagi = false)
     {
-        //
+        $this->limit = $limit;
+        $this->pagi = $pagi;
     }
 
     /**
@@ -22,7 +25,11 @@ class HotBlog extends Component
      */
     public function render(): View|Closure|string
     {
-        $blogs = Blog::with('user')->limit(3)->get();
+        if ($this->pagi) {
+            $blogs = Blog::with('user')->orderBy('updated_at', 'desc')->paginate($this->limit);
+        } else {
+            $blogs = Blog::with('user')->orderBy('updated_at', 'desc')->limit($this->limit)->get();
+        }
         return view('components.hot-blog', compact('blogs'));
     }
 }

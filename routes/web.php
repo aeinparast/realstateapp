@@ -16,34 +16,34 @@ Route::view('/test', 'test');
 
 
 Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
+  ->middleware(['auth', 'verified'])
+  ->name('dashboard');
 
 Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
+  ->middleware(['auth'])
+  ->name('profile');
 
 Route::view('asset', 'asset')
-    ->middleware(['auth'])
-    ->name('asset');
+  ->middleware(['auth'])
+  ->name('asset');
 
 
 Route::get('create-asset', AssetCreate::class)
-    ->middleware(['auth'])
-    ->name('asset-create');
+  ->middleware(['auth'])
+  ->name('asset-create');
 
 Route::get('update-asset/{asset}', AssetUpdate::class)
-    ->middleware(['auth'])
-    ->name('asset-update');
+  ->middleware(['auth'])
+  ->name('asset-update');
 
 Route::get('view', PublicAsset::class)
-    ->name('asset-view');
+  ->name('asset-view');
 
 Route::view('amlak', 'amlak')
-    ->name('amlak');
+  ->name('amlak');
 
 Route::view('cities', 'cities')
-    ->name('cities');
+  ->name('cities');
 
 Route::resource('city', CityController::class);
 
@@ -51,24 +51,27 @@ Route::resource('city', CityController::class);
 Route::resource('blog', BlogController::class);
 Route::get('/get-editor-data/{id}', [EditorDataController::class, 'getEditorData']);
 
+Route::view('weblog', 'blog.weblog')
+  ->name('weblog');
+
 
 Route::view('agents', 'public-agents')
-    ->name('public-agents');
+  ->name('public-agents');
 
 
 
 
 Route::get('users', AdminUsers::class)
-    ->middleware(['auth'])
-    ->name('admin-users');
+  ->middleware(['auth'])
+  ->name('admin-users');
 
 Route::get('users-create', AdminCreateUser::class)
-    ->middleware(['auth'])
-    ->name('admin-users-create');
+  ->middleware(['auth'])
+  ->name('admin-users-create');
 
 Route::get('users-update/{user}', AdminUpdateUser::class)
-    ->middleware(['auth'])
-    ->name('admin-users-update');
+  ->middleware(['auth'])
+  ->name('admin-users-update');
 
 
 
