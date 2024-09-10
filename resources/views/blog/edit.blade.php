@@ -15,8 +15,8 @@
         <div id="editorjs"></div>
         <div class="w-full flex justify-center gap-2">
             <select name="public" id="public">
-                <option value="0">پیش‌نویس</option>
-                <option value="1">انتشار</option>
+                <option value="0" {{ $blog->public == 0 ? 'selected' : '' }}>پیش‌نویس</option>
+                <option value="1" {{ $blog->public == 1 ? 'selected' : '' }}>انتشار</option>
             </select>
             <button id="save-button" type="button"
                 class="bg-blue-500 text-white px-2 py-1 rounded hover:scale-95 transition-transform">ذخیره</button>

@@ -29,7 +29,7 @@
                                     style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$post['logo']}}'">
                                 </div>
                                 <div class="flex flex-col justify-between">
-                                    <a href="/blog/{{$post['id']}}" target="__blank" class="">{{ $post['title'] }}
+                                    <a href="/blog/{{$post['id']}}" target="_blank" class="">{{ $post['title'] }}
                                     </a>
                                     <div class="flex gap-2 text-xs">ساخته شده در:
                                         {{$post['created_at']->locale('fa')->diffForHumans()}}

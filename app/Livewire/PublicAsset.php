@@ -13,6 +13,7 @@ class PublicAsset extends Component
 
     public Asset $asset;
 
+
     public $facilities;
 
     public function mount()
@@ -26,6 +27,82 @@ class PublicAsset extends Component
         $this->facilities = config('facilities');
     }
 
+    public function setDescription()
+    {
+        $dealType = '';
+        $assetType = '';
+        switch ($this->asset->dealType) {
+            case 0:
+                $dealType = 'فروش';
+                break;
+            case 1:
+                $dealType = 'پروژه';
+                break;
+            case 2:
+                $dealType = 'اجاره';
+                break;
+            default:
+                $dealType = 'رهن';
+                break;
+        }
+
+        switch ($this->asset->assetType) {
+            case 0:
+                $assetType = 'زمین';
+                break;
+            case 1:
+                $assetType = 'خانه';
+                break;
+            case 2:
+                $assetType = 'ویلا';
+                break;
+            default:
+                $assetType = 'تجاری';
+                break;
+        }
+
+        return $dealType . ' ' . $assetType . ' در '  . $this->asset->city->name;
+    }
+
+    public function setKeywords()
+    {
+        $dealType = '';
+        $assetType = '';
+        switch ($this->asset->dealType) {
+            case 0:
+                $dealType = 'فروش';
+                break;
+            case 1:
+                $dealType = 'پروژه';
+                break;
+            case 2:
+                $dealType = 'اجاره';
+                break;
+            default:
+                $dealType = 'رهن';
+                break;
+        }
+
+        switch ($this->asset->assetType) {
+            case 0:
+                $assetType = 'زمین';
+                break;
+            case 1:
+                $assetType = 'خانه';
+                break;
+            case 2:
+                $assetType = 'ویلا';
+                break;
+            default:
+                $assetType = 'تجاری';
+                break;
+        }
+
+        return $dealType . ' ' . $assetType . ','  . $this->asset->city->name . ',' .
+            config('assetType')[$this->asset->assetType][$this->asset->buildingType] . ' در ' . $this->asset->city->name .
+            ',املاک مهدوی';
+    }
+
 
     public function render()
     {
@@ -34,6 +111,11 @@ class PublicAsset extends Component
         $facilities_list = json_decode($this->asset['facilities_list']);
         $title = 'کاستوم';
         return view('livewire.pages.public.public-asset', compact(['facilities_list', 'pfp', 'map', 'title']))
-            ->layout('layouts.public', ['title' => $this->asset->title . ' - هلدینگ سرمایه‌گذاری مهدوی']);
+            ->layout('layouts.public', [
+                'title' => $this->asset->title . ' - هلدینگ سرمایه‌گذاری مهدوی',
+                'description' => $this->setDescription(),
+                'keywords' => $this->setKeywords()
+
+            ]);
     }
 }

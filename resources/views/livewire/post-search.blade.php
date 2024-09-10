@@ -17,10 +17,19 @@
                 <i class="flex items-center justify-center text-white bi bi-x-circle"></i>
             </div>
             <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
+                @if ($agentInfo!=null&&$agent!='')
+                <div
+                    class="border-mahdavi border rounded w-full mt-4 px-2 py-1 mb-2 flex justify-between items-center text-mahdavi">
+                    <div class="font-medium">{{$agentInfo->name}}</div>
+                    <i class="bi bi-x-circle-fill flex justify-between items-center cursor-pointer"
+                        wire:click='clearAgent'></i>
+                </div>
+                @endif
                 <div class="mt-4">
                     <div class=""> {{ $assets->links(data:['scrollTo' => '#post-search']) }}</div>
                 </div>
 
+                <div class="w-full"></div>
                 <div class="w-full mt-8">
                     <div class="relative inline-flex w-full">
                         <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
@@ -127,7 +136,6 @@
                             مشارکت</label>
                     </div>
                     @endif
-
                 </div>
                 <div class="flex mb-4">
                     <div class="w-full px-3 md:w-1/2">
@@ -191,6 +199,14 @@
     <div class="top-0 right-0 flex-col hidden col-span-1 gap-2 p-2 border-2 rounded sm:flex border-mahdavi">
         <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
             <div class="w-full">
+                @if ($agentInfo!=null&&$agent!='')
+                <div
+                    class="border-mahdavi border rounded w-full px-2 py-1 mb-2 flex justify-between items-center text-mahdavi">
+                    <div class="font-medium">{{$agentInfo->name}}</div>
+                    <i class="bi bi-x-circle-fill flex justify-between items-center cursor-pointer"
+                        wire:click='clearAgent'></i>
+                </div>
+                @endif
                 <div class="relative inline-flex w-full">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="city-dropdown"

@@ -79,7 +79,7 @@
             </div>
         </div>
         <div class="flex gap-4 ">
-            <button wire:click.prevent=''
+            <button x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
                 class="flex items-center gap-2 px-4 py-1 font-bold transition-all border-2 rounded hover:opacity-80 text-mahdavi border-mahdavi hover:cursor-pointer hover:bg-mahdavi hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
@@ -89,12 +89,42 @@
                 <div class="">انتخاب شهر</div>
             </button>
             <div class="flex">
-                <button type="submit"
+                <button type="button" wire:click='sendurl'
                     class="px-4 py-1 font-bold text-white transition-colors border-2 rounded bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi">جستوجو</button>
             </div>
         </div>
 
 
     </div>
+    <x-modal name="confirm-user-deletion" :show="$errors->isNotEmpty()" focusable>
+        <div wire:submit="deleteUser" class="p-6">
 
+            <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
+                انتخاب شهر
+            </h2>
+
+
+            <div class="mt-6">
+                <div class="relative">
+                    <select wire:model='city'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="city">
+                        <option value="">انتخاب شهر</option>
+                        @foreach ($cities as $city)
+                        <option value="{{$city->id}}">{{$city->name}}</option>
+                        @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-end">
+                <x-secondary-button x-on:click="$dispatch('close')">
+                    بازگشت
+                </x-secondary-button>
+
+            </div>
+        </div>
+    </x-modal>
 </form>

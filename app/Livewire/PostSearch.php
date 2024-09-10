@@ -4,10 +4,12 @@ namespace App\Livewire;
 
 use App\Models\Asset;
 use App\Models\City;
+use App\Models\User;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithoutUrlPagination;
 use Livewire\WithPagination;
+use phpDocumentor\Reflection\Types\This;
 
 class PostSearch extends Component
 {
@@ -18,6 +20,14 @@ class PostSearch extends Component
 
     #[Url]
     public $agent = '';
+
+    #[Url]
+    public $at = '';
+
+    #[Url]
+    public $dt = '';
+
+    public ?User $agentInfo = null;
 
     public $City;
     public $bt = '';
@@ -34,7 +44,13 @@ class PostSearch extends Component
 
     public function mount()
     {
-        $this->cities = City::all();;
+        $this->cities = City::all();
+        if ($this->at !== '' && is_numeric($this->at)) {
+            $this->assetType = $this->at;
+        }
+        if ($this->dt !== '' && is_numeric($this->dt)) {
+            $this->dealType = $this->dt;
+        }
     }
 
     public function changeCity()
@@ -45,6 +61,12 @@ class PostSearch extends Component
             return;
         }
         $this->city = '';
+    }
+
+    public function clearAgent()
+    {
+        $this->agent = '';
+        $this->agentInfo = null;
     }
 
     public function changeAsset()
@@ -87,11 +109,23 @@ class PostSearch extends Component
     // Render the component
     public function render()
     {
+
         // Validate filters
         $this->checkType();
         $this->checkDeal();
         $this->checkBT();
         $this->setPrice();
+        if (!empty($this->agent) && is_numeric($this->agent)) {
+            // Find the user by ID (assuming $this->agent is the user ID)
+            $loc = User::where('id', (int)$this->agent)->first();
+
+            if ($loc) {
+                $this->agentInfo = $loc;
+            } else {
+                $this->agentInfo = null;
+            }
+        }
+
 
         // Initialize the query
         $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'city', 'img', 'rent', 'created_at')
@@ -144,7 +178,7 @@ class PostSearch extends Component
         // Return the view with paginated results
         return view('livewire.post-search', [
             'cities' => $this->cities,
-            'assets' => $query->paginate(3),
+            'assets' => $query->paginate(6),
         ]);
     }
 }

@@ -10,6 +10,40 @@
   }
 }
 
+blockquote {
+  background:
+    linear-gradient(to right, #d2ab65 6px, transparent 4px) 0 100%,
+    linear-gradient(to left, #d2ab65 6px, transparent 4px) 100% 0,
+    linear-gradient(to bottom, #d2ab65 6px, transparent 4px) 100% 0,
+    linear-gradient(to top, #d2ab65 6px, transparent 4px) 0 100%;
+  background-repeat: no-repeat;
+  background-size: 20px 20px;
+}
+
+/* -- create the quotation marks -- */
+blockquote:before,
+blockquote:after {
+  font-family: FontAwesome;
+  position: absolute;
+  color: #d2ab65;
+  font-size: 34px;
+}
+
+blockquote:before {
+  content: "''";
+  top: -12px;
+  margin-right: -20px;
+  right: 100%;
+}
+
+blockquote:after {
+  content: "''";
+  margin-left: -20px;
+  left: 100%;
+  top: auto;
+  bottom: -20px;
+}
+
 .blog_p a {
   @apply transition-colors text-slate-600 hover:text-slate-700;
 }

@@ -85,10 +85,13 @@ class BlogController extends Controller
         $blog_content = $request->validate([
             'title' => 'required|min:3',
             'content' => 'required|json', // Ensure content is JSON
+            'public' => 'required|boolean'
         ]);
         // Save the content to the database
         $blog->title = $blog_content['title'];
         $blog->data = $blog_content['content'];
+        $blog->public = $blog_content['public'];
+
 
         $blog->save();
         return redirect()->route('blog.index')->with('success', 'پست با موفقیت ویرایش شد');

@@ -5,7 +5,9 @@
         style="background-image: url('{{ env('BUCKET_FULL_URL').'/'.explode('*',$asset['img'])[0] }}');"></div>
     <div class="flex flex-col justify-between flex-1 px-6 py-4">
         <div class="">
-            <div class="mb-2 text-xl font-bold text-cyan-800">{{ $asset['title'] }}</div>
+            <a href="{{route('asset-view')}}?id={{$asset['id']}}" target="_blank"
+                class="mb-2 text-xl font-bold text-cyan-800">{{
+                $asset['title'] }}</a>
             <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                     fill="currentColor" class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />

@@ -26,9 +26,9 @@ class HotBlog extends Component
     public function render(): View|Closure|string
     {
         if ($this->pagi) {
-            $blogs = Blog::with('user')->orderBy('updated_at', 'desc')->paginate($this->limit);
+            $blogs = Blog::with('user')->where('public', true)->orderBy('created_at', 'desc')->paginate($this->limit);
         } else {
-            $blogs = Blog::with('user')->orderBy('updated_at', 'desc')->limit($this->limit)->get();
+            $blogs = Blog::with('user')->where('public', true)->orderBy('created_at', 'desc')->limit($this->limit)->get();
         }
         return view('components.hot-blog', compact('blogs'));
     }

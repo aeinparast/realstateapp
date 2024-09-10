@@ -4,11 +4,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="{{ $description ?? '' }}">
+  <meta name="keywords" content="{{ $keywords ?? '' }}">
 
   <title>{{ $title ?? 'هلدینگ سرمایه‌گذاری مهدوی' }}</title>
 
   <!-- Fonts -->
 
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
   <!-- Styles -->
   @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -95,8 +98,17 @@
                         font-light
                         @endif">
               <a href="{{route('public-agents')}}">مشاوران</a>
+            </li>
+            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            @if (request()->routeIs('weblog'))
+                border-b-mahdavi text-mahdavi font-normal
+            @else
+            border-b-transparent
+            font-light
+            @endif">
+              <a href="{{route('weblog')}}">وبلاگ</a>
+            </li>
             <li class="text-sm font-light">ارتباط با ما</li>
-            <li class="text-sm font-light">درباره ما</li>
           </ul>
         </div>
         <div class="relative flex items-center gap-1 sm:gap-2 lg:gap-4">

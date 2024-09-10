@@ -20,7 +20,8 @@
                 <div class="text-gray-600">
                     معامله
                 </div>
-                {{config('dealType')[$asset['dealType']]}}
+                <a href="/amlak?dt={{$asset['dealType']}}"
+                    target="_blank">{{config('dealType')[$asset['dealType']]}}</a>
             </div>
 
             <div class="flex items-center justify-between py-2 border-b list_item">
