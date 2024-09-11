@@ -1,4 +1,265 @@
 <div class="w-full">
+    <div class="">
+        <div class="flex flex-wrap mb-6 -mx-3">
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="name">
+                    نام فایل
+                </label>
+                <input wire:model='title' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="name" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 md:w-1/5">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="seller_name">
+                    نام مالک
+                </label>
+                <input wire:model='seller_name' wire:change='$refresh'
+                    class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="seller_name" type="text">
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="seller_mobile">
+                    همراه مالک
+                </label>
+                <input wire:model='seller_mobile' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="seller_mobile" type="text">
+            </div>
+            <div class="w-full px-3 md:w-1/5">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="seller_phone">
+                    تلفن ثابت مالک
+                </label>
+                <input wire:model='seller_phone' wire:change='$refresh'
+                    class="block w-full px-4 py-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                    id="seller_phone" type="text">
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="city">
+                    شهر
+                </label>
+                <div class="relative">
+                    <select wire:model='city_id' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="city">
+                        <option value="">همه موارد</option>
+                        @foreach ($cityAreas as $cityArea)
+                        <option value="{{$cityArea->id}}">{{$cityArea->name}}</option>
+                        @endforeach
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="assetType">
+                    نوع ملک
+                </label>
+                <div class="relative">
+                    <select wire:model='assetType' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="assetType">
+                        <option value="">همه موارد</option>
+                        <option value="0">زمین</option>
+                        <option value="1">خانه</option>
+                        <option value="2">ویلا</option>
+                        <option value="3">تجاری</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="buildingType">
+                    نوع
+                    @if ($assetType==0)
+                    زمین
+                    @else
+                    ساختمان
+                    @endif </label>
+                <div class="relative">
+                    <select wire:model='buildingType' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="buildingType">
+                        <option value="">همه موارد</option>
+                        @if ($assetType==0)
+                        @foreach (config('assetType')[0] as $key=> $at)
+                        <option value="{{$key}}">{{$at}}</option>
+                        @endforeach
+                        @endif
+                        @if ($assetType==1)
+                        @foreach (config('assetType')[1] as $key=> $at)
+                        <option value="{{$key}}">{{$at}}</option>
+                        @endforeach
+                        @endif
+                        @if ($assetType==2)
+                        @foreach (config('assetType')[2] as $key=> $at)
+                        <option value="{{$key}}">{{$at}}</option>
+                        @endforeach
+                        @endif
+                        @if ($assetType==3)
+                        @foreach (config('assetType')[3] as $key=> $at)
+                        <option value="{{$key}}">{{$at}}</option>
+                        @endforeach
+                        @endif
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="dealType">
+                    نوع معامله
+                </label>
+                <div class="relative">
+                    <select wire:model='dealType' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="dealType">
+                        <option value="">همه موارد</option>
+                        <option value="0">فروش</option>
+                        <option value="1">پروژه</option>
+                        <option value="2">اجاره</option>
+                        <option value="3">رهن</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="fileType">
+                    وضعیت فایل </label>
+                <div class="relative">
+                    <select wire:model='fileType' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="fileType">
+                        <option value="">همه موارد</option>
+                        <option value="0">ذخیره شخصی</option>
+                        <option value="1">آماده معامله</option>
+                        <option value="2">معامله شده</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="public">
+                    وضعیت نمایش </label>
+                <div class="relative">
+                    <select wire:model='public' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="public">
+                        <option value="">همه موارد</option>
+                        <option value="0">خصوصی</option>
+                        <option value="1">عمومی</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/4 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="name">
+                    کف قیمت
+                </label>
+                <input wire:model='price_min' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="price_min" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/4 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="name">
+                    سقف قیمت
+                </label>
+                <input wire:model='price_max' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="price_max" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            @if ($dealType==2)
+            <div class="w-full px-3 mb-6 md:w-1/4 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_min">
+                    کف اجاره
+                </label>
+                <input wire:model='rent_min' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="rent_min" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/4 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_max">
+                    سقف اجاره
+                </label>
+                <input wire:model='rent_max' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="rent_max" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            @endif
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="area">
+                    مساحت
+                </label>
+                <input wire:model='area' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="area" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="space">
+                    زیربنا
+                </label>
+                <input wire:model='space' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="space" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="beds">
+                    اتاق خواب
+                </label>
+                <input wire:model='beds' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="beds" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="wcs">
+                    سرویس بهداشتی
+                </label>
+                <input wire:model='wcs' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="wcs" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="parking">
+                    پارکینگ
+                </label>
+                <input wire:model='parking' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="parking" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="storage">
+                    انبار
+                </label>
+                <input wire:model='storage' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="storage" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="cooks">
+                    آشپرخانه
+                </label>
+                <input wire:model='cooks' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="cooks" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+        </div>
+    </div>
     <div class="flex flex-col justify-center w-full gap-2">
         @foreach ($assets as $asset)
         <div wire:key="{{ $asset['key']}}"
