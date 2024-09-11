@@ -276,88 +276,125 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <p class="mb-2 text-lg font-bold text-gray-600">نوع معامله</p>
-        <div class="flex flex-col gap-2 pr-4">
-            <div class="flex items-center mb-1">
-                <input id="at_all" type="radio" name="dealType" value="" wire:model="dealType" wire:change='$refresh'
-                    class="public-search__btn-radio">
-                <label for="at_all" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">همه موارد</label>
+            <p class="mb-2 text-lg font-bold text-gray-600">نوع معامله</p>
+            <div class="flex flex-col gap-2 pr-4">
+                <div class="flex items-center mb-1">
+                    <input id="at_all" type="radio" name="dealType" value="" wire:model="dealType"
+                        wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="at_all" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">همه
+                        موارد</label>
+                </div>
+                <div class="flex items-center mb-1">
+                    <input id="sell" type="radio" name="dealType" value="0" wire:model="dealType" wire:change='$refresh'
+                        class="public-search__btn-radio">
+                    <label for="sell" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
+                </div>
+                <div class="flex items-center mb-1">
+                    <input id="year" type="radio" name="dealType" value="3" wire:model="dealType" wire:change='$refresh'
+                        class="public-search__btn-radio">
+                    <label for="year" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
+                </div>
+                <div class="flex items-center mb-1">
+                    <input id="rent" type="radio" name="dealType" value="2" wire:model="dealType" wire:change='$refresh'
+                        class="public-search__btn-radio ">
+                    <label for="rent" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
+                </div>
+                @if ($assetType!=0)
+                <div class="flex items-center mb-1">
+                    <input id="project" type="radio" name="dealType" value="1" wire:model="dealType"
+                        wire:change='$refresh' class="public-search__btn-radio">
+                    <label for="project" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
+                        مشارکت</label>
+                </div>
+                @endif
+
             </div>
-            <div class="flex items-center mb-1">
-                <input id="sell" type="radio" name="dealType" value="0" wire:model="dealType" wire:change='$refresh'
-                    class="public-search__btn-radio">
-                <label for="sell" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
+            <div class="flex mb-4">
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="minPrice">
+                        @switch($dealType)
+                        @case(3)
+                        رهن
+                        @break
+                        @case(2)
+                        وعدیه
+                        @break
+                        @case(1)
+                        پیش‌فروش
+                        @break
+                        @default
+                        قیمت
+                        @endswitch
+                        از: </label>
+                    <input wire:model='minPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="minPrice" type="number" placeholder="کف قیمت">
+                </div>
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="maxPrice">
+                        تا: </label>
+                    <input wire:model='maxPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="maxPrice" type="number" placeholder="سقف قیمت">
+                </div>
             </div>
-            <div class="flex items-center mb-1">
-                <input id="year" type="radio" name="dealType" value="3" wire:model="dealType" wire:change='$refresh'
-                    class="public-search__btn-radio">
-                <label for="year" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
-            </div>
-            <div class="flex items-center mb-1">
-                <input id="rent" type="radio" name="dealType" value="2" wire:model="dealType" wire:change='$refresh'
-                    class="public-search__btn-radio ">
-                <label for="rent" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
-            </div>
-            @if ($assetType!=0)
-            <div class="flex items-center mb-1">
-                <input id="project" type="radio" name="dealType" value="1" wire:model="dealType" wire:change='$refresh'
-                    class="public-search__btn-radio">
-                <label for="project" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
-                    مشارکت</label>
+            @if ($dealType==2)
+            <div class="flex mb-4">
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_min">
+                        اجاره از: </label>
+                    <input wire:model='rentMinPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="rent_min" type="number" placeholder="کف قیمت">
+                </div>
+                <div class="w-full px-3 md:w-1/2">
+                    <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_max">
+                        تا: </label>
+                    <input wire:model='rentMaxPrice' wire:change='setPrice'
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        id="rent_max" type="number" placeholder="سقف قیمت">
+                </div>
             </div>
             @endif
-
+            @if ($assetType!=0 && $assetType!='')
+            <div class="relative inline-flex w-full">
+                <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                <select id="elevator" wire:model='elevator'
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    <option value="">آسانسور</option> <!-- Default option -->
+                    <option value="0">ندارد</option> <!-- Default option -->
+                    <option value="1">دارد</option> <!-- Default option -->
+                </select>
+            </div>
+            <div class="relative inline-flex w-full mt-2">
+                <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                <select id="parking" wire:model='parking'
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    <option value="">پارکینگ</option> <!-- Default option -->
+                    <option value="0">ندارد</option> <!-- Default option -->
+                    <option value="1">دارد</option> <!-- Default option -->
+                </select>
+            </div>
+            <div class="relative inline-flex w-full mt-2">
+                <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                <select id="storage" wire:model='storage'
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    <option value="">انبار</option> <!-- Default option -->
+                    <option value="0">ندارد</option> <!-- Default option -->
+                    <option value="1">دارد</option> <!-- Default option -->
+                </select>
+            </div>
+            <div class="relative inline-flex w-full mt-2">
+                <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                <select id="wcs" wire:model='wcs'
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    <option value="">سرویس بهداشتی</option> <!-- Default option -->
+                    <option value="0">ندارد</option> <!-- Default option -->
+                    <option value="1">دارد</option> <!-- Default option -->
+                </select>
+            </div>
+            @endif
         </div>
-        <div class="flex mb-4">
-            <div class="w-full px-3 md:w-1/2">
-                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="minPrice">
-                    @switch($dealType)
-                    @case(3)
-                    رهن
-                    @break
-                    @case(2)
-                    وعدیه
-                    @break
-                    @case(1)
-                    پیش‌فروش
-                    @break
-                    @default
-                    قیمت
-                    @endswitch
-                    از: </label>
-                <input wire:model='minPrice' wire:change='setPrice'
-                    class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                    id="minPrice" type="number" placeholder="کف قیمت">
-            </div>
-            <div class="w-full px-3 md:w-1/2">
-                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="maxPrice">
-                    تا: </label>
-                <input wire:model='maxPrice' wire:change='setPrice'
-                    class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                    id="maxPrice" type="number" placeholder="سقف قیمت">
-            </div>
-        </div>
-        @if ($dealType==2)
-        <div class="flex mb-4">
-            <div class="w-full px-3 md:w-1/2">
-                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_min">
-                    اجاره از: </label>
-                <input wire:model='rentMinPrice' wire:change='setPrice'
-                    class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                    id="rent_min" type="number" placeholder="کف قیمت">
-            </div>
-            <div class="w-full px-3 md:w-1/2">
-                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_max">
-                    تا: </label>
-                <input wire:model='rentMaxPrice' wire:change='setPrice'
-                    class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
-                    id="rent_max" type="number" placeholder="سقف قیمت">
-            </div>
-        </div>
-        @endif
-
-
 
     </div>
 

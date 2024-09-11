@@ -48,7 +48,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('gas')->nullable();  // Integer for gas
             $table->unsignedTinyInteger('landline')->nullable();  // Integer for landline
             $table->unsignedTinyInteger('elevator')->nullable();  // Integer for elevator
-            $table->unsignedTinyInteger('storage')->nullable();  // Integer for floor
+            $table->unsignedTinyInteger('storage')->nullable();  // Integer for storage
             $table->unsignedTinyInteger('parking')->nullable();  // Integer for floor
             $table->string('img')->nullable(); // String for Images
             $table->timestamps(); // Created at and updated at timestamps

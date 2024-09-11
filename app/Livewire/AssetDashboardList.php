@@ -29,6 +29,8 @@ class AssetDashboardList extends Component
     public $rent_max = 999999999999;
 
     public $space = '';
+    public $storage = '';
+    public $elevator = '';
     public $area = '';
     public $wcs = '';
     public $cooks = '';
@@ -58,6 +60,8 @@ class AssetDashboardList extends Component
             'price_max',
             'rent_min',
             'rent_max',
+            'seller_mobile',
+            'seller_phone',
             'space',
             'area',
             'beds',
@@ -65,7 +69,7 @@ class AssetDashboardList extends Component
             'cooks',
             'parking'
         ])) {
-            $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
+            $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName) == 0 ? '' : NumeralConverter::convertToEnglish($this->$propertyName);
         }
     }
 
@@ -103,6 +107,43 @@ class AssetDashboardList extends Component
         if ($this->public != '') {
             $query->where('isPublic', $this->public);
         }
+
+        if ($this->space != '') {
+            $query->whereBetween('space', [(int)($this->space - 25), ($this->space + 25)]);
+        }
+
+        if ($this->area != '') {
+            $query->whereBetween('area', [(int)($this->area - 25), ($this->area + 25)]);
+        }
+
+        if ($this->beds != '') {
+            $query->where('beds', $this->beds);
+        }
+
+        if ($this->wcs != '') {
+            $query->where('wcs', $this->wcs);
+        }
+
+        if ($this->parking != '') {
+            $query->where('parking', $this->parking);
+        }
+
+        if ($this->storage != '') {
+            $query->where('storage', $this->storage);
+        }
+
+        if ($this->elevator != '') {
+            $query->where('elevator', $this->elevator);
+        }
+
+        if ($this->cooks != '') {
+            $query->where('cooks', $this->cooks);
+        }
+
+
+        $query->whereBetween('price_public', [(int)$this->price_min, (int)$this->price_max]);
+        $query->whereBetween('rent', [(int)$this->rent_min, (int)$this->rent_max]);
+
         $query->orderBy('created_at', 'desc');
         return view('livewire.asset-dashboard-list', [
             'star' => '*',

@@ -47,7 +47,7 @@
             <path d="M8 8a2 2 0 1 1 0-4 2 2 0 0 1 0 4m0 1a3 3 0 1 0 0-6 3 3 0 0 0 0 6" />
 
           </svg>
-          <div class="">فروش ملک</div>
+          <div class="">شهرها</div>
         </a>
         <a href="/weblog" target="_blank"
           class="grid content-center grid-cols-1 gap-4 py-2 text-center transition-transform border-4 border-white rounded-lg list_item lg:py-0 hover:scale-105 hover:cursor-pointer">

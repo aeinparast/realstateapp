@@ -229,7 +229,7 @@
                                     border-gray-200 rounded appearance-none focus:outline-none focus:bg-white
                                     focus:border-gray-500" id="map" type="text">
                                     <p class="text-xs italic text-blue-400"><a
-                                            href="https://map.ir/lat/36.812583/lng/50.893307/z/13" target="_blank"
+                                            href="https://neshan.org/maps/#c36.822-50.873-13z-0p" target="_blank"
                                             rel="noopener noreferrer">بازکردن نقشه</a></p>
                             </div>
                             <div class="w-full px-3 mb-6 md:w-1/3 md:mb-0 md:col-start-1">

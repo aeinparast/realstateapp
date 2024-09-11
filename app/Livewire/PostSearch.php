@@ -38,6 +38,12 @@ class PostSearch extends Component
     public $rentMinPrice = '0';
     public $rentMaxPrice = '99999999999';
 
+    public $beds = '';
+    public $parking = '';
+    public $storage = '';
+    public $wcs = '';
+    public $elevator = '';
+
 
 
     public $cities;

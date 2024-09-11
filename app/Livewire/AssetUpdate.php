@@ -89,6 +89,7 @@ class AssetUpdate extends Component
         'parking' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
         'map' => 'required|string|min:0|max:255',   // Required, must be an integer between 0-255
         'fileType' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
+
     ];
 
     public function save()
@@ -143,6 +144,8 @@ class AssetUpdate extends Component
         $this->storage = (int) NumeralConverter::convertToEnglish($this->storage);
         $this->parking = (int) NumeralConverter::convertToEnglish($this->parking);
         $this->fileType = (int) NumeralConverter::convertToEnglish($this->fileType);
+        $this->seller_mobile = NumeralConverter::convertToEnglish($this->seller_mobile);
+        $this->seller_phone = NumeralConverter::convertToEnglish($this->seller_phone);
     }
 
     public function uploadImage(): void
@@ -183,7 +186,22 @@ class AssetUpdate extends Component
 
     public function updated($propertyName)
     {
-        if (in_array($propertyName, ['price_public', 'price_private', 'price_per_meter', 'rent', 'space'])) {
+        if (in_array($propertyName, [
+            'price_public',
+            'price_private',
+            'price_per_meter',
+            'rent',
+            'space',
+            'area',
+            'floor',
+            'floors',
+            'beds',
+            'wcs',
+            'cooks',
+            'parking',
+            'seller_mobile',
+            'seller_phone'
+        ])) {
             $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
         }
     }

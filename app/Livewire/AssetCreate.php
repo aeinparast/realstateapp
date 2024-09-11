@@ -141,6 +141,8 @@ class AssetCreate extends Component
         $this->storage = (int) NumeralConverter::convertToEnglish($this->storage);
         $this->parking = (int) NumeralConverter::convertToEnglish($this->parking);
         $this->fileType = (int) NumeralConverter::convertToEnglish($this->fileType);
+        $this->seller_mobile = NumeralConverter::convertToEnglish($this->seller_mobile);
+        $this->seller_phone = NumeralConverter::convertToEnglish($this->seller_phone);
     }
 
     public function uploadImage(): void
@@ -195,7 +197,9 @@ class AssetCreate extends Component
             'beds',
             'wcs',
             'cooks',
-            'parking'
+            'parking',
+            'seller_mobile',
+            'seller_phone'
         ])) {
             $this->$propertyName = NumeralConverter::convertToEnglish($this->$propertyName);
         }

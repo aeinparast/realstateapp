@@ -57,7 +57,7 @@ new class extends Component
                 @endif
                 @if (Auth::user()->role==0)
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link :href="route('city.index')" :active="request()->routeIs('dash-city')" wire:navigate>
+                    <x-nav-link :href="route('city.index')" :active="request()->routeIs('city.index')" wire:navigate>
                         شهرها
                     </x-nav-link>
                 </div>

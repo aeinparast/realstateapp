@@ -10,6 +10,11 @@
   }
 }
 
+*::selection {
+  background-color: white;
+  color: #d2ab65;
+}
+
 blockquote {
   background:
     linear-gradient(to right, #d2ab65 6px, transparent 4px) 0 100%,

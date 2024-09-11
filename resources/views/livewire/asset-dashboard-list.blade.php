@@ -240,14 +240,35 @@
                     id="parking" type="text">
                 {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
             </div>
-            <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="storage">
-                    انبار
-                </label>
-                <input wire:model='storage' wire:change='$refresh'
-                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
-                    id="storage" type="text">
-                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+                    انبار </label>
+                <div class="relative">
+                    <select wire:model='storage' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="storage">
+                        <option value="">همه موارد</option>
+                        <option value="0">ندارد</option>
+                        <option value="1">دارد</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0 md:col-start-1">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="elevator">
+                    آسانسور </label>
+                <div class="relative">
+                    <select wire:model='elevator' wire:change='$refresh'
+                        class="block w-full px-4 py-3 pr-8 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white focus:border-gray-500"
+                        id="elevator">
+                        <option value="">همه موارد</option>
+                        <option value="0">ندارد</option>
+                        <option value="1">دارد</option>
+                    </select>
+                    <div class="absolute inset-y-0 right-0 flex items-center px-2 text-gray-700 pointer-events-none">
+                    </div>
+                </div>
             </div>
             <div class="w-full px-3 mb-6 md:w-1/6 md:mb-0">
                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="cooks">
@@ -263,11 +284,11 @@
     <div class="flex flex-col justify-center w-full gap-2">
         @foreach ($assets as $asset)
         <div wire:key="{{ $asset['key']}}"
-            class="flex justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-mahdavi hover:border-dashed hover:scale-95">
-            <div class="flex gap-2">
-                <div class="hidden">
-                    {{ $img= explode("*", $asset['img'])[0]; }}
-                </div>
+            class="flex flex-col sm:flex-row items-center sm:items-stretch sm:justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-mahdavi hover:border-dashed hover:scale-95">
+            <div class="flex gap-2 flex-col sm:flex-row items-center sm:items-stretch">
+                @php
+                $img= explode("*", $asset['img'])[0];
+                @endphp
                 <div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded"
                     style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$img}}'">
                 </div>
