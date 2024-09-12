@@ -80,23 +80,38 @@ class BlogController extends Controller
      */
     public function update(UpdateBlogRequest $request, Blog $blog)
     {
-        //
+
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('photos', $imageName, 'liara');
+            // Merge the path into validated data
+            $blog['logo'] = $path;
+            $blog->save();
+            return redirect('/blog');
+        }
 
         $blog_content = $request->validate([
             'title' => 'required|min:3',
             'content' => 'required|json', // Ensure content is JSON
-            'public' => 'required|boolean'
+            'public' => 'required|boolean',
+
         ]);
+
+        //Handle file upload if an image exists
+        if ($request->hasFile('image')) {
+            $image = $request->file('image');
+            $imageName = time() . '.' . $image->getClientOriginalExtension();
+            $path = $image->storeAs('photos', $imageName, 'liara');
+            // Merge the path into validated data
+            $validated['logo'] = $path;
+        }
         // Save the content to the database
         $blog->title = $blog_content['title'];
         $blog->data = $blog_content['content'];
         $blog->public = $blog_content['public'];
-
-
         $blog->save();
         return redirect()->route('blog.index')->with('success', 'پست با موفقیت ویرایش شد');
-
-        return;
     }
 
     /**
