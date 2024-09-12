@@ -3,6 +3,15 @@
         <div class="flex flex-wrap mb-6 -mx-3">
             <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
                 <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="name">
+                    کد فایل
+                </label>
+                <input wire:model='asset_id' wire:change='$refresh'
+                    class="block w-full px-4 py-3 mb-3 leading-tight text-gray-700 bg-gray-200 border border-gray-200 rounded appearance-none focus:outline-none focus:bg-white"
+                    id="name" type="text">
+                {{-- <p class="text-xs italic text-red-500">خواهشمندیم این فیلد را پر کنید.</p> --}}
+            </div>
+            <div class="w-full px-3 mb-6 md:w-1/5 md:mb-0">
+                <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="name">
                     نام فایل
                 </label>
                 <input wire:model='title' wire:change='$refresh'
@@ -282,6 +291,9 @@
         </div>
     </div>
     <div class="flex flex-col justify-center w-full gap-2">
+        @if ($assets->isEmpty())
+        <h2>متاسفانه چیزی برای نمایش پیدا نشد.</h2>
+        @endif
         @foreach ($assets as $asset)
         <div wire:key="{{ $asset['key']}}"
             class="flex flex-col sm:flex-row items-center sm:items-stretch sm:justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-mahdavi hover:border-dashed hover:scale-95">

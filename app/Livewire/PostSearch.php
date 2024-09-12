@@ -103,6 +103,14 @@ class PostSearch extends Component
         }
     }
 
+    public function checkOthers()
+    {
+        $this->elevator = is_numeric($this->elevator) ? $this->elevator : '';
+        $this->parking = is_numeric($this->parking) ? $this->parking : '';
+        $this->storage = is_numeric($this->storage) ? $this->storage : '';
+        $this->wcs = is_numeric($this->wcs) ? $this->wcs : '';
+    }
+
     // Set price range, ensuring min and max are numeric
     public function setPrice()
     {
@@ -119,8 +127,10 @@ class PostSearch extends Component
         // Validate filters
         $this->checkType();
         $this->checkDeal();
+        $this->checkOthers();
         $this->checkBT();
         $this->setPrice();
+        // $this->checkOthers();
         if (!empty($this->agent) && is_numeric($this->agent)) {
             // Find the user by ID (assuming $this->agent is the user ID)
             $loc = User::where('id', (int)$this->agent)->first();
@@ -134,7 +144,7 @@ class PostSearch extends Component
 
 
         // Initialize the query
-        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'city', 'img', 'rent', 'created_at')
+        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'city', 'img', 'rent', 'parking', 'wcs', 'storage', 'elevator', 'created_at')
             ->with('city');
 
         $query->where('isPublic', 1);
@@ -166,6 +176,22 @@ class PostSearch extends Component
         // Apply filters based on dealType
         if ($this->dealType !== '') {
             $query->where('dealType', (int)$this->dealType);
+        }
+
+        if ($this->elevator !== '') {
+            $query->where('elevator', (int)$this->elevator);
+        }
+
+        if ($this->parking !== '') {
+            $query->where('parking', (int)$this->parking);
+        }
+
+        if ($this->storage !== '') {
+            $query->where('storage', (int)$this->storage);
+        }
+
+        if ($this->wcs !== '') {
+            $query->where('wcs', (int)$this->wcs);
         }
 
         // Apply filters based on price range

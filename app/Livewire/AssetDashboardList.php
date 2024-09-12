@@ -12,6 +12,7 @@ class AssetDashboardList extends Component
 {
     use WithPagination;
 
+    public $asset_id = '';
     public $cityAreas;
     public $title = '';
     public $seller_name = '';
@@ -56,6 +57,7 @@ class AssetDashboardList extends Component
     public function updated($propertyName)
     {
         if (in_array($propertyName, [
+            'asset_id',
             'price_min',
             'price_max',
             'rent_min',
@@ -77,6 +79,9 @@ class AssetDashboardList extends Component
     public function render()
     {
         $query = Asset::select()->with('city');
+        if ($this->asset_id != '') {
+            $query->where('id', $this->asset_id);
+        }
         if ($this->title != '') {
             $query->where('title', 'LIKE', '%' . $this->title . '%');
         }

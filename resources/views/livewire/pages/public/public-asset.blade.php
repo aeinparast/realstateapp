@@ -15,7 +15,10 @@
 
         <div class="flex flex-col">
             <!-- Pricing Information -->
-
+            <div class="flex items-center justify-between py-2 border-b list_item">
+                <div class="text-gray-600">کد ملک</div>
+                <div class="">{{ $asset['id'] }}</div>
+            </div>
             <div class="flex items-center justify-between py-2 border-b list_item">
                 <div class="text-gray-600">
                     معامله
@@ -287,11 +290,11 @@
                 @endforeach
             </div>
         </div>
-        <div class="block row-start-2 overflow-hidden rounded md:col-start-3 md:hidden" id="map">
+        {{-- <div class="block row-start-2 overflow-hidden rounded md:col-start-3 md:hidden" id="map">
 
             <iframe width="100%" height="200"
                 src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
-        </div>
+        </div> --}}
     </div>
 
     <!-- Right Column Content -->
@@ -321,10 +324,10 @@
                     @endforeach
                 </ul>
             </div>
-            <div class="hidden mt-4 overflow-hidden rounded md:block" id="map">
+            <div class=" mt-4 overflow-hidden rounded" id="map">
 
                 <iframe width="100%" height="200"
-                    src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/16/p/ملک"></iframe>
+                    src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/15/p/ملک"></iframe>
             </div>
         </div>
     </div>

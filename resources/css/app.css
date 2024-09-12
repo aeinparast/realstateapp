@@ -59,7 +59,7 @@ blockquote:after {
 }
 
 
-@font-face {
+/* @font-face {
   font-family: IRANSansX;
   font-style: normal;
   font-weight: 200;
@@ -113,7 +113,7 @@ blockquote:after {
   font-style: normal;
   font-weight: normal;
   src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
-}
+} */
 
 
 body {

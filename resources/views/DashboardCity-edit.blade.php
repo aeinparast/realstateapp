@@ -87,7 +87,7 @@
 
         function confirmDelete() {
         // Ask for confirmation
-        if (confirm('آیا از حذف شهر و تمام آگهی‌های آن اطمینان دارید؟')) {
+        if (confirm('آیا از حذف شهر اطمینان دارید؟')) {
             // If confirmed, submit the form
             document.getElementById('delete-form').submit();
         }

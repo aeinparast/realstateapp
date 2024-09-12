@@ -189,6 +189,44 @@
                     </div>
                 </div>
                 @endif
+                @if ($assetType!=0 && $assetType!='')
+                <div class="relative inline-flex w-full">
+                    <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                    <select id="elevator_mobile" wire:model='elevator'
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        <option value="">آسانسور</option> <!-- Default option -->
+                        <option value="0">ندارد</option> <!-- Default option -->
+                        <option value="1">دارد</option> <!-- Default option -->
+                    </select>
+                </div>
+                <div class="relative inline-flex w-full mt-2">
+                    <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                    <select id="parking_mobile" wire:model='parking'
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        <option value="">پارکینگ</option> <!-- Default option -->
+                        <option value="0">ندارد</option> <!-- Default option -->
+                        <option value="1">دارد</option> <!-- Default option -->
+                    </select>
+                </div>
+                <div class="relative inline-flex w-full mt-2">
+                    <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                    <select id="storage_mobile" wire:model='storage'
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        <option value="">انبار</option> <!-- Default option -->
+                        <option value="0">ندارد</option> <!-- Default option -->
+                        <option value="1">دارد</option> <!-- Default option -->
+                    </select>
+                </div>
+                <div class="relative inline-flex w-full mt-2">
+                    <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
+                    <select id="wcs_mobile" wire:model='wcs'
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        <option value="">سرویس بهداشتی</option> <!-- Default option -->
+                        <option value="0">ندارد</option> <!-- Default option -->
+                        <option value="1">دارد</option> <!-- Default option -->
+                    </select>
+                </div>
+                @endif
                 <button class="w-full py-1 font-medium text-white border-2 rounded bg-mahdavi"
                     wire:click='$refresh'>جستوجو</button>
             </div>
@@ -359,7 +397,7 @@
             @if ($assetType!=0 && $assetType!='')
             <div class="relative inline-flex w-full">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
-                <select id="elevator" wire:model='elevator'
+                <select id="elevator" wire:model='elevator' wire:change='$refresh'
                     class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
                     <option value="">آسانسور</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
@@ -368,7 +406,7 @@
             </div>
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
-                <select id="parking" wire:model='parking'
+                <select id="parking" wire:model='parking' wire:change='$refresh'
                     class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
                     <option value="">پارکینگ</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
@@ -377,7 +415,7 @@
             </div>
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
-                <select id="storage" wire:model='storage'
+                <select id="storage" wire:model='storage' wire:change='$refresh'
                     class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
                     <option value="">انبار</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
@@ -386,7 +424,7 @@
             </div>
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
-                <select id="wcs" wire:model='wcs'
+                <select id="wcs" wire:model='wcs' wire:change='$refresh'
                     class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
                     <option value="">سرویس بهداشتی</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
