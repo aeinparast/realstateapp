@@ -10,10 +10,7 @@
   }
 }
 
-*::selection {
-  background-color: white;
-  color: #d2ab65;
-}
+
 
 blockquote {
   background:

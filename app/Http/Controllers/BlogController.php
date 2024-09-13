@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreBlogRequest;
 use App\Http\Requests\UpdateBlogRequest;
 use App\Models\Blog;
+use App\Services\CommaReplacementService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Log;
 
@@ -49,6 +50,7 @@ class BlogController extends Controller
             $validated['logo'] = $path;
         }
         $validated['user_id'] = Auth::id();
+        $validated['tags'] = CommaReplacementService::replaceComma($validated['tags']);
         $validated['data'] = '';
 
         // Create the city using validated data

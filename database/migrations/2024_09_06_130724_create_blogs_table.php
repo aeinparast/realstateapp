@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('logo')->default('');
             $table->boolean('public')->default(false);
             $table->text('data')->default(''); // To store the JSON result from Editor.js
+            $table->string('tags')->default('');
             $table->timestamps();
         });
     }
