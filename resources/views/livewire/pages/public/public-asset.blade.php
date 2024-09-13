@@ -324,11 +324,11 @@
                     @endforeach
                 </ul>
             </div>
-            <div class=" mt-4 overflow-hidden rounded" id="map">
+            {{-- <div class=" mt-4 overflow-hidden rounded" id="map">
 
                 <iframe width="100%" height="200"
                     src="https://map.ir/lat/{{trim($map[0])}}/lng/{{trim($map[1])}}/z/15/p/ملک"></iframe>
-            </div>
+            </div> --}}
         </div>
     </div>
     <div id="fullscreen-modal"

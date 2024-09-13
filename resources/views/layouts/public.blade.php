@@ -136,8 +136,6 @@
         <div class="">خرید ملک</div>
         <div class="">فروش ملک</div>
         <div class="">مشاوران</div>
-        <div class="">همکاری با ما</div>
-        <div class="">درباره ما</div>
         <div class="">تماس با ما</div>
       </div>
     </footer>
