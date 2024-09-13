@@ -37,8 +37,21 @@
                         font-light
                         @endif
           ">خانه</a></li>
-        <li class="navigation__item"><a href="#" class="text-white">املاک</a></li>
-        <li class="navigation__item"><a href="#" class="text-white">شهرها</a></li>
+        <li class="navigation__item"><a href="{{route('amlak')}}" class="text-white
+          @if (request()->routeIs('amlak'))
+                            border-b
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif
+          ">املاک</a></li>
+        <li class="navigation__item"><a href="{{route('cities')}}" class="text-white
+          @if (request()->routeIs('cities'))
+                            border-b
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif">شهرها</a></li>
         <li class="navigation__item"><a href="{{route('public-agents')}}" class="text-white
           @if (request()->routeIs('public-agents'))
                             border-b
@@ -48,7 +61,6 @@
                         @endif
           ">مشاوران</a></li>
         <li class="navigation__item"><a href="#" class="text-white">تماس با ما</a></li>
-        <li class="navigation__item"><a href="#" class="text-white">درباره ما</a></li>
 
 
       </ul>
@@ -133,10 +145,16 @@
 
       <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600 sm:justify-normal md:text-base">
         <div class="transition-colors hover:text-gray-800"><a href="/">صفحه اصلی</a></div>
-        <div class="">خرید ملک</div>
-        <div class="">فروش ملک</div>
-        <div class="">مشاوران</div>
-        <div class="">تماس با ما</div>
+        <div class="transition-colors hover:text-gray-800">
+          <a href="/amlak" target="_blank" rel="noopener noreferrer">خرید ملک</a>
+        </div>
+        <div class="transition-colors hover:text-gray-800">
+          <a href="/sell-property" target="_blank" rel="noopener noreferrer">فروش ملک</a>
+        </div>
+        <div class="transition-colors hover:text-gray-800">
+          <a href="/agents" target="_blank" rel="noopener noreferrer">مشاوران</a>
+        </div>
+        <div class="/contact-us">تماس با ما</div>
       </div>
     </footer>
     <section>
