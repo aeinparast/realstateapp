@@ -144,7 +144,7 @@ class PostSearch extends Component
 
 
         // Initialize the query
-        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'city', 'img', 'rent', 'parking', 'wcs', 'storage', 'elevator', 'created_at')
+        $query = Asset::select('id', 'title', 'assetType', 'dealType', 'price_public', 'city_id', 'user_id', 'img', 'rent', 'parking', 'wcs', 'storage', 'elevator', 'created_at')
             ->with('city');
 
         $query->where('isPublic', 1);
