@@ -16,7 +16,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::orderBy('updated_at', 'desc')->paginate(30);
+        $blogs = Blog::where('user_id', Auth::id())->orderBy('updated_at', 'desc')->paginate(30);
         return view('blog.index', compact('blogs'));
     }
 
