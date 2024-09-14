@@ -141,7 +141,7 @@
         </div>
         <div class="relative flex items-center gap-1 sm:gap-2 lg:gap-4">
 
-          <a href="" class="navigation__btn navigation__btn--primary group">مشاوره
+          <a href="{{route('buy-talk')}}" class="navigation__btn navigation__btn--primary group">مشاوره
             خرید
             <span
               class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping sm:right-2 sm:top-2 right-1 top-1 group-hover:bg-mahdavi"></span>

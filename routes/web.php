@@ -48,6 +48,9 @@ Route::view('cities', 'cities')
 Route::view('contact', 'talk')
   ->name('talk');
 
+Route::view('talk-buy', 'buytalk')
+  ->name('buy-talk');
+
 Route::resource('city', CityController::class);
 
 
