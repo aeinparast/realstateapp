@@ -165,7 +165,7 @@
           <a href="/amlak" target="_blank" rel="noopener noreferrer">خرید ملک</a>
         </div>
         <div class="transition-colors hover:text-gray-800">
-          <a href="/sell-property" target="_blank" rel="noopener noreferrer">فروش ملک</a>
+          <a href="/cities" target="_blank" rel="noopener noreferrer">شهرها</a>
         </div>
         <div class="transition-colors hover:text-gray-800">
           <a href="/agents" target="_blank" rel="noopener noreferrer">مشاوران</a>
