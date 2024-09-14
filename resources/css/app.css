@@ -56,61 +56,6 @@ blockquote:after {
 }
 
 
-/* @font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 200;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-UltraLight.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 300;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Light.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 500;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Medium.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 600;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Demibold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 800;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Extrabold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: 900;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Black.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: bold;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Bold.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: IRANSansX;
-  font-style: normal;
-  font-weight: normal;
-  src: url('http://127.0.0.1:8000/fonts/woff2/IRANSansX-Regular.woff2') format('woff2');
-} */
 
 
 body {
@@ -357,4 +302,9 @@ body {
 
 .thumbnail.active {
   opacity: 1;
+}
+
+
+.talk_item {
+  @apply transition-transform rounded-full w-28 h-28 hover:scale-105;
 }

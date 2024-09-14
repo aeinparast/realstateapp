@@ -60,7 +60,14 @@
                         font-light
                         @endif
           ">مشاوران</a></li>
-        <li class="navigation__item"><a href="#" class="text-white">تماس با ما</a></li>
+        <li class="navigation__item"><a href="{{route('talk')}}" class="text-white
+          @if (request()->routeIs('talk'))
+                            border-b
+                        @else
+                        border-b-transparent
+                        font-light
+                        @endif
+          ">تماس با ما</a></li>
 
 
       </ul>
@@ -120,7 +127,16 @@
             @endif">
               <a href="{{route('weblog')}}">وبلاگ</a>
             </li>
-            <li class="text-sm font-light">ارتباط با ما</li>
+            <li class="text-sm hover:text-mahdavi transition-colors border-b-2 
+            @if (request()->routeIs('talk'))
+                border-b-mahdavi text-mahdavi font-normal
+            @else
+            border-b-transparent
+            font-light
+            @endif
+            ">
+              <a href="{{route('talk')}}" target="_blank" rel="noopener noreferrer">ارتباط با ما</a>
+            </li>
           </ul>
         </div>
         <div class="relative flex items-center gap-1 sm:gap-2 lg:gap-4">
@@ -154,7 +170,9 @@
         <div class="transition-colors hover:text-gray-800">
           <a href="/agents" target="_blank" rel="noopener noreferrer">مشاوران</a>
         </div>
-        <div class="/contact-us">تماس با ما</div>
+        <div class="transition-colors hover:text-gray-800">
+          <a href="/contact" target="_blank" rel="noopener noreferrer">ارتباط با ما</a>
+        </div>
       </div>
     </footer>
     <section>

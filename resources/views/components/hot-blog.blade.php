@@ -17,4 +17,5 @@
         {{$blogs->links()}}
     </div>
     @endif
+
 </div>

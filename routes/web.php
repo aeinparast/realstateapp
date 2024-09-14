@@ -45,6 +45,9 @@ Route::view('amlak', 'amlak')
 Route::view('cities', 'cities')
   ->name('cities');
 
+Route::view('contact', 'talk')
+  ->name('talk');
+
 Route::resource('city', CityController::class);
 
 
