@@ -52,14 +52,20 @@
                 @endif
                 
                 ">فروش</button>
-                <button wire:click.prevent='DealChange(1)' class="
+
+
+
+                <button wire:click.prevent='DealChange(3)' class="
                 border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
-                @if ($dealType===1)
+                @if ($dealType===3)
                     text-white
                     bg-mahdavi
                 @endif
                 
                 ">رهن</button>
+
+
+
                 <button wire:click.prevent='DealChange(2)' class="
                 border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
                 @if ($dealType===2)
@@ -68,9 +74,12 @@
                 @endif
                 
                 ">اجاره</button>
-                <button wire:click.prevent='DealChange(3)' class="
+
+
+
+                <button wire:click.prevent='DealChange(1)' class="
                 border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
-                @if ($dealType===3)
+                @if ($dealType===1)
                     text-white
                     bg-mahdavi
                 @endif
