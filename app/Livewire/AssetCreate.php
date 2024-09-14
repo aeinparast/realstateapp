@@ -88,7 +88,7 @@ class AssetCreate extends Component
         'elevator' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
         'storage' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
         'parking' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
-        'map' => 'required|string|min:0|max:255',   // Required, must be an integer between 0-255
+        'map' => 'string|min:0|max:255',   // Required, must be an integer between 0-255
         'fileType' => 'required|integer|min:0|max:255',   // Required, must be an integer between 0-255
     ];
 
