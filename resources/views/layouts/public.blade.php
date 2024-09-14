@@ -147,8 +147,8 @@
               class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping sm:right-2 sm:top-2 right-1 top-1 group-hover:bg-mahdavi"></span>
 
           </a>
-          <a href="" class="navigation__btn navigation__btn--secondery">مشاوره
-            فروش</a>
+          {{-- <a href="" class="navigation__btn navigation__btn--secondery">مشاوره
+            فروش</a> --}}
         </div>
       </nav>
     </header>
