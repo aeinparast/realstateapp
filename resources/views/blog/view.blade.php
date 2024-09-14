@@ -1,4 +1,4 @@
-<x-public-layout title="وبلاگ هلدینگ سرمایه‌گذاری مهدوی - {{$blog['title']}}" keywords="{{$blog['keywords']}}">
+<x-public-layout title="{{$blog['title']}} | وبلاگ هلدینگ املاک مهدوی" keywords="{{$blog['keywords']}}">
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
     <div class="min-h-screen">
         <div class="relative w-full pt-3 bg-mahdavi h-44">
@@ -10,9 +10,10 @@
                 <h1 class="text-3xl font-bold text-center text-slate-700 mt-36">{{$blog['title']}}</h1>
                 <div class="flex justify-center gap-2 text-slate-600">
                     <div class="">نویسنده:</div>
-                    <div class="">رایان آیین پرست</div>
+                    <div class="">{{$blog->user->name}}</div>
                 </div>
                 <div class="flex flex-col gap-2 items-center justify-center mt-4 text-center">
+                    @if (!empty($articles['blocks']) && is_array($articles['blocks']))
                     @foreach ($articles['blocks'] as $article)
                     @if (isset($article['data']['text']))
                     @if ($article['type']=='header')
@@ -49,7 +50,7 @@
                     @continue
                     @endif
                     @endforeach
-
+                    @endif
 
                 </div>
             </div>

@@ -112,10 +112,9 @@ class PublicAsset extends Component
         $title = 'کاستوم';
         return view('livewire.pages.public.public-asset', compact(['facilities_list', 'pfp', 'map', 'title']))
             ->layout('layouts.public', [
-                'title' => $this->asset->title . ' - هلدینگ سرمایه‌گذاری مهدوی',
+                'title' => $this->asset->title . ' | هلدینگ سرمایه‌گذاری مهدوی',
                 'description' => $this->setDescription(),
                 'keywords' => $this->setKeywords()
-
             ]);
     }
 }

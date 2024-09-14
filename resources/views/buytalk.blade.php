@@ -14,7 +14,7 @@
                     برای هر مجموعه‌ای مشتریان راضی و خوشحال هستند.</p>
                 <div class="flex justify-center gap-2 md:gap-4 md:text-xl pt-4">
                     <div class="">تلفن تماس:</div>
-                    <a href="tel:01154322951">011-54322951</a>
+                    <a href="tel:{{env('HOLDIN_TELL')}}">{{env('HOLDIN_TELL_SHOW')}}</a>
                 </div>
                 <a href="/agents" target="_blank" rel="noopener noreferrer"
                     class="px-8 py-1 mt-3 text-lg font-bold text-center text-white transition-all rounded-sm cursor-pointer bg-mahdavi hover:ring-4 ring-mahdavi ring-offset-4">

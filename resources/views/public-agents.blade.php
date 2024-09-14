@@ -1,4 +1,4 @@
-<x-public-layout>
+<x-public-layout title="لیست مشاوران | هلدینگ سرمایه‌گذاری مهدوی">
   <section class="min-h-screen grid-cols-1 px-8 m-2 border-b rounded-lg lg:grid-cols-2 hero py-14" id="hero">
     <div class="flex flex-col items-center mb-2 justify-center">
       <h1 class="text-5xl font-medium text-mahdavi text-center md:text-6xl md:font-bold">مشاوران هلدینگ سرمایه‌گذاری

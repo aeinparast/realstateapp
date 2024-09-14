@@ -1,4 +1,5 @@
-<x-public-layout title="تماس با ما-هلدینگ املاک مهدوی" description="صفحه مشاهده اطلاعات تماس با هلدینگ املاک مهدوی"
+<x-public-layout title="تماس با ما | هلدینگ سرمایه‌گذاری مهدوی"
+    description="صفحه مشاهده اطلاعات تماس با هلدینگ املاک مهدوی"
     keywords="خرید ملک در مازندران,خرید ملک در غرب مازندران,ارتباط با ما, املاک مهدوی">
     <!-- Live as if you were to die tomorrow. Learn as if you were to live forever. - Mahatma Gandhi -->
     <div class="w-full min-h-screen flex flex-col gap-10 md:px-8 !mt-20">
@@ -6,11 +7,11 @@
         <div class="flex flex-col w-full gap-4 px-2 md:justify-center md:items-center">
             <div class="px-2 py-1 text-white rounded bg-mahdavi md:w-96 md:px-6 md:rounded">
                 <div class="font-light ">نشانی:</div>
-                <div class="pr-4 text-xl">مازندران، تنکابن، بعد از کریم‌آباد</div>
+                <div class="pr-4 text-xl">{{env('HOLDIN_ADD')}}</div>
                 <div class="mt-2 font-light">کدپستی:</div>
-                <div class="pr-4 text-xl">۴۸۸۸۸۸۸۸۸۸۸</div>
+                <div class="pr-4 text-xl">{{env('HOLDIN_POSTAL')}}</div>
                 <div class="mt-2 font-light">تلفن تماس:</div>
-                <a href="tel:01154322951" class="pr-4 text-xl">۴۸۸۸۸۸۸۸۸۸۸</a>
+                <a href="tel:{{env('HOLDIN_TELL')}}" class="pr-4 text-xl">{{env('HOLDIN_TELL_SHOW')}}</a>
             </div>
             <div class="flex justify-center gap-1">
                 <a href="https://www.instagram.com/{{env('HOLDIN_IG')}}" target="_blank" rel="noopener noreferrer"
