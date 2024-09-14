@@ -54,7 +54,7 @@ Route::view('talk-buy', 'buytalk')
 Route::resource('city', CityController::class);
 
 
-Route::resource('blog', BlogController::class);
+Route::resource('blog', BlogController::class)->middleware(['auth']);
 Route::get('/get-editor-data/{id}', [EditorDataController::class, 'getEditorData']);
 
 Route::view('weblog', 'blog.weblog')
