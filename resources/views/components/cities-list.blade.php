@@ -2,8 +2,7 @@
     <!-- Smile, breathe, and go slowly. - Thich Nhat Hanh -->
     @if (!$cities->isEmpty())
     <h1 class="text-3xl font-medium text-center col-span-full text-mahdavi md:text-5xl md:font-bold">شهرهای تحت پوشش
-        هلدینگ
-        سرمایه‌گذاری مهدوی</h1>
+        املاک عمارت آریا</h1>
     @foreach ($cities as $city)
     <a href="/amlak?city={{$city->id}}"
         class="flex flex-col items-center justify-center transition-transform rounded hover:scale-95">

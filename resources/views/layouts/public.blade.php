@@ -7,7 +7,7 @@
   <meta name="description" content="{{ $description ?? '' }}">
   <meta name="keywords" content="{{ $keywords ?? '' }}">
 
-  <title>{{ $title ?? 'هلدینگ سرمایه‌گذاری مهدوی' }}</title>
+  <title>{{ $title ?? 'املاک عمارت آریا' }}</title>
 
   <!-- Fonts -->
 
@@ -79,7 +79,7 @@
         <div class="flex items-center sm:gap-2 md:gap-2 lg:gap-6 xl:gap-12">
           <a href="/"
             class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-mahdavi hover:border-b-mahdavi">
-            هلدینگ سرمایه‌گذاری مهدوی</a>
+            املاک عمارت آریا</a>
 
           <ul class="items-center hidden px-4 lg:gap-6 xl:gap-12 md:gap-2 md:flex md:px-2">
             <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
@@ -176,11 +176,10 @@
       </div>
     </footer>
     <section>
-      <div class="text-xs text-center text-white rounded-sm sm:text-sm bg-mahdavi">تمامی حقوق این وبسایت برای
-        هلدینگ
-        سرمایه‌گذاری مهدوی
-        محفوظ
-        است.</div>
+      <div class="text-xs text-center text-white rounded-sm sm:text-sm bg-mahdavi">تمامی حقوق این وبسایت متعلق برای
+        املاک عمارت آریا
+
+        میباشد.</div>
     </section>
   </div>
 </body>

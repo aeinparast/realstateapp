@@ -1,6 +1,5 @@
-<x-public-layout title="تماس با ما | هلدینگ سرمایه‌گذاری مهدوی"
-    description="صفحه مشاهده اطلاعات تماس با هلدینگ املاک مهدوی"
-    keywords="خرید ملک در مازندران,خرید ملک در غرب مازندران,ارتباط با ما, املاک مهدوی">
+<x-public-layout title="تماس با ما | عمارت آریا" description="صفحه مشاهده اطلاعات تماس با عمارت آریا"
+    keywords="خرید ملک در مازندران,خرید ملک در غرب مازندران,ارتباط با ما, عمارت آریا">
     <!-- Live as if you were to die tomorrow. Learn as if you were to live forever. - Mahatma Gandhi -->
     <div class="w-full min-h-screen flex flex-col gap-10 md:px-8 !mt-20">
         <h1 class="font-bold text-center text-mahdavi text-8xl">تماس با ما</h1>

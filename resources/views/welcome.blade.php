@@ -8,7 +8,7 @@
         ملک!</h1>
 
       <h1 class="text-5xl font-bold text-center text-white md:hidden lg:text-right lg:text-9xl lg:font-black"
-        style="line-height: 1.3">هلدینگ سرمایه‌گذاری مهدی</h1>
+        style="line-height: 1.3">املاک عمارت آریا</h1>
 
     </div>
     <div class="flex items-center justify-center col-span-full sm:hidden">

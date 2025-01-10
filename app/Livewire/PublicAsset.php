@@ -100,7 +100,7 @@ class PublicAsset extends Component
 
         return $dealType . ' ' . $assetType . ','  . $this->asset->city->name . ',' .
             config('assetType')[$this->asset->assetType][$this->asset->buildingType] . ' در ' . $this->asset->city->name .
-            ',املاک مهدوی';
+            ',املاک عمارت آریا';
     }
 
 
@@ -112,7 +112,7 @@ class PublicAsset extends Component
         $title = 'کاستوم';
         return view('livewire.pages.public.public-asset', compact(['facilities_list', 'pfp', 'map', 'title']))
             ->layout('layouts.public', [
-                'title' => $this->asset->title . ' | هلدینگ سرمایه‌گذاری مهدوی',
+                'title' => $this->asset->title . ' | املاک عمارت آریا',
                 'description' => $this->setDescription(),
                 'keywords' => $this->setKeywords()
             ]);

@@ -1,4 +1,4 @@
-<x-public-layout title="{{$blog['title']}} | وبلاگ هلدینگ املاک مهدوی" keywords="{{$blog['keywords']}}">
+<x-public-layout title="{{$blog['title']}} | وبلاگ عمارت آریا" keywords="{{$blog['keywords']}}">
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
     <div class="min-h-screen">
         <div class="relative w-full pt-3 bg-mahdavi h-44">
@@ -12,7 +12,7 @@
                     <div class="">نویسنده:</div>
                     <div class="">{{$blog->user->name}}</div>
                 </div>
-                <div class="flex flex-col gap-2 items-center justify-center mt-4 text-center">
+                <div class="flex flex-col items-center justify-center gap-2 mt-4 text-center">
                     @if (!empty($articles['blocks']) && is_array($articles['blocks']))
                     @foreach ($articles['blocks'] as $article)
                     @if (isset($article['data']['text']))
@@ -25,8 +25,8 @@
                     @continue
                     @endif
                     @if ($article['type']=='quote')
-                    <section class="component p-10 mx-1  ">
-                        <blockquote class="relative text-black font-medium text-center p-10 w-full ">
+                    <section class="p-10 mx-1 component ">
+                        <blockquote class="relative w-full p-10 font-medium text-center text-black ">
                             {{$article['data']['text']}}
                             <br><cite> - {{$article['data']['caption']}}</cite>
                         </blockquote>
@@ -42,7 +42,7 @@
                     @continue
                     @endif
                     @if ($article['type']=='list')
-                    <ul class="w-full list-disc text-right">
+                    <ul class="w-full text-right list-disc">
                         @foreach ($article['data']['items'] as $listitem)
                         <li>{{$listitem}}</li>
                         @endforeach
