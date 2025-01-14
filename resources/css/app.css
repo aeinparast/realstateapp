@@ -96,15 +96,15 @@ body {
 
 
 .navigation__btn {
-  @apply px-1 py-1 text-xs text-center transition-colors border-2 rounded sm:px-4 sm:py-1 sm:text-sm hover:bg-transparent border-mahdavi;
+  @apply px-1 py-1 text-xs text-center transition-colors border-2 rounded sm:px-4 sm:py-1 sm:text-sm hover:bg-transparent border-brand;
 }
 
 .navigation__btn--primary {
-  @apply text-white bg-mahdavi hover:text-mahdavi;
+  @apply text-white bg-brand hover:text-brand;
 }
 
 .navigation__btn--secondery {
-  @apply transition-colors md:flex hover:bg-transparent text-mahdavi hover:border-dashed;
+  @apply transition-colors md:flex hover:bg-transparent text-brand hover:border-dashed;
 }
 
 
@@ -123,11 +123,11 @@ body {
 
 
 .public-search__btn-radio {
-  @apply w-4 h-4 bg-gray-100 border-gray-300 rounded-full text-mahdavi focus:ring-mahdavi focus:ring-2;
+  @apply w-4 h-4 bg-gray-100 border-gray-300 rounded-full text-brand focus:ring-brand focus:ring-2;
 }
 
 .public-asset__facility--main {
-  @apply flex items-center justify-center gap-2 px-2 py-1 transition-colors border-2 rounded border-mahdavi text-mahdavi hover:bg-mahdavi hover:text-white;
+  @apply flex items-center justify-center gap-2 px-2 py-1 transition-colors border-2 rounded border-brand text-brand hover:bg-brand hover:text-white;
 }
 
 .fade-in {
@@ -307,4 +307,8 @@ body {
 
 .talk_item {
   @apply transition-transform rounded-full w-28 h-28 hover:scale-105;
+}
+
+#hero {
+  background-image: url('http://127.0.0.1:8000/img/search.webp');
 }

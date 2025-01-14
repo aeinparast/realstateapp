@@ -6,7 +6,7 @@
             <h1 class="text-xl font-medium">{{$asset['title']}}</h1>
             <div class="flex gap-2 text-sm">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                    class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
+                    class="bi bi-geo-alt-fill text-brand" viewBox="0 0 16 16">
                     <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
                 </svg><a href="/amlak?city={{$asset->city_id}}">{{$asset->city->name}}</a> -
                 {{$asset['created_at']->locale('fa')->diffForHumans()}}
@@ -133,7 +133,7 @@
         </div>
 
         <!-- Seller Information -->
-        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-mahdavi list_item">
+        <div class="flex justify-center gap-4 px-2 py-2 border rounded-md border-brand list_item">
             @if ($pfp==null || $pfp=='')
             <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                 style="background-image: url('/img/logo.webp');"></div>
@@ -145,7 +145,7 @@
                 <div class="text-sm text-gray-600">مشاور:</div>
                 <div class="">{{ $asset->user->name }}</div>
                 <button x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                    class="py-1 mt-2 text-center text-white transition-all rounded bg-mahdavi hover:opacity-90 hover:scale-105">تماس
+                    class="py-1 mt-2 text-center text-white transition-all rounded bg-brand hover:opacity-90 hover:scale-105">تماس
                 </button>
             </div>
         </div>
@@ -159,7 +159,7 @@
         <!-- Facilities -->
         <div>
 
-            <div class="flex flex-col gap-2 p-2 text-mahdavi ">
+            <div class="flex flex-col gap-2 p-2 text-brand ">
                 @if ($asset['elevator']==1)
                 <div class="public-asset__facility--main">
                     <svg fill="currentColor" width="24px" height="24px" viewBox="0 0 8 8"
@@ -284,7 +284,7 @@
             </div>
             <div class="flex flex-wrap gap-1 mt-2">
                 @foreach ($facilities_list as $facilitie)
-                <div class="px-2 font-bold border-2 rounded-full border-mahdavi hover:border-dashed text-mahdavi">
+                <div class="px-2 font-bold border-2 rounded-full border-brand hover:border-dashed text-brand">
                     {{ $facilities[$facilitie] }}
                 </div>
                 @endforeach
@@ -350,7 +350,7 @@
             </h2>
 
             <div
-                class="flex flex-col items-center justify-center gap-4 px-2 py-2 text-center border rounded-md sm:flex-row sm:text-right sm:items-start border-mahdavi">
+                class="flex flex-col items-center justify-center gap-4 px-2 py-2 text-center border rounded-md sm:flex-row sm:text-right sm:items-start border-brand">
                 @if ($pfp==null || $pfp=='')
                 <div class="w-20 h-20 bg-center bg-no-repeat bg-contain rounded-full"
                     style="background-image: url('/img/logo.webp');"></div>
@@ -361,13 +361,13 @@
                 <div class="flex flex-col">
                     <div class="text-sm text-gray-600">مشاور:</div>
                     <a href="/amlak?agent={{ $asset->user->id }}"
-                        class="font-medium transition-colors hover:text-mahdavi">{{
+                        class="font-medium transition-colors hover:text-brand">{{
                         $asset->user->name }}</a>
                     <div class="text-sm text-gray-600">تلفن:</div>
-                    <a href="tel:{{ $asset->user->phone }}" class="border-b-2 border-mahdavi">{{ $asset->user->phone
+                    <a href="tel:{{ $asset->user->phone }}" class="border-b-2 border-brand">{{ $asset->user->phone
                         }}</a>
                     <div class="text-sm text-gray-600">همراه:</div>
-                    <a href="tel:{{ $asset->user->mobile }}" class="border-b-2 border-mahdavi">{{ $asset->user->mobile
+                    <a href="tel:{{ $asset->user->mobile }}" class="border-b-2 border-brand">{{ $asset->user->mobile
                         }}</a>
                     <div class="flex justify-center gap-2 mt-2 sm:justify-normal">
                         @if ($asset->user->instagram!='')

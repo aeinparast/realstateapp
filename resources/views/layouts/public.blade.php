@@ -78,58 +78,58 @@
       <nav class="items-center justify-between hidden w-full h-12 px-1 rounded md:flex sm:px-8">
         <div class="flex items-center sm:gap-2 md:gap-2 lg:gap-6 xl:gap-12">
           <a href="/"
-            class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-mahdavi hover:border-b-mahdavi">
+            class="flex items-center text-sm font-normal text-center transition-colors border-b-2 border-transparent sm:font-medium hover:text-brand hover:border-b-brand">
             املاک عمارت آریا</a>
 
           <ul class="items-center hidden px-4 lg:gap-6 xl:gap-12 md:gap-2 md:flex md:px-2">
-            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            <li class=" text-sm hover:text-brand transition-colors border-b-2  
                         @if (request()->routeIs('home'))
-                            border-b-mahdavi text-mahdavi font-normal
+                            border-b-brand text-brand font-normal
                         @else
                         border-b-transparent
                         font-light
                         @endif">
               <a href="{{route('home')}}">خانه</a>
             </li>
-            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            <li class=" text-sm hover:text-brand transition-colors border-b-2  
                         @if (request()->routeIs('amlak'))
-                            border-b-mahdavi text-mahdavi font-normal
+                            border-b-brand text-brand font-normal
                         @else
                         border-b-transparent
                         font-light
                         @endif">
               <a href="{{route('amlak')}}">املاک</a>
             </li>
-            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            <li class=" text-sm hover:text-brand transition-colors border-b-2  
             @if (request()->routeIs('cities'))
-                border-b-mahdavi text-mahdavi font-normal
+                border-b-brand text-brand font-normal
             @else
             border-b-transparent
             font-light
             @endif">
               <a href="{{route('cities')}}">شهرها</a>
             </li>
-            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            <li class=" text-sm hover:text-brand transition-colors border-b-2  
                         @if (request()->routeIs('public-agents'))
-                            border-b-mahdavi text-mahdavi font-normal
+                            border-b-brand text-brand font-normal
                         @else
                         border-b-transparent
                         font-light
                         @endif">
               <a href="{{route('public-agents')}}">مشاوران</a>
             </li>
-            <li class=" text-sm hover:text-mahdavi transition-colors border-b-2  
+            <li class=" text-sm hover:text-brand transition-colors border-b-2  
             @if (request()->routeIs('weblog'))
-                border-b-mahdavi text-mahdavi font-normal
+                border-b-brand text-brand font-normal
             @else
             border-b-transparent
             font-light
             @endif">
               <a href="{{route('weblog')}}">وبلاگ</a>
             </li>
-            <li class="text-sm hover:text-mahdavi transition-colors border-b-2 
+            <li class="text-sm hover:text-brand transition-colors border-b-2 
             @if (request()->routeIs('talk'))
-                border-b-mahdavi text-mahdavi font-normal
+                border-b-brand text-brand font-normal
             @else
             border-b-transparent
             font-light
@@ -144,7 +144,7 @@
           <a href="{{route('buy-talk')}}" class="navigation__btn navigation__btn--primary group">مشاوره
             خرید
             <span
-              class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping sm:right-2 sm:top-2 right-1 top-1 group-hover:bg-mahdavi"></span>
+              class="absolute inline-flex w-2 h-2 bg-white rounded-full opacity-75 animate-ping sm:right-2 sm:top-2 right-1 top-1 group-hover:bg-brand"></span>
 
           </a>
           {{-- <a href="" class="navigation__btn navigation__btn--secondery">مشاوره
@@ -156,8 +156,8 @@
       {{ $slot }}
 
     </main>
-    <footer class="flex flex-col items-center p-12 sm:flex-row min-h-40">
-      <a href="/"><img class="w-32" src="/img/logo.webp" alt="Mahdavi holding Logo"></a>
+    <footer class="flex flex-col items-center gap-4 p-12 sm:flex-row min-h-40">
+      <a href="/"><img class="w-32 rounded-full" src="/img/logo.webp" alt="لوگو املاک عمارت آریا"></a>
 
       <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-600 sm:justify-normal md:text-base">
         <div class="transition-colors hover:text-gray-800"><a href="/">صفحه اصلی</a></div>
@@ -176,7 +176,7 @@
       </div>
     </footer>
     <section>
-      <div class="text-xs text-center text-white rounded-sm sm:text-sm bg-mahdavi">تمامی حقوق این وبسایت متعلق برای
+      <div class="text-xs text-center text-white rounded-sm sm:text-sm bg-brand">تمامی حقوق این وبسایت متعلق برای
         املاک عمارت آریا
 
         میباشد.</div>

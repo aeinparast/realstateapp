@@ -2,9 +2,9 @@
     keywords="خرید ملک در مازندران,خرید ملک در غرب مازندران,ارتباط با ما, عمارت آریا">
     <!-- Live as if you were to die tomorrow. Learn as if you were to live forever. - Mahatma Gandhi -->
     <div class="w-full min-h-screen flex flex-col gap-10 md:px-8 !mt-20">
-        <h1 class="font-bold text-center text-mahdavi text-8xl">تماس با ما</h1>
+        <h1 class="font-bold text-center text-brand text-8xl">تماس با ما</h1>
         <div class="flex flex-col w-full gap-4 px-2 md:justify-center md:items-center">
-            <div class="px-2 py-1 text-white rounded bg-mahdavi md:w-96 md:px-6 md:rounded">
+            <div class="px-2 py-1 text-white rounded bg-brand md:w-96 md:px-6 md:rounded">
                 <div class="font-light ">نشانی:</div>
                 <div class="pr-4 text-xl">{{env('HOLDIN_ADD')}}</div>
                 <div class="mt-2 font-light">کدپستی:</div>
@@ -66,7 +66,7 @@
                     </svg></a>
             </div>
             <a href="/agents" target="_blank" rel="noopener noreferrer"
-                class="px-8 py-1 mt-3 text-lg font-bold text-center text-white transition-all rounded-sm cursor-pointer bg-mahdavi hover:ring-4 ring-mahdavi ring-offset-4">
+                class="px-8 py-1 mt-3 text-lg font-bold text-center text-white transition-all rounded-sm cursor-pointer bg-brand hover:ring-4 ring-brand ring-offset-4">
                 ارتباط با مشاوران
             </a>
         </div>

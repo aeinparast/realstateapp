@@ -296,13 +296,13 @@
         @endif
         @foreach ($assets as $asset)
         <div wire:key="{{ $asset['key']}}"
-            class="flex flex-col sm:flex-row items-center sm:items-stretch sm:justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-mahdavi hover:border-dashed hover:scale-95">
+            class="flex flex-col sm:flex-row items-center sm:items-stretch sm:justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-brand hover:border-dashed hover:scale-95">
             <div class="flex gap-2 flex-col sm:flex-row items-center sm:items-stretch">
                 @php
                 $img= explode("*", $asset['img'])[0];
                 @endphp
                 <div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded"
-                    style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$img}}'">
+                    style="background-image: url('https://brand.storage.iran.liara.space/{{$img}}'">
                 </div>
                 <div class="flex flex-col justify-between">
                     <div class="">{{ $asset['title'] }} -
@@ -316,7 +316,7 @@
                 </div>
                 @break
                 @case(2)
-                <span class="px-2 text-xs text-white rounded-md bg-mahdavi">معامله شده</span>
+                <span class="px-2 text-xs text-white rounded-md bg-brand">معامله شده</span>
             </div>
             @break
             @default
@@ -328,7 +328,7 @@
             <a href="tel:{{$asset['seller_mobile']}}">{{$asset['seller_mobile']}}</a>
         </div>
         <div class="flex gap-2 text-xs"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                fill="currentColor" class="bi bi-geo-alt-fill text-mahdavi" viewBox="0 0 16 16">
+                fill="currentColor" class="bi bi-geo-alt-fill text-brand" viewBox="0 0 16 16">
                 <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10m0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6" />
             </svg>{{$asset->city->name}} - {{$asset['created_at']->locale('fa')->diffForHumans()}}
         </div>

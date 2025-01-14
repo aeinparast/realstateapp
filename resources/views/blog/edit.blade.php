@@ -6,8 +6,8 @@
         <textarea name="content" id="blogpost" hidden class="!hidden"></textarea>
         <div class="text-center">
             <label for="heading">عنوان</label>
-            <input class="rounded outline-none w-96 border-mahdavi focus-within:ring focus-within:ring-mahdavi"
-                type="text" id="title" name="title" value="{{$blog['title']}}" />
+            <input class="rounded outline-none w-96 border-brand focus-within:ring focus-within:ring-brand" type="text"
+                id="title" name="title" value="{{$blog['title']}}" />
             <x-primary-button x-data="" x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')">آپلود عکس
             </x-primary-button>
         </div>

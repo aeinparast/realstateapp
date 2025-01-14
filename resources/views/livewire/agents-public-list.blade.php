@@ -3,7 +3,7 @@
     <div data-aos="fade" data-aos-duration="1000"
         class="
         list_item
-        flex flex-col items-center justify-center gap-4 px-4 py-2 text-center transition-all border-2 rounded-md hover:scale-105 sm:flex-row sm:text-right sm:items-start border-mahdavi">
+        flex flex-col items-center justify-center gap-4 px-4 py-2 text-center transition-all border-2 rounded-md hover:scale-105 sm:flex-row sm:text-right sm:items-start border-brand">
         @if ($agent->pfp=='')
         <div class="w-24 h-24 bg-center bg-no-repeat bg-contain rounded-full"
             style="background-image: url('/img/logo.webp');"></div>
@@ -14,13 +14,13 @@
         <div class="flex flex-col">
             <div class="text-sm text-gray-600">مشاور:</div>
             <a href="/amlak?agent={{ $agent->id }}"
-                class="px-4 font-medium text-white transition-colors rounded-sm bg-mahdavi">{{
+                class="px-4 font-medium text-white transition-colors rounded-sm bg-brand">{{
                 $agent->name }}</a>
             <div class="text-sm text-gray-600">تلفن:</div>
-            <a href="tel:{{ $agent->phone }}" class="border-b-2 border-mahdavi">{{ $agent->phone
+            <a href="tel:{{ $agent->phone }}" class="border-b-2 border-brand">{{ $agent->phone
                 }}</a>
             <div class="text-sm text-gray-600">همراه:</div>
-            <a href="tel:{{ $agent->mobile }}" class="border-b-2 border-mahdavi">{{ $agent->mobile
+            <a href="tel:{{ $agent->mobile }}" class="border-b-2 border-brand">{{ $agent->mobile
                 }}</a>
             <div class="flex justify-center gap-2 mt-2 sm:justify-normal">
                 @if ($agent->instagram!='')

@@ -1,25 +1,25 @@
-<div class="flex flex-col col-span-1 gap-2 p-2 border-2 rounded row-span-full border-mahdavi ">
+<div class="flex flex-col col-span-1 gap-2 p-2 border-2 rounded row-span-full border-brand ">
 
   <p class="text-gray-600">نوع ملک</p>
 
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">زمین</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">خانه</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">ویلا</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">تجاری</label>
   </div>
 
@@ -28,22 +28,22 @@
 
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">فروش</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">رهن</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">اجاره</label>
   </div>
   <div class="flex items-center mb-1">
     <input id="default-checkbox" type="checkbox" value=""
-      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-mahdavi focus:ring-mahdavi focus:ring-2 ">
+      class="w-4 h-4 bg-gray-100 border-gray-300 rounded text-brand focus:ring-brand focus:ring-2 ">
     <label for="default-checkbox" class="text-sm font-medium text-gray-600 ms-2 dark:text-gray-300">پروژه و
       مشارکت</label>
   </div>

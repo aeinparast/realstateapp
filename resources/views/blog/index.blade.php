@@ -23,10 +23,10 @@
                     <div class="flex flex-col justify-center w-full gap-2">
                         @foreach ($blogs as $post)
                         <div
-                            class="flex justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-mahdavi hover:border-dashed hover:scale-95">
+                            class="flex justify-between gap-2 px-2 py-4 transition-transform border-2 rounded border-brand hover:border-dashed hover:scale-95">
                             <div class="flex gap-2 justify-between">
                                 <div class="w-20 h-20 bg-center bg-no-repeat bg-cover rounded"
-                                    style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$post['logo']}}'">
+                                    style="background-image: url('https://brand.storage.iran.liara.space/{{$post['logo']}}'">
                                 </div>
                                 <div class="flex flex-col justify-between">
                                     <a href="/blog/{{$post['id']}}" target="_blank" class="">{{ $post['title'] }}

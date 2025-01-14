@@ -21,7 +21,7 @@
                     <ul class="flex flex-col gap-4">
                         @foreach ($users as $user)
                         <li
-                            class="flex items-center justify-between px-2 py-1 bg-white border-b rounded shadow border-b-mahdavi">
+                            class="flex items-center justify-between px-2 py-1 bg-white border-b rounded shadow border-b-brand">
                             <div class="">
                                 <p class="font-medium">{{$user->name}}</p>
                                 <div class="text-sm text-gray-600">

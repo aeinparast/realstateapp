@@ -1,8 +1,8 @@
 <x-public-layout title="{{$blog['title']}} | وبلاگ عمارت آریا" keywords="{{$blog['keywords']}}">
     <!-- It is quality rather than quantity that matters. - Lucius Annaeus Seneca -->
     <div class="min-h-screen">
-        <div class="relative w-full pt-3 bg-mahdavi h-44">
-            <div class="absolute w-56 h-56 transform -translate-x-1/2 bg-no-repeat bg-cover border-2 rounded -bottom-32 left-1/2 border-mahdavi"
+        <div class="relative w-full pt-3 bg-brand h-44">
+            <div class="absolute w-56 h-56 transform -translate-x-1/2 bg-no-repeat bg-cover border-2 rounded -bottom-32 left-1/2 border-brand"
                 style="background-image: url('{{env('BUCKET_FULL_URL').'/'.$blog['logo']}}')" id="logo"></div>
         </div>
         <div class="flex flex-col items-center justify-center w-full ">

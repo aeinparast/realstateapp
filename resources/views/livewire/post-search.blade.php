@@ -1,6 +1,6 @@
 <div class="grid grid-cols-1 gap-4 px-4 mt-8 overflow-hidden lg:grid-cols-4 sm:grid-cols-2 md:grid-cols-3"
     id="post-search">
-    <div class="fixed z-20 invisible p-2 text-white transition-opacity duration-300 rounded-full opacity-0 top-2 right-2 md:hidden bg-mahdavi"
+    <div class="fixed z-20 invisible p-2 text-white transition-opacity duration-300 rounded-full opacity-0 top-2 right-2 md:hidden bg-brand"
         id="search-nav">
         <div class="flex justify-between w-full">
             <div class="flex items-center justify-center p-2 border-2 border-white rounded-full" id="search-btn">
@@ -12,14 +12,14 @@
     <div class="fixed top-0 right-0 z-50 w-full h-screen transition-transform translate-x-full bg-white"
         id="search-modal">
         <div class="relative w-full h-screen">
-            <div class="fixed z-30 flex items-center justify-center rounded-full top-2 left-2 h-7 w-7 bg-mahdavi"
+            <div class="fixed z-30 flex items-center justify-center rounded-full top-2 left-2 h-7 w-7 bg-brand"
                 wire:click='$refresh'>
                 <i class="flex items-center justify-center text-white bi bi-x-circle"></i>
             </div>
             <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
                 @if ($agentInfo!=null&&$agent!='')
                 <div
-                    class="border-mahdavi border rounded w-full mt-4 px-2 py-1 mb-2 flex justify-between items-center text-mahdavi">
+                    class="border-brand border rounded w-full mt-4 px-2 py-1 mb-2 flex justify-between items-center text-brand">
                     <div class="font-medium">{{$agentInfo->name}}</div>
                     <i class="bi bi-x-circle-fill flex justify-between items-center cursor-pointer"
                         wire:click='clearAgent'></i>
@@ -34,7 +34,7 @@
                     <div class="relative inline-flex w-full">
                         <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                         <select id="city-dropdown_mobile"
-                            class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0"
+                            class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0"
                             wire:model='City' wire:change='changeCity'>
                             <option value="">انتخاب شهر</option> <!-- Default option -->
                             @foreach ($cities as $city)
@@ -76,7 +76,7 @@
                     <div class="relative inline-flex w-full">
                         <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                         <select id="city-dropdown_mobile" wire:model='bt'
-                            class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                            class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                             <option value="">دسته بندی ملک</option> <!-- Default option -->
                             @if ($assetType==0)
                             @foreach (config('assetType')[0] as $key=> $at)
@@ -156,7 +156,7 @@
                             @endswitch
                             از: </label>
                         <input wire:model='minPrice' wire:change='setPrice'
-                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                             id="minPrice_mobile" type="number" placeholder="کف قیمت">
                     </div>
                     <div class="w-full px-3 md:w-1/2">
@@ -164,7 +164,7 @@
                             for="maxPrice">
                             تا: </label>
                         <input wire:model='maxPrice' wire:change='setPrice'
-                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                             id="maxPrice" type="number" placeholder="سقف قیمت">
                     </div>
                 </div>
@@ -176,7 +176,7 @@
                             for="rent_min">
                             اجاره از: </label>
                         <input wire:model='rentMinPrice' wire:change='setPrice'
-                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                             id="rent_min" type="number" placeholder="کف قیمت">
                     </div>
                     <div class="w-full px-3 md:w-1/2">
@@ -184,7 +184,7 @@
                             for="rent_max">
                             تا: </label>
                         <input wire:model='rentMaxPrice' wire:change='setPrice'
-                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                            class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                             id="rent_max" type="number" placeholder="سقف قیمت">
                     </div>
                 </div>
@@ -193,7 +193,7 @@
                 <div class="relative inline-flex w-full">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="elevator_mobile" wire:model='elevator'
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                         <option value="">آسانسور</option> <!-- Default option -->
                         <option value="0">ندارد</option> <!-- Default option -->
                         <option value="1">دارد</option> <!-- Default option -->
@@ -202,7 +202,7 @@
                 <div class="relative inline-flex w-full mt-2">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="parking_mobile" wire:model='parking'
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                         <option value="">پارکینگ</option> <!-- Default option -->
                         <option value="0">ندارد</option> <!-- Default option -->
                         <option value="1">دارد</option> <!-- Default option -->
@@ -211,7 +211,7 @@
                 <div class="relative inline-flex w-full mt-2">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="storage_mobile" wire:model='storage'
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                         <option value="">انبار</option> <!-- Default option -->
                         <option value="0">ندارد</option> <!-- Default option -->
                         <option value="1">دارد</option> <!-- Default option -->
@@ -220,26 +220,26 @@
                 <div class="relative inline-flex w-full mt-2">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="wcs_mobile" wire:model='wcs'
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                         <option value="">سرویس بهداشتی</option> <!-- Default option -->
                         <option value="0">ندارد</option> <!-- Default option -->
                         <option value="1">دارد</option> <!-- Default option -->
                     </select>
                 </div>
                 @endif
-                <button class="w-full py-1 font-medium text-white border-2 rounded bg-mahdavi"
+                <button class="w-full py-1 font-medium text-white border-2 rounded bg-brand"
                     wire:click='$refresh'>جستوجو</button>
             </div>
         </div>
     </div>
     <!-- Mobile Search nav-end -->
 
-    <div class="top-0 right-0 flex-col hidden col-span-1 gap-2 p-2 border-2 rounded sm:flex border-mahdavi">
+    <div class="top-0 right-0 flex-col hidden col-span-1 gap-2 p-2 border-2 rounded sm:flex border-brand">
         <div class="sticky right-0 w-full max-h-[100vh] py-5 top-0 overflow-y-auto no-scrollbar">
             <div class="w-full">
                 @if ($agentInfo!=null&&$agent!='')
                 <div
-                    class="border-mahdavi border rounded w-full px-2 py-1 mb-2 flex justify-between items-center text-mahdavi">
+                    class="border-brand border rounded w-full px-2 py-1 mb-2 flex justify-between items-center text-brand">
                     <div class="font-medium">{{$agentInfo->name}}</div>
                     <i class="bi bi-x-circle-fill flex justify-between items-center cursor-pointer"
                         wire:click='clearAgent'></i>
@@ -248,7 +248,7 @@
                 <div class="relative inline-flex w-full">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="city-dropdown"
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0"
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0"
                         wire:model='City' wire:change='changeCity'>
                         <option value="">انتخاب شهر</option> <!-- Default option -->
                         @foreach ($cities as $city)
@@ -289,7 +289,7 @@
                 <div class="relative inline-flex w-full">
                     <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                     <select id="city-dropdown" wire:model='bt' wire:change='$refresh'
-                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                        class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                         <option value="">دسته بندی ملک</option> <!-- Default option -->
                         @if ($assetType==0)
                         @foreach (config('assetType')[0] as $key=> $at)
@@ -365,14 +365,14 @@
                         @endswitch
                         از: </label>
                     <input wire:model='minPrice' wire:change='setPrice'
-                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                         id="minPrice" type="number" placeholder="کف قیمت">
                 </div>
                 <div class="w-full px-3 md:w-1/2">
                     <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="maxPrice">
                         تا: </label>
                     <input wire:model='maxPrice' wire:change='setPrice'
-                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                         id="maxPrice" type="number" placeholder="سقف قیمت">
                 </div>
             </div>
@@ -382,14 +382,14 @@
                     <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_min">
                         اجاره از: </label>
                     <input wire:model='rentMinPrice' wire:change='setPrice'
-                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                         id="rent_min" type="number" placeholder="کف قیمت">
                 </div>
                 <div class="w-full px-3 md:w-1/2">
                     <label class="block mb-2 text-xs font-bold tracking-wide text-gray-700 uppercase" for="rent_max">
                         تا: </label>
                     <input wire:model='rentMaxPrice' wire:change='setPrice'
-                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-mahdavi focus:outline-none focus:bg-white focus:border-mahdavi"
+                        class="block w-full py-3 pl-0 leading-tight text-gray-700 bg-gray-200 border rounded appearance-none border-brand focus:outline-none focus:bg-white focus:border-brand"
                         id="rent_max" type="number" placeholder="سقف قیمت">
                 </div>
             </div>
@@ -398,7 +398,7 @@
             <div class="relative inline-flex w-full">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                 <select id="elevator" wire:model='elevator' wire:change='$refresh'
-                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                     <option value="">آسانسور</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
                     <option value="1">دارد</option> <!-- Default option -->
@@ -407,7 +407,7 @@
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                 <select id="parking" wire:model='parking' wire:change='$refresh'
-                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                     <option value="">پارکینگ</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
                     <option value="1">دارد</option> <!-- Default option -->
@@ -416,7 +416,7 @@
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                 <select id="storage" wire:model='storage' wire:change='$refresh'
-                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                     <option value="">انبار</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
                     <option value="1">دارد</option> <!-- Default option -->
@@ -425,7 +425,7 @@
             <div class="relative inline-flex w-full mt-2">
                 <!-- Standard HTML select dropdown with RTL support and no blue border on focus -->
                 <select id="wcs" wire:model='wcs' wire:change='$refresh'
-                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-mahdavi focus:outline-none focus:ring-0">
+                    class="w-full py-3 text-sm font-medium text-right text-gray-800 bg-white border rounded-lg shadow-sm px-7 border-brand focus:outline-none focus:ring-0">
                     <option value="">سرویس بهداشتی</option> <!-- Default option -->
                     <option value="0">ندارد</option> <!-- Default option -->
                     <option value="1">دارد</option> <!-- Default option -->

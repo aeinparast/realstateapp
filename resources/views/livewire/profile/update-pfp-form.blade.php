@@ -19,7 +19,7 @@
             style="background-image: url('/img/logo.webp');"></div>
         @else
         <div class="w-20 h-20  rounded-full bg-contain bg-center bg-no-repeat"
-            style="background-image: url('https://mahdavi.storage.iran.liara.space/{{$pfp}}');"></div>
+            style="background-image: url('https://brand.storage.iran.liara.space/{{$pfp}}');"></div>
         @endif
 
         @if ($file)

@@ -15,7 +15,7 @@ export default {
                 sans: ['IRANSansX'],
             },
             colors: {
-                'mahdavi': '#d2ab65'
+                'brand': '#d2ab65'
             }
         },
     },

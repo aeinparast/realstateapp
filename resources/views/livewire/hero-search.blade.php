@@ -7,34 +7,34 @@
             <p for="cars" class="">نوع ملک</p>
             <div class="flex items-center gap-4 xl:gap-6">
                 <button wire:click.prevent='PropertyChange(0)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($propertyType===0)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">زمین</button>
                 <button wire:click.prevent='PropertyChange(1)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($propertyType===1)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">خانه</button>
                 <button wire:click.prevent='PropertyChange(2)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($propertyType===2)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">ویلا</button>
                 <button wire:click.prevent='PropertyChange(3)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($propertyType===3)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">تجاری</button>
@@ -45,10 +45,10 @@
             <p for="cars" class="">نوع معامله</p>
             <div class="flex items-center gap-4">
                 <button wire:click.prevent='DealChange(0)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($dealType===0)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">فروش</button>
@@ -56,10 +56,10 @@
 
 
                 <button wire:click.prevent='DealChange(3)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($dealType===3)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">رهن</button>
@@ -67,10 +67,10 @@
 
 
                 <button wire:click.prevent='DealChange(2)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($dealType===2)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">اجاره</button>
@@ -78,10 +78,10 @@
 
 
                 <button wire:click.prevent='DealChange(1)' class="
-                border px-2 flex justify-center items-center border-mahdavi rounded text-mahdavi font-bold
+                border px-2 flex justify-center items-center border-brand rounded text-brand font-bold
                 @if ($dealType===1)
                     text-white
-                    bg-mahdavi
+                    bg-brand
                 @endif
                 
                 ">پروژه</button>
@@ -89,7 +89,7 @@
         </div>
         <div class="flex gap-4 ">
             <button x-on:click.prevent="$dispatch('open-modal', 'confirm-user-deletion')"
-                class="flex items-center gap-2 px-4 py-1 font-bold transition-all border-2 rounded hover:opacity-80 text-mahdavi border-mahdavi hover:cursor-pointer hover:bg-mahdavi hover:text-white">
+                class="flex items-center gap-2 px-4 py-1 font-bold transition-all border-2 rounded hover:opacity-80 text-brand border-brand hover:cursor-pointer hover:bg-brand hover:text-white">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search"
                     viewBox="0 0 16 16">
                     <path
@@ -99,7 +99,7 @@
             </button>
             <div class="flex">
                 <button type="button" wire:click='sendurl'
-                    class="px-4 py-1 font-bold text-white transition-colors border-2 rounded bg-mahdavi border-mahdavi hover:bg-white hover:text-mahdavi">جستوجو</button>
+                    class="px-4 py-1 font-bold text-white transition-colors border-2 rounded bg-brand border-brand hover:bg-white hover:text-brand">جستوجو</button>
             </div>
         </div>
 
